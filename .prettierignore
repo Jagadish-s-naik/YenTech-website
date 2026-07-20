@@ -1,0 +1,25 @@
+# Node modules
+node_modules/
+
+# Next.js build output
+.next/
+out/
+build/
+
+# Dependencies and lock files
+pnpm-lock.yaml
+package-lock.json
+yarn.lock
+
+# Public folder (often has static assets we don't want formatted)
+public/
+
+# Coverage and cache
+coverage/
+.turbo/
+.cache/
+
+# Misc
+.env
+.env.*
+*.log
