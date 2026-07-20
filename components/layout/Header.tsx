@@ -67,7 +67,6 @@ const NAV_LINKS = [
       { name: "Resource Library", href: "/resources", icon: undefined },
       { name: "Blog / Articles", href: "/blog", icon: undefined },
       { name: "Cert. Verification", href: "/verify", icon: undefined },
-      { name: "Alumni", href: "/alumni", icon: undefined },
     ],
   },
 ];
