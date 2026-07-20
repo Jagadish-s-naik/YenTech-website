@@ -91,11 +91,11 @@ export function Header() {
         </Link>
 
         {/* Desktop Navigation */}
-        <nav className="hidden items-center gap-6 md:flex">
+        <nav className="hidden h-full items-center gap-6 md:flex">
           {NAV_LINKS.map((link) => (
             <div
               key={link.name}
-              className="group relative"
+              className="group relative flex h-full items-center"
               onMouseEnter={() => setActiveDropdown(link.name)}
               onMouseLeave={() => setActiveDropdown(null)}
             >
@@ -172,7 +172,7 @@ export function Header() {
                   <>
                     <button
                       onClick={() => toggleDropdown(link.name)}
-                      className="text-muted-foreground flex items-center justify-between text-sm font-medium"
+                      className="text-muted-foreground flex w-full items-center justify-between py-2 text-sm font-medium"
                     >
                       {link.name}
                       <ChevronDown
