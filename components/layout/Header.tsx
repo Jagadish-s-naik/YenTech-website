@@ -76,6 +76,8 @@ export function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
 
+  const isLoggedIn = pathname.startsWith('/admin') || pathname.startsWith('/member');
+
   const toggleDropdown = (name: string) => {
     setActiveDropdown(activeDropdown === name ? null : name);
   };
@@ -137,11 +139,19 @@ export function Header() {
 
         <div className="flex items-center gap-4">
           <div className="hidden items-center gap-2 md:flex">
-            <Link href="/auth/login">
-              <Button variant="ghost" size="sm">
-                Sign In
-              </Button>
-            </Link>
+            {!isLoggedIn ? (
+              <Link href="/auth/login">
+                <Button variant="ghost" size="sm">
+                  Sign In
+                </Button>
+              </Link>
+            ) : (
+              <Link href={pathname.startsWith('/admin') ? "/admin" : "/member"}>
+                <Button variant="ghost" size="sm">
+                  Dashboard
+                </Button>
+              </Link>
+            )}
           </div>
           <ThemeToggle />
 
@@ -208,11 +218,19 @@ export function Header() {
               </div>
             ))}
             <div className="mt-4 flex flex-col gap-2 border-t pt-4">
-              <Link href="/auth/login" onClick={() => setMobileMenuOpen(false)}>
-                <Button variant="outline" className="w-full">
-                  Sign In
-                </Button>
-              </Link>
+              {!isLoggedIn ? (
+                <Link href="/auth/login" onClick={() => setMobileMenuOpen(false)}>
+                  <Button variant="outline" className="w-full">
+                    Sign In
+                  </Button>
+                </Link>
+              ) : (
+                <Link href={pathname.startsWith('/admin') ? "/admin" : "/member"} onClick={() => setMobileMenuOpen(false)}>
+                  <Button variant="outline" className="w-full">
+                    Dashboard
+                  </Button>
+                </Link>
+              )}
             </div>
           </nav>
         </div>

@@ -76,20 +76,28 @@ export default function AdminDashboard() {
             <h2 className="text-lg font-semibold tracking-tight">
               Recent Activity
             </h2>
-            <div className="bg-muted h-8 w-24 animate-pulse rounded-md"></div>
+            <button className="text-primary text-sm hover:underline">View All</button>
           </div>
           <div className="space-y-4">
-            {[1, 2, 3, 4, 5].map((i) => (
+            {[
+              { id: 1, action: "New user registration", user: "John Doe", time: "2 mins ago" },
+              { id: 2, action: "Project submitted", user: "Alice Smith", time: "1 hour ago" },
+              { id: 3, action: "Event created: Web Dev Workshop", user: "Admin", time: "3 hours ago" },
+              { id: 4, action: "System update applied", user: "System", time: "5 hours ago" },
+              { id: 5, action: "New feedback received", user: "Bob Jones", time: "1 day ago" },
+            ].map((activity) => (
               <div
-                key={i}
+                key={activity.id}
                 className="border-muted/50 flex items-center gap-4 border-b py-3 last:border-0"
               >
-                <div className="bg-muted h-10 w-10 animate-pulse rounded-full"></div>
-                <div className="flex-1 space-y-2">
-                  <div className="bg-muted h-4 w-1/3 animate-pulse rounded"></div>
-                  <div className="bg-muted h-3 w-1/4 animate-pulse rounded"></div>
+                <div className="bg-primary/10 flex h-10 w-10 items-center justify-center rounded-full text-primary">
+                  <Activity className="h-5 w-5" />
                 </div>
-                <div className="bg-muted h-6 w-16 animate-pulse rounded"></div>
+                <div className="flex-1 space-y-1">
+                  <p className="text-sm font-medium leading-none">{activity.action}</p>
+                  <p className="text-muted-foreground text-xs">{activity.user}</p>
+                </div>
+                <div className="text-muted-foreground text-xs">{activity.time}</div>
               </div>
             ))}
           </div>
