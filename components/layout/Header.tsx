@@ -138,13 +138,10 @@ export function Header() {
 
         <div className="flex items-center gap-4">
           <div className="hidden items-center gap-2 md:flex">
-            <Link href="/member">
+            <Link href="/auth/login">
               <Button variant="ghost" size="sm">
-                Member Portal
+                Sign In
               </Button>
-            </Link>
-            <Link href="/contact">
-              <Button size="sm">Join Us</Button>
             </Link>
           </div>
           <ThemeToggle />
@@ -212,13 +209,10 @@ export function Header() {
               </div>
             ))}
             <div className="mt-4 flex flex-col gap-2 border-t pt-4">
-              <Link href="/member" onClick={() => setMobileMenuOpen(false)}>
+              <Link href="/auth/login" onClick={() => setMobileMenuOpen(false)}>
                 <Button variant="outline" className="w-full">
-                  Member Portal
+                  Sign In
                 </Button>
-              </Link>
-              <Link href="/contact" onClick={() => setMobileMenuOpen(false)}>
-                <Button className="w-full">Join Us</Button>
               </Link>
             </div>
           </nav>

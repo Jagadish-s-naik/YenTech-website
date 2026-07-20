@@ -13,48 +13,62 @@ export default function MemberDashboardPage() {
 
       {/* Stats Grid */}
       <div className="mb-8 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
-        <div className="bg-background flex flex-col rounded-2xl border p-6 shadow-sm">
+        <div className="bg-background/80 hover:shadow-primary/10 hover:border-primary/30 flex cursor-default flex-col rounded-2xl border p-6 shadow-sm backdrop-blur-md transition-all duration-300 hover:-translate-y-1">
           <div className="mb-4 flex items-center justify-between">
             <h3 className="text-muted-foreground text-sm font-medium">
               Events Attended
             </h3>
             <CalendarIcon className="text-primary h-4 w-4" />
           </div>
-          <p className="text-3xl font-bold">12</p>
-          <p className="mt-2 text-xs text-green-500">+2 this month</p>
+          <p className="from-primary to-primary/60 bg-gradient-to-r bg-clip-text text-3xl font-bold text-transparent">
+            12
+          </p>
+          <p className="mt-2 text-xs font-medium text-green-500">
+            +2 this month
+          </p>
         </div>
-        <div className="bg-background flex flex-col rounded-2xl border p-6 shadow-sm">
+        <div className="bg-background/80 flex cursor-default flex-col rounded-2xl border p-6 shadow-sm backdrop-blur-md transition-all duration-300 hover:-translate-y-1 hover:border-orange-500/30 hover:shadow-orange-500/10">
           <div className="mb-4 flex items-center justify-between">
             <h3 className="text-muted-foreground text-sm font-medium">
               Badges Earned
             </h3>
             <Award className="h-4 w-4 text-orange-500" />
           </div>
-          <p className="text-3xl font-bold">5</p>
-          <p className="mt-2 text-xs text-green-500">Top 15% of members</p>
+          <p className="bg-gradient-to-r from-orange-500 to-orange-300 bg-clip-text text-3xl font-bold text-transparent">
+            5
+          </p>
+          <p className="mt-2 text-xs font-medium text-green-500">
+            Top 15% of members
+          </p>
         </div>
-        <div className="bg-background flex flex-col rounded-2xl border p-6 shadow-sm">
+        <div className="bg-background/80 flex cursor-default flex-col rounded-2xl border p-6 shadow-sm backdrop-blur-md transition-all duration-300 hover:-translate-y-1 hover:border-blue-500/30 hover:shadow-blue-500/10">
           <div className="mb-4 flex items-center justify-between">
             <h3 className="text-muted-foreground text-sm font-medium">
               Projects Submitted
             </h3>
             <LayoutDashboard className="h-4 w-4 text-blue-500" />
           </div>
-          <p className="text-3xl font-bold">2</p>
+          <p className="bg-gradient-to-r from-blue-500 to-blue-300 bg-clip-text text-3xl font-bold text-transparent">
+            2
+          </p>
           <p className="text-muted-foreground mt-2 text-xs">
-            Latest: EcoTrack App
+            Latest:{" "}
+            <span className="text-foreground font-medium">EcoTrack App</span>
           </p>
         </div>
-        <div className="bg-background flex flex-col rounded-2xl border p-6 shadow-sm">
+        <div className="bg-background/80 flex cursor-default flex-col rounded-2xl border p-6 shadow-sm backdrop-blur-md transition-all duration-300 hover:-translate-y-1 hover:border-yellow-500/30 hover:shadow-yellow-500/10">
           <div className="mb-4 flex items-center justify-between">
             <h3 className="text-muted-foreground text-sm font-medium">
               Current Rank
             </h3>
             <Award className="h-4 w-4 text-yellow-500" />
           </div>
-          <p className="text-3xl font-bold">Gold</p>
+          <p className="bg-gradient-to-r from-yellow-500 to-yellow-300 bg-clip-text text-3xl font-bold text-transparent">
+            Gold
+          </p>
           <p className="text-muted-foreground mt-2 text-xs">
-            200 pts to Platinum
+            <span className="text-foreground font-medium">200 pts</span> to
+            Platinum
           </p>
         </div>
       </div>
