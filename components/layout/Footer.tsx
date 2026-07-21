@@ -20,10 +20,10 @@ export function Footer() {
               <img
                 src="/yentech.svg"
                 alt="YenTech Logo"
-                className="h-7 w-7 transition-transform group-hover:scale-105"
+                className="h-8 w-8 transition-transform duration-300 group-hover:scale-105"
               />
-              <span className="font-heading bg-gradient-to-r from-[#0CBAA6] to-[#10B981] bg-clip-text text-xl font-bold tracking-tight text-transparent">
-                YenTech
+              <span className="font-heading text-foreground text-base font-bold tracking-widest uppercase transition-colors group-hover:text-[#0CBAA6]">
+                YENTECH
               </span>
             </Link>
             <p className="text-sm leading-relaxed">

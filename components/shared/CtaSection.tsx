@@ -62,7 +62,7 @@ export function CtaSection() {
             <Link href="/member">
               <Button
                 size="lg"
-                className="rounded-full bg-[#0CBAA6] px-8 py-6 text-base font-semibold text-white shadow-md shadow-[#0CBAA6]/25 transition-all duration-300 hover:bg-[#0a9e8d] hover:shadow-lg hover:shadow-[#0CBAA6]/35"
+                className="rounded-full border-none bg-[#0CBAA6] px-8 py-6 text-base font-semibold text-white shadow-md shadow-[#0CBAA6]/25 transition-all duration-300 hover:bg-[#0a9e8d] hover:shadow-lg hover:shadow-[#0CBAA6]/35"
               >
                 <Rocket className="mr-2 h-5 w-5" />
                 Join the Community
