@@ -28,28 +28,28 @@ const DOMAINS: Domain[] = [
     name: "Web Development",
     icon: Monitor,
     href: "/domains/web-development",
-    desc: "Build modern, responsive, and dynamic web applications.",
+    desc: "Build modern, responsive, and dynamic web applications with state-of-the-art tooling.",
     tech: ["Next.js", "TypeScript", "TailwindCSS"],
   },
   {
     name: "AI & Machine Learning",
     icon: Cpu,
     href: "/domains/ai-ml",
-    desc: "Explore the frontiers of artificial intelligence and data science.",
+    desc: "Explore the frontiers of artificial intelligence, neural networks, and data science.",
     tech: ["Python", "PyTorch", "Scikit-Learn"],
   },
   {
     name: "Graphics Design",
     icon: Palette,
     href: "/domains/graphics-design",
-    desc: "Create stunning visuals and user interfaces.",
+    desc: "Create visually stunning UI/UX, brand identities, and 3D web graphics.",
     tech: ["Figma", "Illustrator", "Three.js"],
   },
   {
     name: "Cyber Security",
     icon: ShieldCheck,
     href: "/domains/cyber-security",
-    desc: "Learn to protect systems and networks from digital attacks.",
+    desc: "Learn ethical hacking, defense mechanisms, and secure network infrastructure.",
     tech: ["Linux", "Wireshark", "Metasploit"],
   },
 ];
@@ -63,7 +63,7 @@ export function DomainCards() {
     const ctx = gsap.context(() => {
       gsap.fromTo(
         ".domain-card-animate",
-        { opacity: 0, y: 40, scale: 0.98 },
+        { opacity: 0, y: 40, scale: 0.96 },
         {
           opacity: 1,
           y: 0,
@@ -89,8 +89,22 @@ export function DomainCards() {
     const x = e.clientX - rect.left;
     const y = e.clientY - rect.top;
 
+    // Mouse spotlight values
     card.style.setProperty("--mouse-x", `${x}px`);
     card.style.setProperty("--mouse-y", `${y}px`);
+
+    // Subtle 3D Tilt calculations
+    const centerX = rect.width / 2;
+    const centerY = rect.height / 2;
+    const rotateX = ((y - centerY) / centerY) * -5;
+    const rotateY = ((x - centerX) / centerX) * 5;
+
+    card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-4px)`;
+  };
+
+  const handleMouseLeave = (e: MouseEvent<HTMLAnchorElement>) => {
+    const card = e.currentTarget;
+    card.style.transform = `perspective(1000px) rotateX(0deg) rotateY(0deg) translateY(0px)`;
   };
 
   return (
@@ -102,22 +116,24 @@ export function DomainCards() {
             key={domain.name}
             href={domain.href}
             onMouseMove={handleMouseMove}
-            className="domain-card-animate group bg-background/50 hover:bg-background border-border/60 will-change-gp relative flex flex-col items-start overflow-hidden rounded-3xl border p-6 shadow-xs transition-all duration-300 hover:shadow-md"
+            onMouseLeave={handleMouseLeave}
+            className="domain-card-animate group bg-card/60 hover:bg-card border-border/80 hover:border-[#0CBAA6]/50 will-change-transform relative flex flex-col items-start overflow-hidden rounded-3xl border p-7 shadow-sm backdrop-blur-xs transition-all duration-300 hover:shadow-xl hover:shadow-[#0CBAA6]/10"
             style={
               {
                 "--mouse-x": "0px",
                 "--mouse-y": "0px",
+                transition: "transform 0.2s cubic-bezier(0.1, 0.4, 0.2, 1), border-color 0.3s, shadow 0.3s",
               } as React.CSSProperties
             }
           >
-            {/* Spotlight overlay effect */}
-            <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(400px_circle_at_var(--mouse-x)_var(--mouse-y),rgba(var(--primary-rgb,80,200,180),0.05),transparent_80%)] opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+            {/* Radial Spotlight overlay */}
+            <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(400px_circle_at_var(--mouse-x)_var(--mouse-y),rgba(12,186,166,0.12),transparent_80%)] opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
 
-            <div className="bg-primary/10 text-primary group-hover:bg-primary group-hover:text-primary-foreground mb-4 rounded-2xl p-3.5 transition-all duration-300 group-hover:scale-105 group-hover:shadow-md">
+            <div className="bg-[#0CBAA6]/10 text-[#0CBAA6] group-hover:bg-[#0CBAA6] group-hover:text-white mb-5 rounded-2xl p-4 transition-all duration-300 group-hover:scale-110 group-hover:shadow-md shadow-[#0CBAA6]/20">
               <Icon className="h-6 w-6" />
             </div>
 
-            <h3 className="group-hover:text-primary mb-2 text-xl font-bold tracking-tight transition-colors duration-200">
+            <h3 className="group-hover:text-[#0CBAA6] mb-2.5 text-2xl font-bold tracking-tight transition-colors duration-200">
               {domain.name}
             </h3>
 
@@ -126,20 +142,20 @@ export function DomainCards() {
             </p>
 
             {/* Tech Badges */}
-            <div className="mb-6 flex flex-wrap gap-1.5">
+            <div className="mb-6 flex flex-wrap gap-2">
               {domain.tech.map((tag) => (
                 <span
                   key={tag}
-                  className="bg-muted/80 text-muted-foreground border-border/40 hover:bg-muted hover:text-foreground rounded-full border px-2.5 py-0.5 text-xs font-semibold transition-colors duration-200"
+                  className="bg-muted/80 text-muted-foreground border-border/50 group-hover:border-[#0CBAA6]/30 group-hover:text-foreground rounded-full border px-3 py-1 text-xs font-medium transition-colors duration-200"
                 >
                   {tag}
                 </span>
               ))}
             </div>
 
-            <div className="text-primary mt-auto flex items-center text-sm font-semibold opacity-90 group-hover:opacity-100">
-              Learn more{" "}
-              <ArrowRight className="ml-1 h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
+            <div className="text-[#0CBAA6] mt-auto flex items-center text-sm font-semibold opacity-90 group-hover:opacity-100">
+              Explore Domain
+              <ArrowRight className="ml-1.5 h-4 w-4 transition-transform duration-300 group-hover:translate-x-1.5" />
             </div>
           </Link>
         );

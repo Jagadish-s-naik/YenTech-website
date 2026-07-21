@@ -229,14 +229,24 @@ export function DotGridBackground() {
 
         // Smoothly interpolate visual
         dot.currentRadius += (targetRadius - dot.currentRadius) * LERP_SPEED;
-        dot.currentOpacity += (targetOpacity - dot.currentOpacity) * LERP_SPEED;
-
         const renderRadius = Math.max(0.1, dot.currentRadius + pulse);
         const renderOpacity = Math.max(0, dot.currentOpacity);
 
+        // Diagonal projection from bottom-left (0, h) to top-right (w, 0)
+        const u = dot.x / (w || 1);
+        const v = ((h || 1) - dot.y) / (h || 1);
+        const rawRatio = Math.max(0, Math.min(1, (u + v) / 2));
+        // Power curve (2.5) gives dominance to primary teal (#0cbaa6) across majority of grid
+        const posRatio = Math.pow(rawRatio, 2.5);
+
+        // #0cbaa6 (12, 186, 166) -> #dbfb02 (219, 251, 2)
+        const rVal = Math.round(12 + (219 - 12) * posRatio);
+        const gVal = Math.round(186 + (251 - 186) * posRatio);
+        const bVal = Math.round(166 + (2 - 166) * posRatio);
+
         ctx!.beginPath();
         ctx!.arc(dot.x, dot.y, renderRadius, 0, Math.PI * 2);
-        ctx!.fillStyle = `rgba(12, 186, 166, ${renderOpacity})`;
+        ctx!.fillStyle = `rgba(${rVal}, ${gVal}, ${bVal}, ${renderOpacity})`;
         ctx!.fill();
       }
 

@@ -92,7 +92,7 @@ export function HeroSection() {
               <Button
                 size="lg"
                 variant="outline"
-                className="border-border/80 w-full rounded-full px-8 py-6 text-base font-semibold transition-all duration-200 hover:border-[#0CBAA6] hover:text-[#0CBAA6] sm:w-auto"
+                className="border-border/80 bg-background dark:bg-card hover:bg-muted dark:hover:bg-muted w-full rounded-full px-8 py-6 text-base font-semibold transition-all duration-200 hover:border-[#0CBAA6] hover:text-[#0CBAA6] sm:w-auto shadow-xs"
               >
                 Explore Domains
               </Button>
