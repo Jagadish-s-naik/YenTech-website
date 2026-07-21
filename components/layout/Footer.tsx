@@ -11,23 +11,27 @@ import {
 
 export function Footer() {
   return (
-    <footer className="bg-muted/40 text-muted-foreground mt-auto w-full border-t">
+    <footer className="bg-card/50 text-muted-foreground border-border/60 mt-auto w-full border-t backdrop-blur-sm">
       <div className="container mx-auto px-4 py-12 sm:px-8">
         <div className="grid grid-cols-1 gap-8 md:grid-cols-4">
           {/* Brand */}
           <div className="space-y-4 md:col-span-1">
-            <Link href="/" className="flex items-center gap-2.5">
-              <img src="/yentech.svg" alt="YenTech Logo" className="h-7 w-7" />
-              <span className="font-heading bg-linear-to-r from-[#0cbaa6] to-[#dbfb02] bg-clip-text text-xl font-bold tracking-tight text-transparent">
+            <Link href="/" className="group flex items-center gap-2.5">
+              <img
+                src="/yentech.svg"
+                alt="YenTech Logo"
+                className="h-7 w-7 transition-transform group-hover:scale-105"
+              />
+              <span className="font-heading bg-gradient-to-r from-[#0CBAA6] to-[#10B981] bg-clip-text text-xl font-bold tracking-tight text-transparent">
                 YenTech
               </span>
             </Link>
-            <p className="text-sm">
+            <p className="text-sm leading-relaxed">
               Yenepoya School of Engineering & Technology. Building the future
               of innovation through technology.
             </p>
-            <div className="flex gap-4">
-              <Link href="#" className="hover:text-primary transition-colors">
+            <div className="flex gap-4 pt-1">
+              <Link href="#" className="transition-colors hover:text-[#0CBAA6]">
                 <span className="sr-only">Twitter</span>
                 <svg
                   className="h-5 w-5"
@@ -38,7 +42,7 @@ export function Footer() {
                   <path d="M8.29 20.251c7.547 0 11.675-6.253 11.675-11.675 0-.178 0-.355-.012-.53A8.348 8.348 0 0022 5.92a8.19 8.19 0 01-2.357.646 4.118 4.118 0 001.804-2.27 8.224 8.224 0 01-2.605.996 4.107 4.107 0 00-6.993 3.743 11.65 11.65 0 01-8.457-4.287 4.106 4.106 0 001.27 5.477A4.072 4.072 0 012.8 9.713v.052a4.105 4.105 0 003.292 4.022 4.095 4.095 0 01-1.853.07 4.108 4.108 0 003.834 2.85A8.233 8.233 0 012 18.407a11.616 11.616 0 006.29 1.84" />
                 </svg>
               </Link>
-              <Link href="#" className="hover:text-primary transition-colors">
+              <Link href="#" className="transition-colors hover:text-[#0CBAA6]">
                 <span className="sr-only">GitHub</span>
                 <svg
                   className="h-5 w-5"
@@ -58,38 +62,41 @@ export function Footer() {
 
           {/* Domains */}
           <div className="space-y-4">
-            <h3 className="text-foreground text-sm font-semibold">Domains</h3>
+            <h3 className="font-heading text-foreground text-sm font-semibold tracking-wider uppercase">
+              Domains
+            </h3>
             <ul className="space-y-2 text-sm">
               <li>
                 <Link
                   href="/domains/web-development"
-                  className="hover:text-primary flex items-center gap-2 transition-colors"
+                  className="flex items-center gap-2 transition-colors hover:text-[#0CBAA6]"
                 >
-                  <Monitor className="h-4 w-4" /> Web Development
+                  <Monitor className="h-4 w-4 text-[#0CBAA6]" /> Web Development
                 </Link>
               </li>
               <li>
                 <Link
                   href="/domains/ai-ml"
-                  className="hover:text-primary flex items-center gap-2 transition-colors"
+                  className="flex items-center gap-2 transition-colors hover:text-[#0CBAA6]"
                 >
-                  <Cpu className="h-4 w-4" /> AI & ML
+                  <Cpu className="h-4 w-4 text-[#0CBAA6]" /> AI & ML
                 </Link>
               </li>
               <li>
                 <Link
                   href="/domains/graphics-design"
-                  className="hover:text-primary flex items-center gap-2 transition-colors"
+                  className="flex items-center gap-2 transition-colors hover:text-[#0CBAA6]"
                 >
-                  <Palette className="h-4 w-4" /> Graphics Design
+                  <Palette className="h-4 w-4 text-[#0CBAA6]" /> Graphics Design
                 </Link>
               </li>
               <li>
                 <Link
                   href="/domains/cyber-security"
-                  className="hover:text-primary flex items-center gap-2 transition-colors"
+                  className="flex items-center gap-2 transition-colors hover:text-[#0CBAA6]"
                 >
-                  <ShieldCheck className="h-4 w-4" /> Cyber Security
+                  <ShieldCheck className="h-4 w-4 text-[#0CBAA6]" /> Cyber
+                  Security
                 </Link>
               </li>
             </ul>
@@ -97,14 +104,14 @@ export function Footer() {
 
           {/* Quick Links */}
           <div className="space-y-4">
-            <h3 className="text-foreground text-sm font-semibold">
+            <h3 className="font-heading text-foreground text-sm font-semibold tracking-wider uppercase">
               Quick Links
             </h3>
             <ul className="space-y-2 text-sm">
               <li>
                 <Link
                   href="/events"
-                  className="hover:text-primary transition-colors"
+                  className="transition-colors hover:text-[#0CBAA6]"
                 >
                   Events Hub
                 </Link>
@@ -112,7 +119,7 @@ export function Footer() {
               <li>
                 <Link
                   href="/projects"
-                  className="hover:text-primary transition-colors"
+                  className="transition-colors hover:text-[#0CBAA6]"
                 >
                   Project Showcase
                 </Link>
@@ -120,7 +127,7 @@ export function Footer() {
               <li>
                 <Link
                   href="/badges"
-                  className="hover:text-primary transition-colors"
+                  className="transition-colors hover:text-[#0CBAA6]"
                 >
                   Leaderboard
                 </Link>
@@ -128,7 +135,7 @@ export function Footer() {
               <li>
                 <Link
                   href="/resources"
-                  className="hover:text-primary transition-colors"
+                  className="transition-colors hover:text-[#0CBAA6]"
                 >
                   Resource Library
                 </Link>
@@ -136,7 +143,7 @@ export function Footer() {
               <li>
                 <Link
                   href="/blog"
-                  className="hover:text-primary transition-colors"
+                  className="transition-colors hover:text-[#0CBAA6]"
                 >
                   Blog
                 </Link>
@@ -146,29 +153,31 @@ export function Footer() {
 
           {/* Contact */}
           <div className="space-y-4">
-            <h3 className="text-foreground text-sm font-semibold">Contact</h3>
+            <h3 className="font-heading text-foreground text-sm font-semibold tracking-wider uppercase">
+              Contact
+            </h3>
             <ul className="space-y-3 text-sm">
               <li className="flex items-start gap-2">
-                <MapPin className="mt-0.5 h-4 w-4 shrink-0" />
+                <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-[#0CBAA6]" />
                 <span>
                   Yenepoya Institute of Technology, Moodbidri, Mangaluru,
                   Karnataka 574227
                 </span>
               </li>
               <li className="flex items-center gap-2">
-                <Mail className="h-4 w-4 shrink-0" />
+                <Mail className="h-4 w-4 shrink-0 text-[#0CBAA6]" />
                 <a
                   href="mailto:info@yentech.edu"
-                  className="hover:text-primary transition-colors"
+                  className="transition-colors hover:text-[#0CBAA6]"
                 >
                   info@yentech.edu
                 </a>
               </li>
               <li className="flex items-center gap-2">
-                <Phone className="h-4 w-4 shrink-0" />
+                <Phone className="h-4 w-4 shrink-0 text-[#0CBAA6]" />
                 <a
                   href="tel:+911234567890"
-                  className="hover:text-primary transition-colors"
+                  className="transition-colors hover:text-[#0CBAA6]"
                 >
                   +91 123 456 7890
                 </a>
@@ -177,24 +186,24 @@ export function Footer() {
           </div>
         </div>
 
-        <div className="mt-12 flex flex-col items-center justify-between gap-4 border-t pt-8 text-xs md:flex-row">
+        <div className="border-border/60 mt-12 flex flex-col items-center justify-between gap-4 border-t pt-8 text-xs md:flex-row">
           <p>&copy; {new Date().getFullYear()} YenTech. All rights reserved.</p>
           <div className="flex gap-4">
             <Link
               href="/admin"
-              className="hover:text-primary transition-colors"
+              className="transition-colors hover:text-[#0CBAA6]"
             >
               Admin
             </Link>
             <Link
               href="/privacy"
-              className="hover:text-primary transition-colors"
+              className="transition-colors hover:text-[#0CBAA6]"
             >
               Privacy Policy
             </Link>
             <Link
               href="/terms"
-              className="hover:text-primary transition-colors"
+              className="transition-colors hover:text-[#0CBAA6]"
             >
               Terms of Service
             </Link>

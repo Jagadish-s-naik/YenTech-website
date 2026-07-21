@@ -2,7 +2,14 @@
 
 import { useRef, MouseEvent, useEffect } from "react";
 import Link from "next/link";
-import { Monitor, Cpu, Palette, ShieldCheck, ArrowRight, LucideIcon } from "lucide-react";
+import {
+  Monitor,
+  Cpu,
+  Palette,
+  ShieldCheck,
+  ArrowRight,
+  LucideIcon,
+} from "lucide-react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
@@ -69,7 +76,7 @@ export function DomainCards() {
             start: "top 80%",
             toggleActions: "play none none none",
           },
-        }
+        },
       );
     }, gridRef);
 
@@ -87,10 +94,7 @@ export function DomainCards() {
   };
 
   return (
-    <div
-      ref={gridRef}
-      className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-4"
-    >
+    <div ref={gridRef} className="grid grid-cols-1 gap-6 md:grid-cols-2">
       {DOMAINS.map((domain) => {
         const Icon = domain.icon;
         return (
@@ -98,7 +102,7 @@ export function DomainCards() {
             key={domain.name}
             href={domain.href}
             onMouseMove={handleMouseMove}
-            className="domain-card-animate group bg-background/50 hover:bg-background border-border/60 relative flex flex-col items-start rounded-3xl border p-6 shadow-xs transition-all duration-300 hover:shadow-md will-change-gp overflow-hidden"
+            className="domain-card-animate group bg-background/50 hover:bg-background border-border/60 will-change-gp relative flex flex-col items-start overflow-hidden rounded-3xl border p-6 shadow-xs transition-all duration-300 hover:shadow-md"
             style={
               {
                 "--mouse-x": "0px",
@@ -107,7 +111,7 @@ export function DomainCards() {
             }
           >
             {/* Spotlight overlay effect */}
-            <div className="pointer-events-none absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-[radial-gradient(400px_circle_at_var(--mouse-x)_var(--mouse-y),rgba(var(--primary-rgb,80,200,180),0.05),transparent_80%)]" />
+            <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(400px_circle_at_var(--mouse-x)_var(--mouse-y),rgba(var(--primary-rgb,80,200,180),0.05),transparent_80%)] opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
 
             <div className="bg-primary/10 text-primary group-hover:bg-primary group-hover:text-primary-foreground mb-4 rounded-2xl p-3.5 transition-all duration-300 group-hover:scale-105 group-hover:shadow-md">
               <Icon className="h-6 w-6" />
@@ -116,7 +120,7 @@ export function DomainCards() {
             <h3 className="group-hover:text-primary mb-2 text-xl font-bold tracking-tight transition-colors duration-200">
               {domain.name}
             </h3>
-            
+
             <p className="text-muted-foreground mb-6 flex-1 text-sm leading-relaxed">
               {domain.desc}
             </p>

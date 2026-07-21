@@ -5,7 +5,8 @@ import { Button } from "@/components/ui/button";
 const POSTS = [
   {
     title: "OpenLoop 2026 National Hackathon",
-    excerpt: "A national-level 24-hour hackathon organized by Yenepoya School of Engineering and Technology in collaboration with DK24, Nxtwave, and Kalvium.",
+    excerpt:
+      "A national-level 24-hour hackathon organized by Yenepoya School of Engineering and Technology in collaboration with DK24, Nxtwave, and Kalvium.",
     author: "YenTech Events",
     time: "24 Hours • Apr 26",
     img: "https://daijiworld.ap-south-1.linodeobjects.com/Linode/images3/ASM_hackathon_27042026_1.jpg",

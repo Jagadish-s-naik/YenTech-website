@@ -3,8 +3,8 @@
 import { useEffect, useRef } from "react";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Sparkles } from "lucide-react";
 import { gsap } from "gsap";
+import { StatsRibbon } from "./StatsRibbon";
 
 export function HeroSection() {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -16,25 +16,25 @@ export function HeroSection() {
       const tl = gsap.timeline({ defaults: { ease: "power4.out" } });
 
       tl.fromTo(
-        ".hero-badge",
-        { opacity: 0, y: 15 },
-        { opacity: 1, y: 0, duration: 0.8 },
+        ".hero-logo",
+        { opacity: 0, y: 15, scale: 0.9 },
+        { opacity: 1, y: 0, scale: 1, duration: 0.8 },
       )
         .fromTo(
           ".hero-title",
           { opacity: 0, y: 25 },
-          { opacity: 1, y: 0, duration: 1.0 },
-          "-=0.6",
+          { opacity: 1, y: 0, duration: 0.9 },
+          "-=0.5",
         )
         .fromTo(
           ".hero-desc",
           { opacity: 0, y: 20 },
           { opacity: 1, y: 0, duration: 0.8 },
-          "-=0.8",
+          "-=0.7",
         )
         .fromTo(
           ".hero-cta",
-          { opacity: 0, scale: 0.96, y: 15 },
+          { opacity: 0, scale: 0.95, y: 15 },
           { opacity: 1, scale: 1, y: 0, duration: 0.6, stagger: 0.1 },
           "-=0.6",
         );
@@ -46,56 +46,59 @@ export function HeroSection() {
   return (
     <section
       ref={containerRef}
-      className="bg-background relative overflow-hidden pt-24 pb-32"
+      className="bg-background relative flex flex-col overflow-hidden md:h-[calc(100svh-5rem)]"
     >
-      {/* Background decoration */}
-      <div className="bg-grid-slate-900/[0.04] dark:bg-grid-slate-400/[0.05] absolute inset-0 bg-position-[bottom_1px_center] dark:border-b dark:border-slate-100/5 dark:bg-bottom"></div>
-      <div className="from-primary/40 absolute top-0 left-1/2 -z-10 h-125 w-250 -translate-x-1/2 rounded-full bg-linear-to-tr to-blue-500/40 opacity-30 blur-3xl dark:opacity-20"></div>
-
-      <div className="relative container mx-auto px-4 text-center sm:px-8">
-        <div className="hero-badge bg-muted/50 mb-8 inline-flex items-center gap-2 rounded-full border px-3 py-1 text-sm font-medium opacity-0">
-          <Sparkles className="text-primary h-4 w-4" />
-          <span>Welcome to the future of technology</span>
+      <div className="relative container mx-auto flex max-w-4xl flex-1 flex-col justify-center px-4 py-8 text-center sm:px-8">
+        {/* Brand Logo & Name Badge */}
+        <div className="hero-logo mb-6 inline-flex items-center justify-center gap-2.5 opacity-0">
+          <img src="/yentech.svg" alt="YenTech Logo" className="h-16 w-16" />
+          <span className="font-heading text-foreground text-3xl font-bold tracking-widest uppercase">
+            YENTECH
+          </span>
         </div>
 
-        <h1 className="hero-title font-heading mb-8 text-5xl font-extrabold tracking-tight opacity-0 sm:text-6xl md:text-7xl">
-          Empowering Innovators <br className="hidden sm:block" />
-          at{" "}
-          <span className="bg-linear-to-r from-[#0cbaa6] to-[#dbfb02] bg-clip-text text-transparent">
-            YenTech
-          </span>
+        {/* Hero Title */}
+        <h1 className="hero-title font-heading text-foreground mb-6 text-4xl leading-[1.1] font-medium tracking-tight opacity-0 md:text-6xl">
+          Empowering the Next <br />
+          Generation of Innovators
         </h1>
 
-        <p className="hero-desc text-muted-foreground mx-auto mb-10 max-w-2xl text-lg leading-relaxed opacity-0 sm:text-xl">
-          Yenepoya School of Engineering & Technology's premier tech community.
-          Explore domains, participate in events, and build projects that
-          matter.
-        </p>
+        {/* Hero Subtitle Description */}
+        <div className="hero-desc text-muted-foreground mx-auto px-4 pb-12 text-center text-base leading-relaxed opacity-0 md:text-lg">
+          <p>
+            The official tech community of Yenepoya School of Engineering &
+            Technology. <br className="hidden md:block" />
+            Dive into diverse domains, join hands-on events, and turn ideas into
+            real-world projects.
+          </p>
+        </div>
 
+        {/* Action Pill Buttons */}
         <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">
-          <div className="hero-cta w-full opacity-0 sm:w-auto">
-            <Link href="/domains">
-              <Button
-                size="lg"
-                className="w-full gap-2 rounded-full font-semibold sm:w-auto"
-              >
-                Explore Domains <ArrowRight className="h-4 w-4" />
-              </Button>
-            </Link>
-          </div>
           <div className="hero-cta w-full opacity-0 sm:w-auto">
             <Link href="/events">
               <Button
                 size="lg"
-                variant="outline"
-                className="w-full rounded-full font-semibold sm:w-auto"
+                className="w-full rounded-full bg-[#0CBAA6] px-8 py-6 text-base font-semibold text-white shadow-md shadow-[#0CBAA6]/20 transition-all duration-200 hover:bg-[#0a9e8d] sm:w-auto"
               >
-                View Upcoming Events
+                Upcoming Events
+              </Button>
+            </Link>
+          </div>
+          <div className="hero-cta w-full opacity-0 sm:w-auto">
+            <Link href="/domains">
+              <Button
+                size="lg"
+                variant="outline"
+                className="border-border/80 w-full rounded-full px-8 py-6 text-base font-semibold transition-all duration-200 hover:border-[#0CBAA6] hover:text-[#0CBAA6] sm:w-auto"
+              >
+                Explore Domains
               </Button>
             </Link>
           </div>
         </div>
       </div>
+      <StatsRibbon />
     </section>
   );
 }
