@@ -112,10 +112,8 @@ export function DotGridBackground() {
     resize();
     window.addEventListener("resize", resize);
 
-    const getCanvasRect = () => canvas!.getBoundingClientRect();
-
     const handleMouse = (e: MouseEvent) => {
-      const rect = getCanvasRect();
+      const rect = canvas!.getBoundingClientRect();
       const x = e.clientX - rect.left;
       const y = e.clientY - rect.top;
       // Only react if the mouse is within the canvas bounds
@@ -130,13 +128,20 @@ export function DotGridBackground() {
       mouseRef.current = { x: -10000, y: -10000 };
     };
 
+    // Listen on window so events work despite pointer-events:none on the canvas
     window.addEventListener("mousemove", handleMouse);
     window.addEventListener("mouseleave", handleLeave);
 
     let time = 0;
+    let lastTime = 0;
 
-    const animate = () => {
-      time += 0.005;
+    const animate = (now: number) => {
+      // Frame-rate-independent timing
+      if (lastTime === 0) lastTime = now;
+      const dt = Math.min((now - lastTime) / 16.667, 3); // normalize to 60fps, cap at 3x
+      lastTime = now;
+
+      time += 0.005 * dt;
       const mouse = mouseRef.current;
       const dots = dotsRef.current;
       const { w, h, sizeScale } = dimsRef.current;
@@ -159,24 +164,24 @@ export function DotGridBackground() {
           // Normalised direction vector
           const nx = dx / dist;
           const ny = dy / dist;
-          // Apply force pushing dot away from cursor
-          dot.vx += nx * falloff * FORCE;
-          dot.vy += ny * falloff * FORCE;
+          // Apply force pushing dot away from cursor (frame-rate independent)
+          dot.vx += nx * falloff * FORCE * dt;
+          dot.vy += ny * falloff * FORCE * dt;
         }
 
-        // Spring force pulling dot back toward its origin
-        const springX = (dot.originX - dot.x) * SPRING;
-        const springY = (dot.originY - dot.y) * SPRING;
+        // Spring force pulling dot back toward its origin (frame-rate independent)
+        const springX = (dot.originX - dot.x) * SPRING * dt;
+        const springY = (dot.originY - dot.y) * SPRING * dt;
         dot.vx += springX;
         dot.vy += springY;
 
         // Damping
-        dot.vx *= DAMPING;
-        dot.vy *= DAMPING;
+        dot.vx *= Math.pow(DAMPING, dt);
+        dot.vy *= Math.pow(DAMPING, dt);
 
         // Integrate position
-        dot.x += dot.vx;
-        dot.y += dot.vy;
+        dot.x += dot.vx * dt;
+        dot.y += dot.vy * dt;
 
         // --- Visual response ---
         const displacement = Math.sqrt(
