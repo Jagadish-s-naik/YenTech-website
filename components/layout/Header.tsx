@@ -16,7 +16,7 @@ import {
   Calendar,
   Briefcase,
 } from "lucide-react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 const NAV_LINKS = [
   { name: "Home", href: "/" },
@@ -75,18 +75,36 @@ export function Header() {
   const pathname = usePathname();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
+  const [scrolled, setScrolled] = useState(false);
 
-  const isLoggedIn = pathname.startsWith('/admin') || pathname.startsWith('/member');
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 20);
+    };
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  const isLoggedIn =
+    pathname.startsWith("/admin") || pathname.startsWith("/member");
 
   const toggleDropdown = (name: string) => {
     setActiveDropdown(activeDropdown === name ? null : name);
   };
 
   return (
-    <header className="bg-background/80 sticky top-0 z-50 w-full border-b backdrop-blur-md">
+    <header
+      className={cn(
+        "sticky top-0 z-50 w-full border-b transition-all duration-300 ease-out",
+        scrolled
+          ? "bg-background/80 border-border/80 py-0 shadow-sm backdrop-blur-md"
+          : "border-transparent bg-transparent py-2 backdrop-blur-none",
+      )}
+    >
       <div className="container mx-auto flex h-16 items-center justify-between px-4 sm:px-8">
-        <Link href="/" className="flex items-center gap-2">
-          <span className="font-heading text-primary text-xl font-bold tracking-tight">
+        <Link href="/" className="flex items-center gap-2.5">
+          <img src="/yentech.svg" alt="YenTech Logo" className="h-7 w-7" />
+          <span className="font-heading bg-linear-to-r from-[#0cbaa6] to-[#dbfb02] bg-clip-text text-xl font-bold tracking-tight text-transparent">
             YenTech
           </span>
         </Link>
@@ -146,7 +164,7 @@ export function Header() {
                 </Button>
               </Link>
             ) : (
-              <Link href={pathname.startsWith('/admin') ? "/admin" : "/member"}>
+              <Link href={pathname.startsWith("/admin") ? "/admin" : "/member"}>
                 <Button variant="ghost" size="sm">
                   Dashboard
                 </Button>
@@ -219,13 +237,19 @@ export function Header() {
             ))}
             <div className="mt-4 flex flex-col gap-2 border-t pt-4">
               {!isLoggedIn ? (
-                <Link href="/auth/login" onClick={() => setMobileMenuOpen(false)}>
+                <Link
+                  href="/auth/login"
+                  onClick={() => setMobileMenuOpen(false)}
+                >
                   <Button variant="outline" className="w-full">
                     Sign In
                   </Button>
                 </Link>
               ) : (
-                <Link href={pathname.startsWith('/admin') ? "/admin" : "/member"} onClick={() => setMobileMenuOpen(false)}>
+                <Link
+                  href={pathname.startsWith("/admin") ? "/admin" : "/member"}
+                  onClick={() => setMobileMenuOpen(false)}
+                >
                   <Button variant="outline" className="w-full">
                     Dashboard
                   </Button>

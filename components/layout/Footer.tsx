@@ -16,8 +16,9 @@ export function Footer() {
         <div className="grid grid-cols-1 gap-8 md:grid-cols-4">
           {/* Brand */}
           <div className="space-y-4 md:col-span-1">
-            <Link href="/" className="flex items-center gap-2">
-              <span className="font-heading text-primary text-xl font-bold tracking-tight">
+            <Link href="/" className="flex items-center gap-2.5">
+              <img src="/yentech.svg" alt="YenTech Logo" className="h-7 w-7" />
+              <span className="font-heading bg-linear-to-r from-[#0cbaa6] to-[#dbfb02] bg-clip-text text-xl font-bold tracking-tight text-transparent">
                 YenTech
               </span>
             </Link>
