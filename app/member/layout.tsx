@@ -30,8 +30,8 @@ export default function MemberLayout({
 
   return (
     <div className="bg-muted/20 flex min-h-screen flex-col md:flex-row">
-      {/* Sidebar */}
-      <aside className="bg-background flex w-full flex-col border-r md:w-64">
+      {/* Desktop Sidebar */}
+      <aside className="bg-background hidden border-r md:flex md:w-64 md:shrink-0 md:flex-col">
         <div className="flex h-16 items-center border-b px-6">
           <span className="font-heading text-lg font-bold">Member Portal</span>
         </div>
@@ -43,7 +43,11 @@ export default function MemberLayout({
                 <Link
                   key={link.name}
                   href={link.href}
-                  className={`flex items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-medium transition-colors ${isActive ? "bg-primary text-primary-foreground" : "text-muted-foreground hover:bg-muted hover:text-foreground"}`}
+                  className={`flex items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-medium transition-colors ${
+                    isActive
+                      ? "bg-primary text-primary-foreground"
+                      : "text-muted-foreground hover:bg-muted hover:text-foreground"
+                  }`}
                 >
                   <link.icon className="h-4 w-4" />
                   {link.name}
@@ -61,9 +65,9 @@ export default function MemberLayout({
       </aside>
 
       {/* Main Content */}
-      <main className="flex flex-1 flex-col">
+      <main className="flex flex-1 flex-col min-w-0">
         {/* Top Header */}
-        <header className="bg-background flex h-16 items-center justify-between border-b px-6">
+        <header className="bg-background flex h-16 items-center justify-between border-b px-4 md:px-6">
           <form
             onSubmit={(e) => {
               e.preventDefault();
@@ -77,17 +81,17 @@ export default function MemberLayout({
                 router.push(`/member/search?${searchParams.toString()}`);
               }
             }}
-            className="flex w-full max-w-sm items-center gap-4"
+            className="flex w-full max-w-xs items-center gap-2 sm:max-w-sm sm:gap-4"
           >
-            <Search className="text-muted-foreground h-4 w-4" />
+            <Search className="text-muted-foreground h-4 w-4 shrink-0" />
             <input
               type="text"
               name="q"
               placeholder="Search members, events, badges..."
-              className="w-full border-none bg-transparent text-sm focus:outline-none"
+              className="w-full border-none bg-transparent text-xs sm:text-sm focus:outline-none"
             />
           </form>
-          <div className="flex items-center gap-4">
+          <div className="flex items-center gap-3 md:gap-4">
             <Link href="/member/notifications">
               <button className="text-muted-foreground hover:bg-muted relative rounded-full p-2 transition-colors">
                 <Bell className="h-5 w-5" />
@@ -101,6 +105,35 @@ export default function MemberLayout({
             </Link>
           </div>
         </header>
+
+        {/* Mobile Horizontal Navigation Tabs */}
+        <div className="bg-background flex items-center justify-between border-b px-4 py-2 md:hidden">
+          <nav className="flex items-center gap-1 overflow-x-auto py-0.5 no-scrollbar">
+            {SIDEBAR_LINKS.map((link) => {
+              const isActive = pathname === link.href;
+              return (
+                <Link
+                  key={link.name}
+                  href={link.href}
+                  className={`flex shrink-0 items-center gap-2 rounded-lg px-3 py-1.5 text-xs font-medium transition-colors ${
+                    isActive
+                      ? "bg-primary text-primary-foreground font-semibold"
+                      : "text-muted-foreground hover:bg-muted hover:text-foreground"
+                  }`}
+                >
+                  <link.icon className="h-3.5 w-3.5" />
+                  {link.name}
+                </Link>
+              );
+            })}
+          </nav>
+          <button
+            title="Sign Out"
+            className="text-muted-foreground hover:bg-red-500/10 hover:text-red-500 shrink-0 rounded-lg p-2 transition-colors ml-2"
+          >
+            <LogOut className="h-4 w-4" />
+          </button>
+        </div>
 
         {/* Dashboard Content */}
         {children}

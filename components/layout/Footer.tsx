@@ -1,3 +1,6 @@
+"use client";
+
+import { useState } from "react";
 import Link from "next/link";
 import {
   Monitor,
@@ -7,13 +10,23 @@ import {
   Mail,
   MapPin,
   Phone,
+  ChevronDown,
 } from "lucide-react";
 
 export function Footer() {
+  const [openSections, setOpenSections] = useState<Record<string, boolean>>({});
+
+  const toggleSection = (sectionKey: string) => {
+    setOpenSections((prev) => ({
+      ...prev,
+      [sectionKey]: !prev[sectionKey],
+    }));
+  };
+
   return (
     <footer className="bg-card/50 text-muted-foreground border-border/60 mt-auto w-full border-t backdrop-blur-sm">
-      <div className="container mx-auto px-4 py-12 sm:px-8">
-        <div className="grid grid-cols-1 gap-8 md:grid-cols-4">
+      <div className="container mx-auto px-4 py-8 sm:px-8 sm:py-12">
+        <div className="grid grid-cols-1 gap-6 md:grid-cols-4 md:gap-8">
           {/* Brand */}
           <div className="space-y-4 md:col-span-1">
             <Link href="/" className="group flex items-center gap-2.5">
@@ -26,7 +39,7 @@ export function Footer() {
                 YENTECH
               </span>
             </Link>
-            <p className="text-sm leading-relaxed">
+            <p className="text-sm leading-relaxed max-w-sm">
               Yenepoya School of Engineering & Technology. Building the future
               of innovation through technology.
             </p>
@@ -61,11 +74,24 @@ export function Footer() {
           </div>
 
           {/* Domains */}
-          <div className="space-y-4">
-            <h3 className="font-heading text-foreground text-sm font-semibold tracking-wider uppercase">
-              Domains
-            </h3>
-            <ul className="space-y-2 text-sm">
+          <div className="border-border/40 border-t pt-4 md:border-t-0 md:pt-0">
+            <button
+              onClick={() => toggleSection("domains")}
+              className="flex w-full items-center justify-between font-heading text-foreground text-sm font-semibold tracking-wider uppercase md:cursor-default"
+              aria-expanded={openSections["domains"]}
+            >
+              <span>Domains</span>
+              <ChevronDown
+                className={`h-4 w-4 text-muted-foreground transition-transform duration-200 md:hidden ${
+                  openSections["domains"] ? "rotate-180" : ""
+                }`}
+              />
+            </button>
+            <ul
+              className={`mt-3 space-y-2 text-sm md:block ${
+                openSections["domains"] ? "block" : "hidden"
+              }`}
+            >
               <li>
                 <Link
                   href="/domains/web-development"
@@ -103,11 +129,24 @@ export function Footer() {
           </div>
 
           {/* Quick Links */}
-          <div className="space-y-4">
-            <h3 className="font-heading text-foreground text-sm font-semibold tracking-wider uppercase">
-              Quick Links
-            </h3>
-            <ul className="space-y-2 text-sm">
+          <div className="border-border/40 border-t pt-4 md:border-t-0 md:pt-0">
+            <button
+              onClick={() => toggleSection("quickLinks")}
+              className="flex w-full items-center justify-between font-heading text-foreground text-sm font-semibold tracking-wider uppercase md:cursor-default"
+              aria-expanded={openSections["quickLinks"]}
+            >
+              <span>Quick Links</span>
+              <ChevronDown
+                className={`h-4 w-4 text-muted-foreground transition-transform duration-200 md:hidden ${
+                  openSections["quickLinks"] ? "rotate-180" : ""
+                }`}
+              />
+            </button>
+            <ul
+              className={`mt-3 space-y-2 text-sm md:block ${
+                openSections["quickLinks"] ? "block" : "hidden"
+              }`}
+            >
               <li>
                 <Link
                   href="/events"
@@ -152,11 +191,24 @@ export function Footer() {
           </div>
 
           {/* Contact */}
-          <div className="space-y-4">
-            <h3 className="font-heading text-foreground text-sm font-semibold tracking-wider uppercase">
-              Contact
-            </h3>
-            <ul className="space-y-3 text-sm">
+          <div className="border-border/40 border-t pt-4 md:border-t-0 md:pt-0">
+            <button
+              onClick={() => toggleSection("contact")}
+              className="flex w-full items-center justify-between font-heading text-foreground text-sm font-semibold tracking-wider uppercase md:cursor-default"
+              aria-expanded={openSections["contact"]}
+            >
+              <span>Contact</span>
+              <ChevronDown
+                className={`h-4 w-4 text-muted-foreground transition-transform duration-200 md:hidden ${
+                  openSections["contact"] ? "rotate-180" : ""
+                }`}
+              />
+            </button>
+            <ul
+              className={`mt-3 space-y-3 text-sm md:block ${
+                openSections["contact"] ? "block" : "hidden"
+              }`}
+            >
               <li className="flex items-start gap-2">
                 <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-[#0CBAA6]" />
                 <span>
@@ -186,9 +238,10 @@ export function Footer() {
           </div>
         </div>
 
-        <div className="border-border/60 mt-12 flex flex-col items-center justify-between gap-4 border-t pt-8 text-xs md:flex-row">
+        {/* Bottom copyright & links */}
+        <div className="border-border/60 mt-8 sm:mt-12 flex flex-col items-center justify-between gap-4 border-t pt-6 text-xs text-center md:flex-row md:text-left">
           <p>&copy; {new Date().getFullYear()} YenTech. All rights reserved.</p>
-          <div className="flex gap-4">
+          <div className="flex flex-wrap justify-center gap-4 sm:gap-6">
             <Link
               href="/admin"
               className="transition-colors hover:text-[#0CBAA6]"
