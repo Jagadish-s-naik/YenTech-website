@@ -101,8 +101,8 @@ export function DotGridBackground() {
       const w = parent.clientWidth;
       const h = parent.clientHeight;
 
-      canvas!.width = w * dpr;
-      canvas!.height = h * dpr;
+      canvas!.width = Math.round(w * dpr);
+      canvas!.height = Math.round(h * dpr);
       ctx!.scale(dpr, dpr);
 
       dimsRef.current = { w, h, sizeScale: 1 };
@@ -110,14 +110,29 @@ export function DotGridBackground() {
     };
 
     resize();
+
+    const resizeObserver = new ResizeObserver(() => {
+      resize();
+    });
+    if (canvas.parentElement) {
+      resizeObserver.observe(canvas.parentElement);
+    }
     window.addEventListener("resize", resize);
 
     const handleMouse = (e: MouseEvent) => {
-      const rect = canvas!.getBoundingClientRect();
-      const x = e.clientX - rect.left;
-      const y = e.clientY - rect.top;
+      if (!canvas) return;
+      const rect = canvas.getBoundingClientRect();
+      if (!rect.width || !rect.height) return;
+
+      const rawX = e.clientX - rect.left;
+      const rawY = e.clientY - rect.top;
+
       // Only react if the mouse is within the canvas bounds
-      if (x >= 0 && x <= rect.width && y >= 0 && y <= rect.height) {
+      if (rawX >= 0 && rawX <= rect.width && rawY >= 0 && rawY <= rect.height) {
+        const { w, h } = dimsRef.current;
+        // Normalize mouse coordinates from rendered CSS pixels to logical coordinate space (w, h)
+        const x = (rawX / rect.width) * w;
+        const y = (rawY / rect.height) * h;
         mouseRef.current = { x, y };
       } else {
         mouseRef.current = { x: -10000, y: -10000 };
@@ -163,8 +178,8 @@ export function DotGridBackground() {
           const falloff = t * t * t;
           // Normalised direction vector
           const nx = dx / dist;
-          const ny = dy / dist;
           // Apply force pushing dot away from cursor (frame-rate independent)
+          const ny = dy / dist;
           dot.vx += nx * falloff * FORCE * dt;
           dot.vy += ny * falloff * FORCE * dt;
         }
@@ -232,6 +247,7 @@ export function DotGridBackground() {
 
     return () => {
       cancelAnimationFrame(rafRef.current);
+      resizeObserver.disconnect();
       window.removeEventListener("resize", resize);
       window.removeEventListener("mousemove", handleMouse);
       window.removeEventListener("mouseleave", handleLeave);
@@ -241,7 +257,7 @@ export function DotGridBackground() {
   return (
     <canvas
       ref={canvasRef}
-      className="pointer-events-none absolute inset-0 z-0"
+      className="pointer-events-none absolute inset-0 h-full w-full z-0"
       aria-hidden="true"
     />
   );
