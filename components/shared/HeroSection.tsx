@@ -5,6 +5,7 @@ import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { gsap } from "gsap";
 import { StatsRibbon } from "./StatsRibbon";
+import { DotGridBackground } from "./DotGridBackground";
 
 export function HeroSection() {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -48,7 +49,8 @@ export function HeroSection() {
       ref={containerRef}
       className="bg-background relative flex flex-col overflow-hidden md:h-[calc(100svh-5rem)]"
     >
-      <div className="relative container mx-auto flex max-w-4xl flex-1 flex-col justify-center px-4 py-8 text-center sm:px-8">
+      <DotGridBackground />
+      <div className="relative z-10 container mx-auto flex max-w-4xl flex-1 flex-col justify-center px-4 py-8 text-center sm:px-8">
         {/* Brand Logo & Name Badge */}
         <div className="hero-logo mb-6 inline-flex items-center justify-center gap-2.5 opacity-0">
           <img src="/yentech.svg" alt="YenTech Logo" className="h-16 w-16" />
