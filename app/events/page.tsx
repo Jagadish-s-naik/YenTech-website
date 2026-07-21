@@ -1,4 +1,5 @@
 import { PageHeader } from "@/components/shared/PageHeader";
+import { PageContainer } from "@/components/shared/PageContainer";
 import { EventCard, EventProps } from "@/components/shared/EventCard";
 
 const MOCK_EVENTS: EventProps[] = [
@@ -46,24 +47,25 @@ const MOCK_EVENTS: EventProps[] = [
 
 export default function EventsPage() {
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen bg-background">
       <PageHeader
+        badge="Community Gatherings"
         title="Events Hub"
-        description="Discover and register for upcoming workshops, hackathons, and seminars."
+        description="Discover and register for upcoming technical workshops, national hackathons, and guest seminars."
       />
-      <div className="container mx-auto px-4 py-16 sm:px-8">
-        {/* Filters placeholder */}
-        <div className="mb-8 flex gap-2 overflow-x-auto pb-2">
-          <button className="bg-primary text-primary-foreground rounded-full px-4 py-2 text-sm font-medium">
+      <PageContainer>
+        {/* Filters */}
+        <div className="mb-8 flex gap-2 overflow-x-auto pb-2 border-b border-border/60 pb-6 scrollbar-none">
+          <button className="rounded-full bg-[#0CBAA6] px-4 py-1.5 text-xs font-medium text-white shadow-xs">
             All Events
           </button>
-          <button className="bg-muted hover:bg-muted/80 text-foreground rounded-full px-4 py-2 text-sm font-medium">
+          <button className="rounded-full bg-muted/60 text-muted-foreground hover:bg-muted hover:text-foreground px-4 py-1.5 text-xs font-medium transition-colors">
             Workshops
           </button>
-          <button className="bg-muted hover:bg-muted/80 text-foreground rounded-full px-4 py-2 text-sm font-medium">
+          <button className="rounded-full bg-muted/60 text-muted-foreground hover:bg-muted hover:text-foreground px-4 py-1.5 text-xs font-medium transition-colors">
             Hackathons
           </button>
-          <button className="bg-muted hover:bg-muted/80 text-foreground rounded-full px-4 py-2 text-sm font-medium">
+          <button className="rounded-full bg-muted/60 text-muted-foreground hover:bg-muted hover:text-foreground px-4 py-1.5 text-xs font-medium transition-colors">
             Seminars
           </button>
         </div>
@@ -73,7 +75,8 @@ export default function EventsPage() {
             <EventCard key={event.id} event={event} />
           ))}
         </div>
-      </div>
+      </PageContainer>
     </div>
   );
 }
+

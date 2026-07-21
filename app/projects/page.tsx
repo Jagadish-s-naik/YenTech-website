@@ -1,4 +1,5 @@
 import { PageHeader } from "@/components/shared/PageHeader";
+import { PageContainer } from "@/components/shared/PageContainer";
 import { ProjectCard, ProjectProps } from "@/components/shared/ProjectCard";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
@@ -63,37 +64,37 @@ const MOCK_PROJECTS: ProjectProps[] = [
 
 export default function ProjectsPage() {
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen bg-background">
       <PageHeader
-        title="Project Showcase"
-        description="Explore innovative projects built by the YenTech student community."
-      />
+        badge="Community Showcase"
+        title="Student Projects"
+        description="Explore innovative software, hardware, and AI projects built by the YenTech student community."
+      >
+        <Link href="/projects/submit">
+          <Button className="rounded-full bg-[#0CBAA6] px-6 py-2.5 text-sm font-semibold text-white shadow-md shadow-[#0CBAA6]/20 transition-all hover:bg-[#0a9e8d] hover:shadow-lg">
+            <Plus className="mr-2 h-4 w-4" /> Submit Project
+          </Button>
+        </Link>
+      </PageHeader>
 
-      <div className="container mx-auto border-b px-4 py-8 sm:px-8">
-        <div className="flex flex-col items-center justify-between gap-4 sm:flex-row">
-          <div className="flex w-full gap-2 overflow-x-auto pb-2 sm:w-auto sm:pb-0">
-            <button className="bg-primary text-primary-foreground rounded-full px-4 py-2 text-sm font-medium whitespace-nowrap">
+      <PageContainer>
+        <div className="mb-8 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between border-b border-border/60 pb-6">
+          <div className="flex gap-2 overflow-x-auto pb-2 sm:pb-0 scrollbar-none">
+            <button className="rounded-full bg-[#0CBAA6] px-4 py-1.5 text-xs font-medium text-white shadow-xs">
               All Projects
             </button>
-            <button className="bg-muted hover:bg-muted/80 text-foreground rounded-full px-4 py-2 text-sm font-medium whitespace-nowrap">
+            <button className="rounded-full bg-muted/60 text-muted-foreground hover:bg-muted hover:text-foreground px-4 py-1.5 text-xs font-medium transition-colors">
               Web Dev
             </button>
-            <button className="bg-muted hover:bg-muted/80 text-foreground rounded-full px-4 py-2 text-sm font-medium whitespace-nowrap">
-              AI/ML
+            <button className="rounded-full bg-muted/60 text-muted-foreground hover:bg-muted hover:text-foreground px-4 py-1.5 text-xs font-medium transition-colors">
+              AI / ML
             </button>
-            <button className="bg-muted hover:bg-muted/80 text-foreground rounded-full px-4 py-2 text-sm font-medium whitespace-nowrap">
-              Apps
+            <button className="rounded-full bg-muted/60 text-muted-foreground hover:bg-muted hover:text-foreground px-4 py-1.5 text-xs font-medium transition-colors">
+              Mobile Apps
             </button>
           </div>
-          <Link href="/projects/submit" className="w-full sm:w-auto">
-            <Button className="shadow-primary/20 w-full gap-2 rounded-full shadow-lg sm:w-auto">
-              <Plus className="h-4 w-4" /> Submit Project
-            </Button>
-          </Link>
         </div>
-      </div>
 
-      <div className="container mx-auto px-4 py-12 sm:px-8">
         <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
           {MOCK_PROJECTS.map((project) => (
             <ProjectCard key={project.id} project={project} />
@@ -101,11 +102,12 @@ export default function ProjectsPage() {
         </div>
 
         <div className="mt-12 text-center">
-          <Button variant="outline" className="rounded-full px-8">
-            Load More
+          <Button variant="outline" className="rounded-full border-border/70 px-8 hover:border-[#0CBAA6] hover:text-[#0CBAA6]">
+            Load More Projects
           </Button>
         </div>
-      </div>
+      </PageContainer>
     </div>
   );
 }
+

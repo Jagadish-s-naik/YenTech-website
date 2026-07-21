@@ -1,4 +1,5 @@
 import { PageHeader } from "@/components/shared/PageHeader";
+import { PageContainer } from "@/components/shared/PageContainer";
 import { Clock, User, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
@@ -36,71 +37,78 @@ const POSTS = [
 
 export default function BlogPage() {
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen bg-background">
       <PageHeader
-        title="Blog & Articles"
-        description="Insights, tutorials, and stories from the YenTech team."
+        badge="Editorial & Publications"
+        title="Blog & Insights"
+        description="Technical deep dives, tutorials, and ecosystem stories from the YenTech team."
       />
 
-      <div className="container mx-auto px-4 py-16 sm:px-8">
+      <PageContainer>
         {/* Featured Post */}
-        <div className="bg-background group mb-16 flex cursor-pointer flex-col overflow-hidden rounded-3xl border shadow-sm transition-all hover:shadow-lg lg:flex-row">
+        <div className="group mb-12 flex cursor-pointer flex-col overflow-hidden rounded-2xl border border-border/60 bg-card shadow-xs transition-all duration-300 hover:border-[#0CBAA6]/40 hover:shadow-md lg:flex-row">
           <div className="relative h-64 overflow-hidden lg:h-auto lg:w-1/2">
             <img
               src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=1200&q=80"
               alt="Featured"
-              className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
+              className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
             />
           </div>
-          <div className="flex flex-col justify-center p-8 lg:w-1/2 lg:p-12">
-            <div className="text-primary mb-3 text-sm font-semibold">
+          <div className="flex flex-col justify-center p-8 lg:w-1/2 lg:p-10">
+            <div className="mb-2 text-xs font-semibold uppercase tracking-wider text-[#0CBAA6]">
               Featured • Web Development
             </div>
-            <h2 className="group-hover:text-primary mb-4 text-3xl font-bold transition-colors">
+            <h2 className="mb-3 text-2xl font-bold tracking-tight text-foreground transition-colors group-hover:text-[#0CBAA6] md:text-3xl">
               The Future of Web Technologies in 2026
             </h2>
-            <p className="text-muted-foreground mb-6 line-clamp-3 text-lg">
+            <p className="text-muted-foreground mb-6 line-clamp-3 text-sm md:text-base leading-relaxed">
               Explore the cutting-edge frameworks, paradigms, and tools that are
               reshaping how we build the internet today and tomorrow.
             </p>
-            <div className="mt-auto flex items-center justify-between">
-              <div className="text-muted-foreground flex items-center gap-4 text-sm">
-                <span className="flex items-center gap-1">
-                  <User className="h-4 w-4" /> YenTech Editorial
+            <div className="mt-auto flex items-center justify-between border-t border-border/50 pt-4">
+              <div className="text-muted-foreground flex items-center gap-4 text-xs font-medium">
+                <span className="flex items-center gap-1.5">
+                  <User className="h-3.5 w-3.5 text-[#0CBAA6]" /> YenTech Editorial
                 </span>
-                <span className="flex items-center gap-1">
-                  <Clock className="h-4 w-4" /> 10 min read
+                <span className="flex items-center gap-1.5">
+                  <Clock className="h-3.5 w-3.5" /> 10 min read
                 </span>
               </div>
+              <span className="flex items-center gap-1 text-xs font-semibold text-[#0CBAA6]">
+                Read Article <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-1" />
+              </span>
             </div>
           </div>
         </div>
 
         {/* Recent Posts Grid */}
-        <h3 className="mb-8 text-2xl font-bold">Recent Articles</h3>
-        <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
+        <div className="mb-6 flex items-center justify-between border-b border-border/60 pb-4">
+          <h3 className="text-xl font-bold tracking-tight text-foreground">Recent Articles</h3>
+        </div>
+
+        <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
           {POSTS.map((post, i) => (
             <div
               key={i}
-              className="bg-background group flex cursor-pointer flex-col overflow-hidden rounded-2xl border shadow-sm transition-all hover:shadow-md"
+              className="group flex cursor-pointer flex-col overflow-hidden rounded-xl border border-border/60 bg-card shadow-xs transition-all duration-300 hover:border-[#0CBAA6]/40 hover:shadow-md"
             >
-              <div className="relative h-48 overflow-hidden">
+              <div className="relative h-44 overflow-hidden">
                 <img
                   src={post.img}
                   alt={post.title}
                   className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
                 />
               </div>
-              <div className="flex flex-1 flex-col p-6">
-                <h4 className="group-hover:text-primary mb-3 line-clamp-2 text-xl font-bold transition-colors">
+              <div className="flex flex-1 flex-col p-5">
+                <h4 className="mb-2 line-clamp-2 text-lg font-bold text-foreground transition-colors group-hover:text-[#0CBAA6]">
                   {post.title}
                 </h4>
-                <p className="text-muted-foreground mb-6 line-clamp-3 flex-1 text-sm">
+                <p className="text-muted-foreground mb-4 line-clamp-2 flex-1 text-xs leading-relaxed">
                   {post.excerpt}
                 </p>
-                <div className="text-muted-foreground flex items-center justify-between border-t pt-4 text-xs">
+                <div className="text-muted-foreground flex items-center justify-between border-t border-border/50 pt-3 text-xs">
                   <span className="flex items-center gap-1">
-                    <User className="h-3 w-3" /> {post.author}
+                    <User className="h-3 w-3 text-[#0CBAA6]" /> {post.author}
                   </span>
                   <span className="flex items-center gap-1">
                     <Clock className="h-3 w-3" /> {post.time}
@@ -112,11 +120,12 @@ export default function BlogPage() {
         </div>
 
         <div className="mt-12 text-center">
-          <Button variant="outline" className="rounded-full px-8">
+          <Button variant="outline" className="rounded-full border-border/70 px-8 hover:border-[#0CBAA6] hover:text-[#0CBAA6]">
             Load More Articles
           </Button>
         </div>
-      </div>
+      </PageContainer>
     </div>
   );
 }
+

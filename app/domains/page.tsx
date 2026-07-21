@@ -1,66 +1,108 @@
 import { PageHeader } from "@/components/shared/PageHeader";
+import { PageContainer } from "@/components/shared/PageContainer";
 import Link from "next/link";
-import { Monitor, Cpu, Palette, ShieldCheck, ArrowRight } from "lucide-react";
+import {
+  Monitor,
+  Cpu,
+  Palette,
+  ShieldCheck,
+  ArrowRight,
+  LucideIcon,
+} from "lucide-react";
 
-const DOMAINS = [
+interface Domain {
+  name: string;
+  icon: LucideIcon;
+  href: string;
+  desc: string;
+  tech: string[];
+}
+
+const DOMAINS: Domain[] = [
   {
     name: "Web Development",
     icon: Monitor,
     href: "/domains/web-development",
-    desc: "Build modern, responsive, and dynamic web applications.",
+    desc: "Build modern, responsive, and dynamic web applications with state-of-the-art tooling.",
+    tech: ["Next.js", "TypeScript", "TailwindCSS"],
   },
   {
     name: "AI & Machine Learning",
     icon: Cpu,
     href: "/domains/ai-ml",
-    desc: "Explore the frontiers of artificial intelligence and data science.",
+    desc: "Explore the frontiers of artificial intelligence, neural networks, and data science.",
+    tech: ["Python", "PyTorch", "Scikit-Learn"],
   },
   {
     name: "Graphics Design",
     icon: Palette,
     href: "/domains/graphics-design",
-    desc: "Create stunning visuals and user interfaces.",
+    desc: "Create visually stunning UI/UX, brand identities, and 3D web graphics.",
+    tech: ["Figma", "Illustrator", "Three.js"],
   },
   {
     name: "Cyber Security",
     icon: ShieldCheck,
     href: "/domains/cyber-security",
-    desc: "Learn to protect systems and networks from digital attacks.",
+    desc: "Learn ethical hacking, defense mechanisms, and secure network infrastructure.",
+    tech: ["Linux", "Wireshark", "Metasploit"],
   },
 ];
 
 export default function DomainsPage() {
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen bg-background">
       <PageHeader
+        badge="Specializations"
         title="Technical Domains"
-        description="Explore our specialized domains and master the skills needed for tomorrow's challenges."
+        description="Explore our specialized domain tracks and build industry-ready skills for high-impact tech careers."
       />
-      <div className="container mx-auto px-4 py-16 sm:px-8">
-        <div className="grid grid-cols-1 gap-8 md:grid-cols-2">
-          {DOMAINS.map((domain) => (
-            <Link
-              key={domain.name}
-              href={domain.href}
-              className="group bg-background hover:border-primary/50 flex rounded-2xl border p-6 shadow-sm transition-all hover:shadow-md"
-            >
-              <div className="bg-primary/10 text-primary group-hover:bg-primary group-hover:text-primary-foreground mr-6 shrink-0 rounded-xl p-4 transition-all">
-                <domain.icon className="h-8 w-8" />
-              </div>
-              <div className="flex flex-col">
-                <h3 className="group-hover:text-primary mb-2 text-2xl font-semibold transition-colors">
+      <PageContainer>
+        <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
+          {DOMAINS.map((domain) => {
+            const Icon = domain.icon;
+            return (
+              <Link
+                key={domain.name}
+                href={domain.href}
+                className="group border-border/70 hover:border-[#0CBAA6]/40 bg-card flex flex-col items-start rounded-2xl border p-7 shadow-xs transition-colors duration-200"
+              >
+                <div className="bg-[#0CBAA6]/10 text-[#0CBAA6] mb-5 rounded-2xl p-4">
+                  <Icon className="h-6 w-6" />
+                </div>
+
+                <h3 className="group-hover:text-[#0CBAA6] mb-2.5 text-2xl font-bold tracking-tight text-foreground transition-colors duration-200">
                   {domain.name}
                 </h3>
-                <p className="text-muted-foreground mb-4">{domain.desc}</p>
-                <div className="text-primary mt-auto flex items-center text-sm font-medium opacity-80 group-hover:opacity-100">
-                  Explore domain{" "}
-                  <ArrowRight className="ml-1 h-4 w-4 transition-transform group-hover:translate-x-1" />
+
+                <p className="text-muted-foreground mb-6 flex-1 text-sm leading-relaxed">
+                  {domain.desc}
+                </p>
+
+                {/* Tech Badges */}
+                <div className="mb-6 flex flex-wrap gap-2">
+                  {domain.tech.map((tag) => (
+                    <span
+                      key={tag}
+                      className="bg-muted/60 text-muted-foreground border-border/50 rounded-full border px-3 py-1 text-xs font-medium"
+                    >
+                      {tag}
+                    </span>
+                  ))}
                 </div>
-              </div>
-            </Link>
-          ))}
+
+                <div className="text-[#0CBAA6] mt-auto flex items-center text-sm font-semibold">
+                  Explore Domain
+                  <ArrowRight className="ml-1.5 h-4 w-4" />
+                </div>
+              </Link>
+            );
+          })}
         </div>
-      </div>
+      </PageContainer>
     </div>
   );
 }
+
+
+
