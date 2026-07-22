@@ -1,4 +1,3 @@
-import { PageHeader } from "@/components/shared/PageHeader";
 import { EventProps } from "@/components/shared/EventCard";
 import { ArrowLeft, Calendar, User, Clock } from "lucide-react";
 import Link from "next/link";

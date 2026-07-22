@@ -1,5 +1,5 @@
 import { PageHeader } from "@/components/shared/PageHeader";
-import { Cpu, BookOpen, Lightbulb, Users, Award } from "lucide-react";
+import { BookOpen, Lightbulb, Users, Award } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 const SYLLABUS = [

@@ -1,4 +1,3 @@
-import { PageHeader } from "@/components/shared/PageHeader";
 import { EventProps } from "@/components/shared/EventCard";
 import { Calendar, MapPin, Clock, Users, ArrowLeft } from "lucide-react";
 import { Button } from "@/components/ui/button";

@@ -14,7 +14,7 @@ import {
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Button } from "@/components/ui/button";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Loader2 } from "lucide-react";
 
 export default function LoginPage() {
@@ -39,7 +39,7 @@ export default function LoginPage() {
 
   return (
     <div className="bg-muted/20 flex min-h-screen items-center justify-center p-4">
-      <div className="from-primary/10 to-primary/5 absolute inset-0 -z-10 bg-gradient-to-tr via-transparent" />
+      <div className="from-primary/10 to-primary/5 absolute inset-0 -z-10 bg-linear-to-tr via-transparent" />
 
       <Card className="border-primary/20 bg-background/60 hover:shadow-primary/10 w-full max-w-md shadow-lg backdrop-blur-xl transition-all duration-300">
         <CardHeader className="space-y-2 pb-6 text-center">

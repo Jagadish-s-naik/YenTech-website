@@ -55,7 +55,7 @@ export default function EventsPage() {
       />
       <PageContainer>
         {/* Filters */}
-        <div className="border-border/60 mb-8 flex scrollbar-none gap-2 overflow-x-auto border-b pb-2 pb-6">
+        <div className="border-border/60 mb-8 flex scrollbar-none gap-2 overflow-x-auto border-b pb-2">
           <button className="rounded-full bg-[#0CBAA6] px-4 py-1.5 text-xs font-medium text-white shadow-xs">
             All Events
           </button>

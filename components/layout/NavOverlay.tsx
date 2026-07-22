@@ -1,7 +1,7 @@
 "use client";
 
 import { useNav } from "./NavContext";
-import { NAV_LINKS, type NavItem } from "./nav-data";
+import { NAV_LINKS } from "./nav-data";
 
 export function NavOverlay() {
   const { activeDropdown, setActiveDropdown } = useNav();

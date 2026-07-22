@@ -1,6 +1,6 @@
 import { PageHeader } from "@/components/shared/PageHeader";
 import { PageContainer } from "@/components/shared/PageContainer";
-import { Award, Star, Zap, Shield, Trophy } from "lucide-react";
+import { Star, Zap, Shield, Trophy } from "lucide-react";
 
 const BADGES = [
   {

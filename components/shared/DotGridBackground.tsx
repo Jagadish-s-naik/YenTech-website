@@ -239,8 +239,8 @@ export function DotGridBackground() {
         // Power curve (2.5) gives dominance to primary teal (#0cbaa6) across majority of grid
         const posRatio = Math.pow(rawRatio, 2.5);
 
-        // #0cbaa6 (12, 186, 166) -> #dbfb02 (219, 251, 2)
-        const rVal = Math.round(12 + (219 - 12) * posRatio);
+        // #0cbaa6 (12, 186, 166) -> #d9fb02 (217, 251, 2)
+        const rVal = Math.round(12 + (217 - 12) * posRatio);
         const gVal = Math.round(186 + (251 - 186) * posRatio);
         const bVal = Math.round(166 + (2 - 166) * posRatio);
 
