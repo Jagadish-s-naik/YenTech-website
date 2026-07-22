@@ -31,6 +31,7 @@ export const MOCK_PROJECTS_DETAIL: (ProjectProps & {
     likes: 184,
     comments: 24,
     demoUrl: "https://www.agronova.in/",
+    repoUrl: "https://github.com/Ashwinnethan64-maker/Agro-Nova",
     team: ["Dhanush Shenoy H", "Anand M", "Jagadish S Naik", "Ashwin Nethan"],
     features: [
       "AI Crop Disease & Pest Detection from camera photos",
@@ -43,66 +44,94 @@ export const MOCK_PROJECTS_DETAIL: (ProjectProps & {
   },
   {
     id: "2",
-    title: "AI Study Assistant",
-    author: "David Chen",
+    title: "JoByte",
+    author: "Dhanush Shenoy H, Anand M, Jagadish S Naik & Ashwin Nethan",
     description:
-      "An AI-powered tool that automatically generates flashcards and summaries from uploaded PDF textbooks.",
+      "An editorial-grade ATS and career platform engineered for high-stakes tech teams. JoByte bridges the gap between resume claims and proven technical mastery.",
     fullDescription:
-      "AI Study Assistant simplifies learning by reading uploaded PDF documents and automatically converting complex topics into flashcards, key takeaway summaries, and practice quiz questions.",
-    tags: ["Python", "OpenAI API", "Next.js"],
-    imageUrl:
-      "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?q=80&w=800&auto=format&fit=crop",
-    likes: 89,
-    comments: 12,
-    repoUrl: "https://github.com",
-    demoUrl: "https://example.com",
-    team: ["David Chen"],
+      "JoByte is an editorial-grade Applicant Tracking System (ATS) and career recruitment platform built specifically for high-stakes tech teams and top engineering talent. Designed to empower candidates while streamlining hiring workflows, JoByte bridges the gap between resume claims and proven technical mastery through interactive evaluation, candidate tracking, and intuitive job matching.",
+    tags: ["Web Dev", "Next.js", "ATS", "TypeScript", "Tailwind CSS"],
+    imageUrl: "/images/Jobyte_thumbnail.png",
+    likes: 142,
+    comments: 19,
+    demoUrl: "https://jobyte.vercel.app/",
+    repoUrl: "https://github.com/Jagadish-s-naik/JoByte",
+    team: ["Dhanush Shenoy H", "Anand M", "Jagadish S Naik", "Ashwin Nethan"],
     features: [
-      "PDF textbook parsing and context extraction",
-      "Automatic flashcard set generation",
-      "Interactive quiz mode with instant feedback",
+      "Editorial-grade Applicant Tracking System (ATS) dashboard",
+      "Seamless job discovery & application workflows",
+      "Comprehensive candidate profile & skill verification management",
+      "Real-time hiring pipelines & modern recruiter portal",
+      "Responsive, high-performance tech candidate matching",
     ],
   },
   {
     id: "3",
-    title: "Smart Campus Navigation",
-    author: "YenTech Dev Club",
+    title: "checkDK",
+    author: "Dhanush Shenoy H & Radhesh Pai",
     description:
-      "Interactive 3D map for new students to navigate the Yenepoya campus easily, complete with indoor routing.",
+      "An AI-powered CLI tool & dev environment designed to predict, diagnose, and fix Docker and Kubernetes issues before execution.",
     fullDescription:
-      "Smart Campus Navigation provides a web-based 3D campus model enabling students, visitors, and faculty to navigate buildings, find classrooms, and locate campus services seamlessly.",
-    tags: ["Three.js", "WebGL", "React"],
-    imageUrl:
-      "https://images.unsplash.com/photo-1524661135-423995f22d0b?q=80&w=800&auto=format&fit=crop",
-    likes: 215,
-    comments: 34,
-    demoUrl: "https://example.com",
-    team: ["YenTech Dev Club Team"],
+      "checkDK is an AI-powered developer CLI tool and diagnostics environment built to eliminate container debugging frustration. By analyzing Dockerfiles, Docker Compose files, and Kubernetes manifests before deployment, checkDK detects syntax errors, misconfigurations, security vulnerabilities, and runtime conflicts before execution, saving engineers hours of debugging time.",
+    tags: ["DevOps", "AI / ML", "CLI", "Docker", "Kubernetes"],
+    imageUrl: "/images/checkdk_thumbnail.png",
+    likes: 168,
+    comments: 21,
+    demoUrl: "https://checkdk.app/",
+    repoUrl: "https://github.com/Ashwinnethan64-maker/checkDK",
+    team: ["Dhanush Shenoy H", "Radhesh Pai"],
     features: [
-      "Real-time 3D WebGL interactive map",
-      "Building and classroom step-by-step routing",
-      "Mobile responsive campus guide",
+      "Predictive static analysis for Docker & Kubernetes configurations",
+      "Automated root-cause diagnosis and AI-suggested error fixes",
+      "Interactive dev playground for testing container specifications",
+      "Seamless CLI tool integration into existing DevOps build pipelines",
+      "Comprehensive vulnerability & security policy auditor",
     ],
   },
   {
     id: "4",
-    title: "Crypto Portfolio Tracker",
-    author: "Priya Sharma",
+    title: "HACK-MATE",
+    author: "Anand Mahadev, Dhanush Shenoy H & Dinesh A",
     description:
-      "A sleek dashboard to track cryptocurrency investments across multiple exchanges using real-time APIs.",
+      "The ultimate AI hackathon copilot. Transform problem statements into winning demo roadmaps, architecture plans, and sprint execution schedules.",
     fullDescription:
-      "Crypto Portfolio Tracker aggregates crypto holdings across various wallets and exchanges, providing live price charts, gain/loss metrics, and custom price alerts.",
-    tags: ["Vue.js", "Tailwind CSS", "CoinGecko API"],
-    imageUrl:
-      "https://images.unsplash.com/photo-1605792657660-596af9009e82?q=80&w=800&auto=format&fit=crop",
-    likes: 67,
-    comments: 8,
-    repoUrl: "https://github.com",
-    team: ["Priya Sharma"],
+      "HACK-MATE (Hackathon Copilot) is an intelligent AI assistant engineered to take hackathon teams from initial problem statement to a polished, demo-ready project. It helps builders scaffold technical architecture, outline step-by-step sprint roadmaps, craft compelling pitch stories, and generate real-time execution guides during timed code sprints.",
+    tags: ["AI / ML", "Next.js", "Hackathon", "TypeScript"],
+    imageUrl: "/images/Hackmate_thumbnail.png",
+    likes: 195,
+    comments: 27,
+    demoUrl: "https://hackmate.anandmahadev.in/",
+    repoUrl: "https://github.com/Ashwinnethan64-maker/HACK-MATE",
+    team: ["Anand Mahadev", "Dhanush Shenoy H", "Dinesh A"],
     features: [
-      "Real-time market price integration via CoinGecko",
-      "Custom alerts for price threshold movements",
-      "Portfolio profit & loss analytics visualization",
+      "AI-assisted problem statement parsing and feature breakdown",
+      "Automated system architecture & tech stack planning",
+      "Interactive 24h & 48h hackathon sprint execution roadmap",
+      "Pitch deck & demo presentation story generator",
+      "Live team collaboration & project milestone tracker",
+    ],
+  },
+  {
+    id: "5",
+    title: "ThreatVision",
+    author: "Ashwin Nethan, Jagadish S Naik, Swara Hedge & Prajna",
+    description:
+      "AI-powered transaction intelligence platform that uncovers hidden money-laundering rings, mule networks, and suspicious payment patterns in real time.",
+    fullDescription:
+      "ThreatVision is a cutting-edge cybersecurity and financial intelligence engine designed to detect financial crime before it happens. Powered by graph neural analytics and explainable AI, ThreatVision visualizes complex transaction networks, identifies circular money flows across accounts, flags mule accounts and shell entities instantly, and prioritizes high-risk security alerts for fraud investigation teams.",
+    tags: ["Cyber Security", "AI / ML", "Next.js", "FinTech"],
+    imageUrl: "/images/Threat-vision_thumbnail.png",
+    likes: 210,
+    comments: 31,
+    demoUrl: "https://threat-vision-five.vercel.app/",
+    repoUrl: "https://github.com/Ashwinnethan64-maker/ThreatVision",
+    team: ["Ashwin Nethan", "Jagadish S Naik", "Swara Hedge", "Prajna"],
+    features: [
+      "Real-time graph analysis to detect circular money-flow patterns",
+      "Instant identification of money mule accounts & shell entities",
+      "Explainable AI scoring model for prioritized threat alerts",
+      "Interactive suspicious transaction network visualizer",
+      "Automated compliance and risk report generation",
     ],
   },
 ];
@@ -282,10 +311,11 @@ export default async function ProjectDetailPage({ params }: PageProps) {
 
             {project.demoUrl && (
               <div className="rounded-2xl border border-[#0CBAA6]/30 bg-[#0CBAA6]/5 p-6">
-                <h4 className="font-bold text-[#0CBAA6]">Try AgroNova Live</h4>
+                <h4 className="font-bold text-[#0CBAA6]">
+                  Try {project.title} Live
+                </h4>
                 <p className="text-muted-foreground mt-1 text-xs leading-relaxed">
-                  Experience the full AI-powered smart farming application live
-                  on web.
+                  Experience the full live application on the web.
                 </p>
                 <a
                   href={project.demoUrl}
@@ -294,7 +324,7 @@ export default async function ProjectDetailPage({ params }: PageProps) {
                   className="mt-4 block"
                 >
                   <Button className="w-full rounded-xl bg-[#0CBAA6] font-semibold text-white shadow-sm hover:bg-[#0a9e8d]">
-                    Visit agronova.in{" "}
+                    Visit {project.title}{" "}
                     <ExternalLink className="ml-1 h-3.5 w-3.5" />
                   </Button>
                 </a>

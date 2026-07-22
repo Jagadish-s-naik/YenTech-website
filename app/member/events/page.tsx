@@ -4,22 +4,22 @@ import { Calendar, Clock, MapPin, ArrowUpRight } from "lucide-react";
 
 const MY_EVENTS = [
   {
-    id: "1",
-    title: "Intro to React & Next.js Workshop",
-    type: "Workshop",
-    date: "October 12, 2026",
-    time: "2:00 PM - 5:00 PM",
-    location: "Lab 1, Main Block",
-    status: "Confirmed",
+    id: "openloop-2026",
+    title: "OpenLoop 2026 National Hackathon",
+    type: "Hackathon",
+    date: "April 26-27, 2026",
+    time: "24 Hours",
+    location: "YMK Auditorium, Kulur Campus",
+    status: "Completed",
   },
   {
-    id: "3",
-    title: "Cyber Security in the Modern Age",
-    type: "Seminar",
-    date: "October 20, 2026",
-    time: "10:00 AM - 12:00 PM",
-    location: "Seminar Hall B",
-    status: "Confirmed",
+    id: "project-sankalp",
+    title: "Project Sankalp Code4Change National Hackathon",
+    type: "Hackathon",
+    date: "May 25-26, 2026",
+    time: "24 Hours",
+    location: "Yendance Zone, Yenepoya University, Deralakatte",
+    status: "Completed",
   },
 ];
 

@@ -14,19 +14,6 @@ import { notFound } from "next/navigation";
 // Mock data (shared from the event details page)
 const MOCK_EVENTS: EventProps[] = [
   {
-    id: "1",
-    title: "Intro to React & Next.js Workshop",
-    type: "Workshop",
-    date: "October 12, 2026",
-    time: "2:00 PM - 5:00 PM",
-    location: "Lab 1, Main Block",
-    description:
-      "Learn the fundamentals of building modern web applications using React and Next.js.",
-    attendees: 45,
-    imageUrl:
-      "https://images.unsplash.com/photo-1633356122544-f134324a6cee?q=80&w=800&auto=format&fit=crop",
-  },
-  {
     id: "2",
     title: "OpenLoop 2026 National Hackathon",
     type: "Hackathon",

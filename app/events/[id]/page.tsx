@@ -16,19 +16,6 @@ import { notFound } from "next/navigation";
 // In a real app, this would be fetched from an API or database
 const MOCK_EVENTS: EventProps[] = [
   {
-    id: "1",
-    title: "Intro to React & Next.js Workshop",
-    type: "Workshop",
-    date: "October 12, 2026",
-    time: "2:00 PM - 5:00 PM",
-    location: "Lab 1, Main Block",
-    description:
-      "Learn the fundamentals of building modern web applications using React and Next.js. We will cover components, state, routing, and deployment. This is a hands-on workshop, so please bring your laptops. Prerequisites include basic knowledge of HTML, CSS, and JavaScript.",
-    attendees: 45,
-    imageUrl:
-      "https://images.unsplash.com/photo-1633356122544-f134324a6cee?q=80&w=800&auto=format&fit=crop",
-  },
-  {
     id: "2",
     title: "OpenLoop 2026 National Hackathon",
     type: "Hackathon",
@@ -71,19 +58,6 @@ const MOCK_EVENTS: EventProps[] = [
     newsUrl: "https://www.varthabharati.in/DakshinaKannada/--2249771",
     youtubeUrl: "https://youtu.be/Tss2pwHXhrA?si=6dZj1tw8uJKeWUBM",
     youtubeEmbedId: "Tss2pwHXhrA",
-  },
-  {
-    id: "3",
-    title: "Cyber Security in the Modern Age",
-    type: "Seminar",
-    date: "October 20, 2026",
-    time: "10:00 AM - 12:00 PM",
-    location: "Seminar Hall B",
-    description:
-      "An expert talk on the latest threats in cybersecurity and how organizations are defending against them. Guest speaker from TechDefend. Learn about common attack vectors, phishing, ransomware, and the role of AI in cybersecurity.",
-    attendees: 85,
-    imageUrl:
-      "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=800&auto=format&fit=crop",
   },
 ];
 

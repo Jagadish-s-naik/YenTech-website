@@ -23,27 +23,6 @@ const POSTS = [
     img: "https://daijiworld.ap-south-1.linodeobjects.com/Linode/images3/ASM_hackathon_27042026_1.jpg",
     href: "/events/openloop-2026",
   },
-  {
-    title: "How to Build a Next.js App from Scratch",
-    excerpt: "A complete beginner's guide to modern React frameworks.",
-    author: "Jane Smith",
-    time: "5 min read",
-    img: "https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=800&q=80",
-  },
-  {
-    title: "Understanding React Server Components",
-    excerpt: "Deep dive into the new paradigm of React rendering.",
-    author: "John Doe",
-    time: "8 min read",
-    img: "https://images.unsplash.com/photo-1633356122544-f134324a6cee?w=800&q=80",
-  },
-  {
-    title: "Mastering Tailwind CSS Transitions",
-    excerpt: "Make your UI pop with smooth micro-animations.",
-    author: "Alice Johnson",
-    time: "4 min read",
-    img: "https://images.unsplash.com/photo-1507721999472-8ed4421c4af2?w=800&q=80",
-  },
 ];
 
 export default function BlogPage() {
