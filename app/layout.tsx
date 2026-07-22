@@ -24,6 +24,11 @@ export const metadata: Metadata = {
   title: "YenTech - Empowering the Next Generation of Innovators",
   description:
     "The official tech community of Yenepoya School of Engineering & Technology.",
+  icons: {
+    icon: "/yentech.ico",
+    shortcut: "/yentech.ico",
+    apple: "/yentech.ico",
+  },
 };
 
 export default function RootLayout({
