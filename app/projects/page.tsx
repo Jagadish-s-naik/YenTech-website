@@ -64,7 +64,7 @@ const MOCK_PROJECTS: ProjectProps[] = [
 
 export default function ProjectsPage() {
   return (
-    <div className="min-h-screen bg-background">
+    <div className="bg-background min-h-screen">
       <PageHeader
         badge="Community Showcase"
         title="Student Projects"
@@ -78,18 +78,18 @@ export default function ProjectsPage() {
       </PageHeader>
 
       <PageContainer>
-        <div className="mb-8 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between border-b border-border/60 pb-6">
-          <div className="flex gap-2 overflow-x-auto pb-2 sm:pb-0 scrollbar-none">
+        <div className="border-border/60 mb-8 flex flex-col gap-4 border-b pb-6 sm:flex-row sm:items-center sm:justify-between">
+          <div className="flex scrollbar-none gap-2 overflow-x-auto pb-2 sm:pb-0">
             <button className="rounded-full bg-[#0CBAA6] px-4 py-1.5 text-xs font-medium text-white shadow-xs">
               All Projects
             </button>
-            <button className="rounded-full bg-muted/60 text-muted-foreground hover:bg-muted hover:text-foreground px-4 py-1.5 text-xs font-medium transition-colors">
+            <button className="bg-muted/60 text-muted-foreground hover:bg-muted hover:text-foreground rounded-full px-4 py-1.5 text-xs font-medium transition-colors">
               Web Dev
             </button>
-            <button className="rounded-full bg-muted/60 text-muted-foreground hover:bg-muted hover:text-foreground px-4 py-1.5 text-xs font-medium transition-colors">
+            <button className="bg-muted/60 text-muted-foreground hover:bg-muted hover:text-foreground rounded-full px-4 py-1.5 text-xs font-medium transition-colors">
               AI / ML
             </button>
-            <button className="rounded-full bg-muted/60 text-muted-foreground hover:bg-muted hover:text-foreground px-4 py-1.5 text-xs font-medium transition-colors">
+            <button className="bg-muted/60 text-muted-foreground hover:bg-muted hover:text-foreground rounded-full px-4 py-1.5 text-xs font-medium transition-colors">
               Mobile Apps
             </button>
           </div>
@@ -102,7 +102,10 @@ export default function ProjectsPage() {
         </div>
 
         <div className="mt-12 text-center">
-          <Button variant="outline" className="rounded-full border-border/70 px-8 hover:border-[#0CBAA6] hover:text-[#0CBAA6]">
+          <Button
+            variant="outline"
+            className="border-border/70 rounded-full px-8 hover:border-[#0CBAA6] hover:text-[#0CBAA6]"
+          >
             Load More Projects
           </Button>
         </div>
@@ -110,4 +113,3 @@ export default function ProjectsPage() {
     </div>
   );
 }
-

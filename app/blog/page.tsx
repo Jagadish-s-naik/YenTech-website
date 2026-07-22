@@ -37,7 +37,7 @@ const POSTS = [
 
 export default function BlogPage() {
   return (
-    <div className="min-h-screen bg-background">
+    <div className="bg-background min-h-screen">
       <PageHeader
         badge="Editorial & Publications"
         title="Blog & Insights"
@@ -46,7 +46,7 @@ export default function BlogPage() {
 
       <PageContainer>
         {/* Featured Post */}
-        <div className="group mb-12 flex cursor-pointer flex-col overflow-hidden rounded-2xl border border-border/60 bg-card shadow-xs transition-all duration-300 hover:border-[#0CBAA6]/40 hover:shadow-md lg:flex-row">
+        <div className="group border-border/60 bg-card mb-12 flex cursor-pointer flex-col overflow-hidden rounded-2xl border shadow-xs transition-all duration-300 hover:border-[#0CBAA6]/40 hover:shadow-md lg:flex-row">
           <div className="relative h-64 overflow-hidden lg:h-auto lg:w-1/2">
             <img
               src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=1200&q=80"
@@ -55,42 +55,46 @@ export default function BlogPage() {
             />
           </div>
           <div className="flex flex-col justify-center p-8 lg:w-1/2 lg:p-10">
-            <div className="mb-2 text-xs font-semibold uppercase tracking-wider text-[#0CBAA6]">
+            <div className="mb-2 text-xs font-semibold tracking-wider text-[#0CBAA6] uppercase">
               Featured • Web Development
             </div>
-            <h2 className="mb-3 text-2xl font-bold tracking-tight text-foreground transition-colors group-hover:text-[#0CBAA6] md:text-3xl">
+            <h2 className="text-foreground mb-3 text-2xl font-bold tracking-tight transition-colors group-hover:text-[#0CBAA6] md:text-3xl">
               The Future of Web Technologies in 2026
             </h2>
-            <p className="text-muted-foreground mb-6 line-clamp-3 text-sm md:text-base leading-relaxed">
+            <p className="text-muted-foreground mb-6 line-clamp-3 text-sm leading-relaxed md:text-base">
               Explore the cutting-edge frameworks, paradigms, and tools that are
               reshaping how we build the internet today and tomorrow.
             </p>
-            <div className="mt-auto flex items-center justify-between border-t border-border/50 pt-4">
+            <div className="border-border/50 mt-auto flex items-center justify-between border-t pt-4">
               <div className="text-muted-foreground flex items-center gap-4 text-xs font-medium">
                 <span className="flex items-center gap-1.5">
-                  <User className="h-3.5 w-3.5 text-[#0CBAA6]" /> YenTech Editorial
+                  <User className="h-3.5 w-3.5 text-[#0CBAA6]" /> YenTech
+                  Editorial
                 </span>
                 <span className="flex items-center gap-1.5">
                   <Clock className="h-3.5 w-3.5" /> 10 min read
                 </span>
               </div>
               <span className="flex items-center gap-1 text-xs font-semibold text-[#0CBAA6]">
-                Read Article <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-1" />
+                Read Article{" "}
+                <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-1" />
               </span>
             </div>
           </div>
         </div>
 
         {/* Recent Posts Grid */}
-        <div className="mb-6 flex items-center justify-between border-b border-border/60 pb-4">
-          <h3 className="text-xl font-bold tracking-tight text-foreground">Recent Articles</h3>
+        <div className="border-border/60 mb-6 flex items-center justify-between border-b pb-4">
+          <h3 className="text-foreground text-xl font-bold tracking-tight">
+            Recent Articles
+          </h3>
         </div>
 
         <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
           {POSTS.map((post, i) => (
             <div
               key={i}
-              className="group flex cursor-pointer flex-col overflow-hidden rounded-xl border border-border/60 bg-card shadow-xs transition-all duration-300 hover:border-[#0CBAA6]/40 hover:shadow-md"
+              className="group border-border/60 bg-card flex cursor-pointer flex-col overflow-hidden rounded-xl border shadow-xs transition-all duration-300 hover:border-[#0CBAA6]/40 hover:shadow-md"
             >
               <div className="relative h-44 overflow-hidden">
                 <img
@@ -100,13 +104,13 @@ export default function BlogPage() {
                 />
               </div>
               <div className="flex flex-1 flex-col p-5">
-                <h4 className="mb-2 line-clamp-2 text-lg font-bold text-foreground transition-colors group-hover:text-[#0CBAA6]">
+                <h4 className="text-foreground mb-2 line-clamp-2 text-lg font-bold transition-colors group-hover:text-[#0CBAA6]">
                   {post.title}
                 </h4>
                 <p className="text-muted-foreground mb-4 line-clamp-2 flex-1 text-xs leading-relaxed">
                   {post.excerpt}
                 </p>
-                <div className="text-muted-foreground flex items-center justify-between border-t border-border/50 pt-3 text-xs">
+                <div className="text-muted-foreground border-border/50 flex items-center justify-between border-t pt-3 text-xs">
                   <span className="flex items-center gap-1">
                     <User className="h-3 w-3 text-[#0CBAA6]" /> {post.author}
                   </span>
@@ -120,7 +124,10 @@ export default function BlogPage() {
         </div>
 
         <div className="mt-12 text-center">
-          <Button variant="outline" className="rounded-full border-border/70 px-8 hover:border-[#0CBAA6] hover:text-[#0CBAA6]">
+          <Button
+            variant="outline"
+            className="border-border/70 rounded-full px-8 hover:border-[#0CBAA6] hover:text-[#0CBAA6]"
+          >
             Load More Articles
           </Button>
         </div>
@@ -128,4 +135,3 @@ export default function BlogPage() {
     </div>
   );
 }
-

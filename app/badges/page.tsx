@@ -36,7 +36,7 @@ const LEADERBOARD = [
 
 export default function BadgesPage() {
   return (
-    <div className="min-h-screen bg-background">
+    <div className="bg-background min-h-screen">
       <PageHeader
         badge="Gamification & Ranks"
         title="Badges & Leaderboard"
@@ -45,33 +45,41 @@ export default function BadgesPage() {
 
       <PageContainer className="max-w-5xl space-y-12">
         <section>
-          <div className="mb-6 flex items-center justify-between border-b border-border/60 pb-3">
-            <h2 className="text-xl font-bold tracking-tight text-foreground">Available Badges</h2>
+          <div className="border-border/60 mb-6 flex items-center justify-between border-b pb-3">
+            <h2 className="text-foreground text-xl font-bold tracking-tight">
+              Available Badges
+            </h2>
           </div>
           <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
             {BADGES.map((badge, i) => (
               <div
                 key={i}
-                className="group flex flex-col items-center rounded-2xl border border-border/60 bg-card p-6 text-center shadow-xs transition-all duration-300 hover:border-[#0CBAA6]/40 hover:shadow-md"
+                className="group border-border/60 bg-card flex flex-col items-center rounded-2xl border p-6 text-center shadow-xs transition-all duration-300 hover:border-[#0CBAA6]/40 hover:shadow-md"
               >
                 <div
                   className={`mb-4 flex h-16 w-16 items-center justify-center rounded-full border ${badge.bg} ${badge.color} transition-transform duration-300 group-hover:scale-105`}
                 >
                   <badge.icon className="h-7 w-7" />
                 </div>
-                <h3 className="mb-1 text-lg font-bold text-foreground transition-colors group-hover:text-[#0CBAA6]">{badge.name}</h3>
-                <p className="text-muted-foreground text-xs leading-relaxed">{badge.desc}</p>
+                <h3 className="text-foreground mb-1 text-lg font-bold transition-colors group-hover:text-[#0CBAA6]">
+                  {badge.name}
+                </h3>
+                <p className="text-muted-foreground text-xs leading-relaxed">
+                  {badge.desc}
+                </p>
               </div>
             ))}
           </div>
         </section>
 
         <section>
-          <div className="mb-6 flex items-center justify-between border-b border-border/60 pb-3">
-            <h2 className="text-xl font-bold tracking-tight text-foreground">Community Leaderboard</h2>
+          <div className="border-border/60 mb-6 flex items-center justify-between border-b pb-3">
+            <h2 className="text-foreground text-xl font-bold tracking-tight">
+              Community Leaderboard
+            </h2>
           </div>
-          <div className="overflow-hidden rounded-xl border border-border/60 bg-card shadow-xs">
-            <div className="bg-muted/40 grid grid-cols-4 p-4 text-xs font-semibold uppercase tracking-wider text-muted-foreground border-b border-border/60">
+          <div className="border-border/60 bg-card overflow-hidden rounded-xl border shadow-xs">
+            <div className="bg-muted/40 text-muted-foreground border-border/60 grid grid-cols-4 border-b p-4 text-xs font-semibold tracking-wider uppercase">
               <div>Rank</div>
               <div className="col-span-2">Member Name</div>
               <div className="text-right">Total Points</div>
@@ -79,15 +87,15 @@ export default function BadgesPage() {
             {LEADERBOARD.map((user, i) => (
               <div
                 key={i}
-                className="grid grid-cols-4 items-center border-b border-border/40 p-4 text-sm transition-colors hover:bg-muted/30 last:border-0"
+                className="border-border/40 hover:bg-muted/30 grid grid-cols-4 items-center border-b p-4 text-sm transition-colors last:border-0"
               >
-                <div className="flex items-center gap-2 font-bold text-foreground">
+                <div className="text-foreground flex items-center gap-2 font-bold">
                   {user.rank <= 3 && (
                     <Star className="h-4 w-4 fill-amber-500 text-amber-500" />
                   )}
                   #{user.rank}
                 </div>
-                <div className="col-span-2 font-medium text-foreground">
+                <div className="text-foreground col-span-2 font-medium">
                   {user.name}{" "}
                   <span className="text-muted-foreground ml-2 text-xs">
                     ({user.badges} badges)
@@ -104,4 +112,3 @@ export default function BadgesPage() {
     </div>
   );
 }
-

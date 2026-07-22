@@ -117,23 +117,24 @@ export function DomainCards() {
             href={domain.href}
             onMouseMove={handleMouseMove}
             onMouseLeave={handleMouseLeave}
-            className="domain-card-animate group bg-card/60 hover:bg-card border-border/80 hover:border-[#0CBAA6]/50 will-change-transform relative flex flex-col items-start overflow-hidden rounded-3xl border p-7 shadow-sm backdrop-blur-xs transition-all duration-300 hover:shadow-xl hover:shadow-[#0CBAA6]/10"
+            className="domain-card-animate group bg-card/60 hover:bg-card border-border/80 relative flex flex-col items-start overflow-hidden rounded-3xl border p-7 shadow-sm backdrop-blur-xs transition-all duration-300 will-change-transform hover:border-[#0CBAA6]/50 hover:shadow-xl hover:shadow-[#0CBAA6]/10"
             style={
               {
                 "--mouse-x": "0px",
                 "--mouse-y": "0px",
-                transition: "transform 0.2s cubic-bezier(0.1, 0.4, 0.2, 1), border-color 0.3s, shadow 0.3s",
+                transition:
+                  "transform 0.2s cubic-bezier(0.1, 0.4, 0.2, 1), border-color 0.3s, shadow 0.3s",
               } as React.CSSProperties
             }
           >
             {/* Radial Spotlight overlay */}
             <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(400px_circle_at_var(--mouse-x)_var(--mouse-y),rgba(12,186,166,0.12),transparent_80%)] opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
 
-            <div className="bg-[#0CBAA6]/10 text-[#0CBAA6] group-hover:bg-[#0CBAA6] group-hover:text-white mb-5 rounded-2xl p-4 transition-all duration-300 group-hover:scale-110 group-hover:shadow-md shadow-[#0CBAA6]/20">
+            <div className="mb-5 rounded-2xl bg-[#0CBAA6]/10 p-4 text-[#0CBAA6] shadow-[#0CBAA6]/20 transition-all duration-300 group-hover:scale-110 group-hover:bg-[#0CBAA6] group-hover:text-white group-hover:shadow-md">
               <Icon className="h-6 w-6" />
             </div>
 
-            <h3 className="group-hover:text-[#0CBAA6] mb-2.5 text-2xl font-bold tracking-tight transition-colors duration-200">
+            <h3 className="mb-2.5 text-2xl font-bold tracking-tight transition-colors duration-200 group-hover:text-[#0CBAA6]">
               {domain.name}
             </h3>
 
@@ -146,14 +147,14 @@ export function DomainCards() {
               {domain.tech.map((tag) => (
                 <span
                   key={tag}
-                  className="bg-muted/80 text-muted-foreground border-border/50 group-hover:border-[#0CBAA6]/30 group-hover:text-foreground rounded-full border px-3 py-1 text-xs font-medium transition-colors duration-200"
+                  className="bg-muted/80 text-muted-foreground border-border/50 group-hover:text-foreground rounded-full border px-3 py-1 text-xs font-medium transition-colors duration-200 group-hover:border-[#0CBAA6]/30"
                 >
                   {tag}
                 </span>
               ))}
             </div>
 
-            <div className="text-[#0CBAA6] mt-auto flex items-center text-sm font-semibold opacity-90 group-hover:opacity-100">
+            <div className="mt-auto flex items-center text-sm font-semibold text-[#0CBAA6] opacity-90 group-hover:opacity-100">
               Explore Domain
               <ArrowRight className="ml-1.5 h-4 w-4 transition-transform duration-300 group-hover:translate-x-1.5" />
             </div>

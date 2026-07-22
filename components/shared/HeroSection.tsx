@@ -81,7 +81,7 @@ export function HeroSection() {
             <Link href="/events">
               <Button
                 size="lg"
-                className="w-full rounded-full bg-[#0CBAA6] px-8 py-6 text-base font-semibold text-white shadow-md shadow-[#0CBAA6]/20 transition-all duration-200 hover:bg-[#0a9e8d] sm:w-auto"
+                className="w-full rounded-full border-none bg-[#0CBAA6] px-8 py-6 text-base font-semibold text-white shadow-md shadow-[#0CBAA6]/20 transition-all duration-200 hover:bg-[#0a9e8d] sm:w-auto"
               >
                 Upcoming Events
               </Button>
@@ -92,7 +92,7 @@ export function HeroSection() {
               <Button
                 size="lg"
                 variant="outline"
-                className="border-border/80 bg-background dark:bg-card hover:bg-muted dark:hover:bg-muted w-full rounded-full px-8 py-6 text-base font-semibold transition-all duration-200 hover:border-[#0CBAA6] hover:text-[#0CBAA6] sm:w-auto shadow-xs"
+                className="border-border/80 bg-background dark:bg-card hover:bg-muted dark:hover:bg-muted w-full rounded-full px-8 py-6 text-base font-semibold shadow-xs transition-all duration-200 hover:border-[#0CBAA6] hover:text-[#0CBAA6] sm:w-auto"
               >
                 Explore Domains
               </Button>

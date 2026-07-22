@@ -39,7 +39,7 @@ const RESOURCES = [
 
 export default function ResourcesPage() {
   return (
-    <div className="min-h-screen bg-background">
+    <div className="bg-background min-h-screen">
       <PageHeader
         badge="Learning Hub"
         title="Resource Library"
@@ -49,22 +49,24 @@ export default function ResourcesPage() {
       <PageContainer>
         <div className="flex flex-col gap-8 md:flex-row">
           <aside className="w-full space-y-6 md:w-64">
-            <div className="rounded-2xl border border-border/60 bg-card p-5 shadow-xs">
-              <h3 className="mb-3 text-sm font-bold uppercase tracking-wider text-foreground">Categories</h3>
+            <div className="border-border/60 bg-card rounded-2xl border p-5 shadow-xs">
+              <h3 className="text-foreground mb-3 text-sm font-bold tracking-wider uppercase">
+                Categories
+              </h3>
               <ul className="space-y-2 text-xs font-medium">
-                <li className="rounded-lg bg-[#0CBAA6]/10 px-3 py-2 text-[#0CBAA6] font-semibold">
+                <li className="rounded-lg bg-[#0CBAA6]/10 px-3 py-2 font-semibold text-[#0CBAA6]">
                   All Resources
                 </li>
-                <li className="rounded-lg px-3 py-2 text-muted-foreground hover:bg-muted hover:text-foreground cursor-pointer transition-colors">
+                <li className="text-muted-foreground hover:bg-muted hover:text-foreground cursor-pointer rounded-lg px-3 py-2 transition-colors">
                   Web Development
                 </li>
-                <li className="rounded-lg px-3 py-2 text-muted-foreground hover:bg-muted hover:text-foreground cursor-pointer transition-colors">
+                <li className="text-muted-foreground hover:bg-muted hover:text-foreground cursor-pointer rounded-lg px-3 py-2 transition-colors">
                   AI & ML
                 </li>
-                <li className="rounded-lg px-3 py-2 text-muted-foreground hover:bg-muted hover:text-foreground cursor-pointer transition-colors">
+                <li className="text-muted-foreground hover:bg-muted hover:text-foreground cursor-pointer rounded-lg px-3 py-2 transition-colors">
                   Cyber Security
                 </li>
-                <li className="rounded-lg px-3 py-2 text-muted-foreground hover:bg-muted hover:text-foreground cursor-pointer transition-colors">
+                <li className="text-muted-foreground hover:bg-muted hover:text-foreground cursor-pointer rounded-lg px-3 py-2 transition-colors">
                   Design Assets
                 </li>
               </ul>
@@ -76,16 +78,22 @@ export default function ResourcesPage() {
               {RESOURCES.map((res, i) => (
                 <div
                   key={i}
-                  className="group flex flex-col rounded-xl border border-border/60 bg-card p-6 shadow-xs transition-all duration-300 hover:border-[#0CBAA6]/40 hover:shadow-md"
+                  className="group border-border/60 bg-card flex flex-col rounded-xl border p-6 shadow-xs transition-all duration-300 hover:border-[#0CBAA6]/40 hover:shadow-md"
                 >
                   <div className="mb-4 flex h-11 w-11 items-center justify-center rounded-xl border border-[#0CBAA6]/20 bg-[#0CBAA6]/10 text-[#0CBAA6] transition-colors duration-300 group-hover:bg-[#0CBAA6] group-hover:text-white">
                     <res.icon className="h-5 w-5" />
                   </div>
-                  <div className="mb-1 text-xs font-semibold uppercase tracking-wider text-[#0CBAA6]">
+                  <div className="mb-1 text-xs font-semibold tracking-wider text-[#0CBAA6] uppercase">
                     {res.category} • {res.type}
                   </div>
-                  <h3 className="mb-4 flex-1 text-base font-bold text-foreground transition-colors group-hover:text-[#0CBAA6]">{res.title}</h3>
-                  <Button variant="outline" size="sm" className="mt-auto w-full gap-2 rounded-full border-border/70 text-xs font-medium hover:border-[#0CBAA6] hover:text-[#0CBAA6]">
+                  <h3 className="text-foreground mb-4 flex-1 text-base font-bold transition-colors group-hover:text-[#0CBAA6]">
+                    {res.title}
+                  </h3>
+                  <Button
+                    variant="outline"
+                    size="sm"
+                    className="border-border/70 mt-auto w-full gap-2 rounded-full text-xs font-medium hover:border-[#0CBAA6] hover:text-[#0CBAA6]"
+                  >
                     <Download className="h-3.5 w-3.5" /> Download Asset
                   </Button>
                 </div>
@@ -97,4 +105,3 @@ export default function ResourcesPage() {
     </div>
   );
 }
-

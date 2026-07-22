@@ -40,7 +40,7 @@ export default function Home() {
       <section className="bg-muted/10 border-border/40 relative border-y py-24 md:py-32">
         <div className="container mx-auto max-w-6xl px-4 sm:px-8">
           <div className="mb-16 text-center">
-            <span className="mb-3 inline-block rounded-full bg-[#0CBAA6]/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-wider text-[#0CBAA6]">
+            <span className="mb-3 inline-block rounded-full bg-[#0CBAA6]/10 px-4 py-1.5 text-xs font-semibold tracking-wider text-[#0CBAA6] uppercase">
               Core Specializations
             </span>
             <h2 className="font-heading text-foreground mb-4 text-4xl font-extrabold tracking-tight sm:text-5xl">

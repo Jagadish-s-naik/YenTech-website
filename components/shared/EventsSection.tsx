@@ -96,9 +96,9 @@ export function EventsSection({ events }: EventsSectionProps) {
   }, []);
 
   return (
-    <section ref={sectionRef} className="relative py-24 overflow-hidden">
+    <section ref={sectionRef} className="relative overflow-hidden py-24">
       {/* Background ambient lighting */}
-      <div className="pointer-events-none absolute left-1/2 top-1/3 -z-10 h-96 w-96 -translate-x-1/2 rounded-full bg-[#0CBAA6]/5 blur-3xl" />
+      <div className="pointer-events-none absolute top-1/3 left-1/2 -z-10 h-96 w-96 -translate-x-1/2 rounded-full bg-[#0CBAA6]/5 blur-3xl" />
 
       <div className="container mx-auto max-w-6xl px-4 sm:px-8">
         <div className="events-header mb-20 text-center opacity-0">
@@ -115,11 +115,12 @@ export function EventsSection({ events }: EventsSectionProps) {
             >
               {/* Text Side */}
               <div
-                className={`event-text flex flex-col justify-center space-y-6 opacity-0 lg:col-span-6 ${event.imageLeft ? "lg:order-2" : "lg:order-1"
-                  }`}
+                className={`event-text flex flex-col justify-center space-y-6 opacity-0 lg:col-span-6 ${
+                  event.imageLeft ? "lg:order-2" : "lg:order-1"
+                }`}
               >
                 <div className="space-y-3">
-                  <span className="text-[#0CBAA6] text-xs font-bold uppercase tracking-widest">
+                  <span className="text-xs font-bold tracking-widest text-[#0CBAA6] uppercase">
                     Hackathon
                   </span>
                   <h3 className="font-heading text-foreground text-3xl leading-tight font-bold tracking-tight sm:text-4xl">
@@ -132,14 +133,14 @@ export function EventsSection({ events }: EventsSectionProps) {
                 </p>
 
                 <div className="border-border/60 bg-card/40 space-y-3 rounded-2xl border p-4 text-sm font-medium backdrop-blur-xs">
-                  <div className="flex items-center gap-3 text-foreground/90">
-                    <div className="bg-[#0CBAA6]/10 flex h-8 w-8 items-center justify-center rounded-lg text-[#0CBAA6]">
+                  <div className="text-foreground/90 flex items-center gap-3">
+                    <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-[#0CBAA6]/10 text-[#0CBAA6]">
                       <Calendar className="h-4 w-4" />
                     </div>
                     <span>{event.date}</span>
                   </div>
-                  <div className="flex items-center gap-3 text-foreground/90">
-                    <div className="bg-[#0CBAA6]/10 flex h-8 w-8 items-center justify-center rounded-lg text-[#0CBAA6]">
+                  <div className="text-foreground/90 flex items-center gap-3">
+                    <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-[#0CBAA6]/10 text-[#0CBAA6]">
                       <MapPin className="h-4 w-4" />
                     </div>
                     <span>{event.location}</span>
@@ -161,8 +162,9 @@ export function EventsSection({ events }: EventsSectionProps) {
 
               {/* Image Side */}
               <div
-                className={`event-image opacity-0 order-first lg:col-span-6 ${event.imageLeft ? "lg:order-1" : "lg:order-2"
-                  }`}
+                className={`event-image order-first opacity-0 lg:col-span-6 ${
+                  event.imageLeft ? "lg:order-1" : "lg:order-2"
+                }`}
               >
                 <div className="group border-border/70 bg-card relative aspect-16/10 overflow-hidden rounded-3xl border shadow-lg transition-all duration-500 hover:-translate-y-1 hover:shadow-2xl hover:shadow-[#0CBAA6]/10">
                   <img

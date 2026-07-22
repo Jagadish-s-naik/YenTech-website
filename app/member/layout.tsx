@@ -65,7 +65,7 @@ export default function MemberLayout({
       </aside>
 
       {/* Main Content */}
-      <main className="flex flex-1 flex-col min-w-0">
+      <main className="flex min-w-0 flex-1 flex-col">
         {/* Top Header */}
         <header className="bg-background flex h-16 items-center justify-between border-b px-4 md:px-6">
           <form
@@ -88,7 +88,7 @@ export default function MemberLayout({
               type="text"
               name="q"
               placeholder="Search members, events, badges..."
-              className="w-full border-none bg-transparent text-xs sm:text-sm focus:outline-none"
+              className="w-full border-none bg-transparent text-xs focus:outline-none sm:text-sm"
             />
           </form>
           <div className="flex items-center gap-3 md:gap-4">
@@ -108,7 +108,7 @@ export default function MemberLayout({
 
         {/* Mobile Horizontal Navigation Tabs */}
         <div className="bg-background flex items-center justify-between border-b px-4 py-2 md:hidden">
-          <nav className="flex items-center gap-1 overflow-x-auto py-0.5 no-scrollbar">
+          <nav className="no-scrollbar flex items-center gap-1 overflow-x-auto py-0.5">
             {SIDEBAR_LINKS.map((link) => {
               const isActive = pathname === link.href;
               return (
@@ -129,7 +129,7 @@ export default function MemberLayout({
           </nav>
           <button
             title="Sign Out"
-            className="text-muted-foreground hover:bg-red-500/10 hover:text-red-500 shrink-0 rounded-lg p-2 transition-colors ml-2"
+            className="text-muted-foreground ml-2 shrink-0 rounded-lg p-2 transition-colors hover:bg-red-500/10 hover:text-red-500"
           >
             <LogOut className="h-4 w-4" />
           </button>

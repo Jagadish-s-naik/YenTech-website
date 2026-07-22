@@ -5,7 +5,7 @@ import { Search, CheckCircle2, ShieldCheck } from "lucide-react";
 
 export default function VerifyPage() {
   return (
-    <div className="min-h-screen bg-background">
+    <div className="bg-background min-h-screen">
       <PageHeader
         badge="Credentials"
         title="Certificate Verification"
@@ -14,12 +14,13 @@ export default function VerifyPage() {
 
       <PageContainer className="flex justify-center">
         <div className="w-full max-w-2xl space-y-8">
-          <div className="rounded-2xl border border-border/60 bg-card p-6 shadow-xs sm:p-10">
-            <h2 className="mb-2 text-center text-xl font-bold tracking-tight text-foreground">
+          <div className="border-border/60 bg-card rounded-2xl border p-6 shadow-xs sm:p-10">
+            <h2 className="text-foreground mb-2 text-center text-xl font-bold tracking-tight">
               Enter Certificate ID
             </h2>
             <p className="text-muted-foreground mb-6 text-center text-xs sm:text-sm">
-              You can find the unique verification code at the bottom right of your certificate.
+              You can find the unique verification code at the bottom right of
+              your certificate.
             </p>
 
             <div className="flex flex-col gap-3 sm:flex-row">
@@ -28,11 +29,14 @@ export default function VerifyPage() {
                 <input
                   type="text"
                   placeholder="e.g. YT-2026-AB1234"
-                  className="border-input bg-muted/20 text-foreground focus-visible:ring-[#0CBAA6] h-11 w-full rounded-xl border px-3 py-2 pl-10 text-sm focus-visible:ring-2 focus-visible:outline-none"
+                  className="border-input bg-muted/20 text-foreground h-11 w-full rounded-xl border px-3 py-2 pl-10 text-sm focus-visible:ring-2 focus-visible:ring-[#0CBAA6] focus-visible:outline-none"
                   defaultValue="YT-2026-AB1234"
                 />
               </div>
-              <Button size="lg" className="h-11 shrink-0 rounded-xl bg-[#0CBAA6] px-8 text-sm font-semibold text-white shadow-md shadow-[#0CBAA6]/20 hover:bg-[#0a9e8d]">
+              <Button
+                size="lg"
+                className="h-11 shrink-0 rounded-xl bg-[#0CBAA6] px-8 text-sm font-semibold text-white shadow-md shadow-[#0CBAA6]/20 hover:bg-[#0a9e8d]"
+              >
                 Verify Certificate
               </Button>
             </div>
@@ -49,33 +53,34 @@ export default function VerifyPage() {
                   Valid Certificate
                   <ShieldCheck className="h-4 w-4" />
                 </h3>
-                <p className="text-xs text-muted-foreground">
-                  This certificate was successfully verified in our official registry.
+                <p className="text-muted-foreground text-xs">
+                  This certificate was successfully verified in our official
+                  registry.
                 </p>
               </div>
 
-              <div className="space-y-3 rounded-xl border border-border/60 bg-background/80 dark:bg-card/90 p-4 text-xs sm:text-sm shadow-xs backdrop-blur-xs">
-                <div className="grid grid-cols-3 gap-2 border-b border-border/50 pb-2.5">
-                  <span className="font-medium text-muted-foreground">
+              <div className="border-border/60 bg-background/80 dark:bg-card/90 space-y-3 rounded-xl border p-4 text-xs shadow-xs backdrop-blur-xs sm:text-sm">
+                <div className="border-border/50 grid grid-cols-3 gap-2 border-b pb-2.5">
+                  <span className="text-muted-foreground font-medium">
                     Issued To
                   </span>
-                  <span className="col-span-2 font-bold text-foreground">
+                  <span className="text-foreground col-span-2 font-bold">
                     Jane Doe
                   </span>
                 </div>
-                <div className="grid grid-cols-3 gap-2 border-b border-border/50 pb-2.5">
-                  <span className="font-medium text-muted-foreground">
+                <div className="border-border/50 grid grid-cols-3 gap-2 border-b pb-2.5">
+                  <span className="text-muted-foreground font-medium">
                     Course/Event
                   </span>
-                  <span className="col-span-2 font-bold text-foreground">
+                  <span className="text-foreground col-span-2 font-bold">
                     Advanced React Bootcamp
                   </span>
                 </div>
                 <div className="grid grid-cols-3 gap-2">
-                  <span className="font-medium text-muted-foreground">
+                  <span className="text-muted-foreground font-medium">
                     Issue Date
                   </span>
-                  <span className="col-span-2 font-bold text-foreground">
+                  <span className="text-foreground col-span-2 font-bold">
                     June 15, 2026
                   </span>
                 </div>
@@ -87,4 +92,3 @@ export default function VerifyPage() {
     </div>
   );
 }
-

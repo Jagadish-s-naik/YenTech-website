@@ -28,13 +28,18 @@ export default function MyEventsPage() {
     <div className="flex-1 overflow-auto p-6 md:p-8">
       <div className="mb-8 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
         <div>
-          <h1 className="mb-1 text-2xl font-bold tracking-tight text-foreground">My Events</h1>
+          <h1 className="text-foreground mb-1 text-2xl font-bold tracking-tight">
+            My Events
+          </h1>
           <p className="text-muted-foreground text-sm">
             Manage your event registrations and upcoming schedules.
           </p>
         </div>
         <Link href="/events">
-          <Button size="sm" className="rounded-full bg-[#0CBAA6] px-5 text-xs font-semibold text-white shadow-sm hover:bg-[#0a9e8d]">
+          <Button
+            size="sm"
+            className="rounded-full bg-[#0CBAA6] px-5 text-xs font-semibold text-white shadow-sm hover:bg-[#0a9e8d]"
+          >
             Browse All Events
           </Button>
         </Link>
@@ -44,7 +49,7 @@ export default function MyEventsPage() {
         {MY_EVENTS.map((event) => (
           <div
             key={event.id}
-            className="flex flex-col gap-4 rounded-xl border border-border/60 bg-card p-5 shadow-xs transition-all duration-200 hover:border-[#0CBAA6]/40 sm:flex-row sm:items-center sm:justify-between"
+            className="border-border/60 bg-card flex flex-col gap-4 rounded-xl border p-5 shadow-xs transition-all duration-200 hover:border-[#0CBAA6]/40 sm:flex-row sm:items-center sm:justify-between"
           >
             <div className="space-y-2">
               <div className="flex items-center gap-2">
@@ -55,10 +60,13 @@ export default function MyEventsPage() {
                   {event.status}
                 </span>
               </div>
-              <h3 className="text-base font-bold text-foreground">{event.title}</h3>
-              <div className="flex flex-wrap items-center gap-4 text-xs text-muted-foreground">
+              <h3 className="text-foreground text-base font-bold">
+                {event.title}
+              </h3>
+              <div className="text-muted-foreground flex flex-wrap items-center gap-4 text-xs">
                 <span className="flex items-center gap-1">
-                  <Calendar className="h-3.5 w-3.5 text-[#0CBAA6]" /> {event.date}
+                  <Calendar className="h-3.5 w-3.5 text-[#0CBAA6]" />{" "}
+                  {event.date}
                 </span>
                 <span className="flex items-center gap-1">
                   <Clock className="h-3.5 w-3.5" /> {event.time}
@@ -70,7 +78,11 @@ export default function MyEventsPage() {
             </div>
 
             <Link href={`/events/${event.id}`}>
-              <Button variant="outline" size="sm" className="w-full sm:w-auto rounded-full border-border/70 text-xs font-medium hover:border-[#0CBAA6] hover:text-[#0CBAA6]">
+              <Button
+                variant="outline"
+                size="sm"
+                className="border-border/70 w-full rounded-full text-xs font-medium hover:border-[#0CBAA6] hover:text-[#0CBAA6] sm:w-auto"
+              >
                 View Ticket <ArrowUpRight className="ml-1 h-3.5 w-3.5" />
               </Button>
             </Link>
@@ -80,4 +92,3 @@ export default function MyEventsPage() {
     </div>
   );
 }
-

@@ -47,7 +47,7 @@ const MOCK_EVENTS: EventProps[] = [
 
 export default function EventsPage() {
   return (
-    <div className="min-h-screen bg-background">
+    <div className="bg-background min-h-screen">
       <PageHeader
         badge="Community Gatherings"
         title="Events Hub"
@@ -55,17 +55,17 @@ export default function EventsPage() {
       />
       <PageContainer>
         {/* Filters */}
-        <div className="mb-8 flex gap-2 overflow-x-auto pb-2 border-b border-border/60 pb-6 scrollbar-none">
+        <div className="border-border/60 mb-8 flex scrollbar-none gap-2 overflow-x-auto border-b pb-2 pb-6">
           <button className="rounded-full bg-[#0CBAA6] px-4 py-1.5 text-xs font-medium text-white shadow-xs">
             All Events
           </button>
-          <button className="rounded-full bg-muted/60 text-muted-foreground hover:bg-muted hover:text-foreground px-4 py-1.5 text-xs font-medium transition-colors">
+          <button className="bg-muted/60 text-muted-foreground hover:bg-muted hover:text-foreground rounded-full px-4 py-1.5 text-xs font-medium transition-colors">
             Workshops
           </button>
-          <button className="rounded-full bg-muted/60 text-muted-foreground hover:bg-muted hover:text-foreground px-4 py-1.5 text-xs font-medium transition-colors">
+          <button className="bg-muted/60 text-muted-foreground hover:bg-muted hover:text-foreground rounded-full px-4 py-1.5 text-xs font-medium transition-colors">
             Hackathons
           </button>
-          <button className="rounded-full bg-muted/60 text-muted-foreground hover:bg-muted hover:text-foreground px-4 py-1.5 text-xs font-medium transition-colors">
+          <button className="bg-muted/60 text-muted-foreground hover:bg-muted hover:text-foreground rounded-full px-4 py-1.5 text-xs font-medium transition-colors">
             Seminars
           </button>
         </div>
@@ -79,4 +79,3 @@ export default function EventsPage() {
     </div>
   );
 }
-

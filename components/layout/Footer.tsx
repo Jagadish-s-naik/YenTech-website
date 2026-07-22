@@ -39,7 +39,7 @@ export function Footer() {
                 YENTECH
               </span>
             </Link>
-            <p className="text-sm leading-relaxed max-w-sm">
+            <p className="max-w-sm text-sm leading-relaxed">
               Yenepoya School of Engineering & Technology. Building the future
               of innovation through technology.
             </p>
@@ -77,12 +77,12 @@ export function Footer() {
           <div className="border-border/40 border-t pt-4 md:border-t-0 md:pt-0">
             <button
               onClick={() => toggleSection("domains")}
-              className="flex w-full items-center justify-between font-heading text-foreground text-sm font-semibold tracking-wider uppercase md:cursor-default"
+              className="font-heading text-foreground flex w-full items-center justify-between text-sm font-semibold tracking-wider uppercase md:cursor-default"
               aria-expanded={openSections["domains"]}
             >
               <span>Domains</span>
               <ChevronDown
-                className={`h-4 w-4 text-muted-foreground transition-transform duration-200 md:hidden ${
+                className={`text-muted-foreground h-4 w-4 transition-transform duration-200 md:hidden ${
                   openSections["domains"] ? "rotate-180" : ""
                 }`}
               />
@@ -132,12 +132,12 @@ export function Footer() {
           <div className="border-border/40 border-t pt-4 md:border-t-0 md:pt-0">
             <button
               onClick={() => toggleSection("quickLinks")}
-              className="flex w-full items-center justify-between font-heading text-foreground text-sm font-semibold tracking-wider uppercase md:cursor-default"
+              className="font-heading text-foreground flex w-full items-center justify-between text-sm font-semibold tracking-wider uppercase md:cursor-default"
               aria-expanded={openSections["quickLinks"]}
             >
               <span>Quick Links</span>
               <ChevronDown
-                className={`h-4 w-4 text-muted-foreground transition-transform duration-200 md:hidden ${
+                className={`text-muted-foreground h-4 w-4 transition-transform duration-200 md:hidden ${
                   openSections["quickLinks"] ? "rotate-180" : ""
                 }`}
               />
@@ -194,12 +194,12 @@ export function Footer() {
           <div className="border-border/40 border-t pt-4 md:border-t-0 md:pt-0">
             <button
               onClick={() => toggleSection("contact")}
-              className="flex w-full items-center justify-between font-heading text-foreground text-sm font-semibold tracking-wider uppercase md:cursor-default"
+              className="font-heading text-foreground flex w-full items-center justify-between text-sm font-semibold tracking-wider uppercase md:cursor-default"
               aria-expanded={openSections["contact"]}
             >
               <span>Contact</span>
               <ChevronDown
-                className={`h-4 w-4 text-muted-foreground transition-transform duration-200 md:hidden ${
+                className={`text-muted-foreground h-4 w-4 transition-transform duration-200 md:hidden ${
                   openSections["contact"] ? "rotate-180" : ""
                 }`}
               />
@@ -212,8 +212,8 @@ export function Footer() {
               <li className="flex items-start gap-2">
                 <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-[#0CBAA6]" />
                 <span>
-                  Yenepoya Institute of Technology, Moodbidri, Mangaluru,
-                  Karnataka 574227
+                  Yenepoya School of Engineering & Technology, Balmatta,
+                  Mangaluru, Karnataka 575002
                 </span>
               </li>
               <li className="flex items-center gap-2">
@@ -239,7 +239,7 @@ export function Footer() {
         </div>
 
         {/* Bottom copyright & links */}
-        <div className="border-border/60 mt-8 sm:mt-12 flex flex-col items-center justify-between gap-4 border-t pt-6 text-xs text-center md:flex-row md:text-left">
+        <div className="border-border/60 mt-8 flex flex-col items-center justify-between gap-4 border-t pt-6 text-center text-xs sm:mt-12 md:flex-row md:text-left">
           <p>&copy; {new Date().getFullYear()} YenTech. All rights reserved.</p>
           <div className="flex flex-wrap justify-center gap-4 sm:gap-6">
             <Link

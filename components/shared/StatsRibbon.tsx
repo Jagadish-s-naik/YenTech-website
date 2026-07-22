@@ -108,7 +108,7 @@ export function StatsRibbon() {
           return (
             <div
               key={stat.id}
-              className="stat-card bg-card/60 border-border/80 hover:border-[#0CBAA6]/40 flex items-center gap-4 rounded-2xl border p-4.5 opacity-0 shadow-xs backdrop-blur-md transition-all duration-300 hover:-translate-y-1 hover:shadow-lg"
+              className="stat-card bg-card/60 border-border/80 flex items-center gap-4 rounded-2xl border p-4.5 opacity-0 shadow-xs backdrop-blur-md transition-all duration-300 hover:-translate-y-1 hover:border-[#0CBAA6]/40 hover:shadow-lg"
             >
               <div
                 className={`flex h-12 w-12 shrink-0 items-center justify-center rounded-xl transition-transform duration-300 hover:scale-110 ${stat.iconBg}`}
@@ -125,7 +125,7 @@ export function StatsRibbon() {
                     {initialDisplay}
                   </span>
                 </div>
-                <div className="text-muted-foreground text-xs font-medium uppercase tracking-wider">
+                <div className="text-muted-foreground text-xs font-medium tracking-wider uppercase">
                   {stat.label}
                 </div>
               </div>

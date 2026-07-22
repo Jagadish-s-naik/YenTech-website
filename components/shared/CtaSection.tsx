@@ -38,13 +38,13 @@ export function CtaSection() {
   }, []);
 
   return (
-    <section ref={containerRef} className="relative py-28 overflow-hidden">
+    <section ref={containerRef} className="relative overflow-hidden py-28">
       {/* Background ambient lighting */}
       <div className="pointer-events-none absolute right-1/4 bottom-1/4 -z-10 h-80 w-80 rounded-full bg-[#0CBAA6]/10 blur-3xl" />
 
       <div className="container mx-auto max-w-4xl px-4 text-center sm:px-8">
         <div className="cta-card-box border-border/80 bg-card/70 relative overflow-hidden rounded-3xl border p-10 opacity-0 shadow-xl backdrop-blur-md sm:p-14">
-          <div className="mx-auto mb-4 inline-flex items-center gap-2 rounded-full bg-[#0CBAA6]/10 px-4 py-1.5 text-xs font-bold uppercase tracking-wider text-[#0CBAA6]">
+          <div className="mx-auto mb-4 inline-flex items-center gap-2 rounded-full bg-[#0CBAA6]/10 px-4 py-1.5 text-xs font-bold tracking-wider text-[#0CBAA6] uppercase">
             <Sparkles className="h-3.5 w-3.5" />
             <span>Join the Movement</span>
           </div>
@@ -73,7 +73,7 @@ export function CtaSection() {
               <Button
                 size="lg"
                 variant="outline"
-                className="border-border/80 bg-background dark:bg-card hover:bg-muted dark:hover:bg-muted rounded-full px-8 py-6 text-base font-semibold transition-all duration-300 hover:border-[#0CBAA6] hover:text-[#0CBAA6] shadow-xs"
+                className="border-border/80 bg-background dark:bg-card hover:bg-muted dark:hover:bg-muted rounded-full px-8 py-6 text-base font-semibold shadow-xs transition-all duration-300 hover:border-[#0CBAA6] hover:text-[#0CBAA6]"
               >
                 Submit a Project
               </Button>

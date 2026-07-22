@@ -51,7 +51,7 @@ const DOMAINS: Domain[] = [
 
 export default function DomainsPage() {
   return (
-    <div className="min-h-screen bg-background">
+    <div className="bg-background min-h-screen">
       <PageHeader
         badge="Specializations"
         title="Technical Domains"
@@ -65,13 +65,13 @@ export default function DomainsPage() {
               <Link
                 key={domain.name}
                 href={domain.href}
-                className="group border-border/70 hover:border-[#0CBAA6]/40 bg-card flex flex-col items-start rounded-2xl border p-7 shadow-xs transition-colors duration-200"
+                className="group border-border/70 bg-card flex flex-col items-start rounded-2xl border p-7 shadow-xs transition-colors duration-200 hover:border-[#0CBAA6]/40"
               >
-                <div className="bg-[#0CBAA6]/10 text-[#0CBAA6] mb-5 rounded-2xl p-4">
+                <div className="mb-5 rounded-2xl bg-[#0CBAA6]/10 p-4 text-[#0CBAA6]">
                   <Icon className="h-6 w-6" />
                 </div>
 
-                <h3 className="group-hover:text-[#0CBAA6] mb-2.5 text-2xl font-bold tracking-tight text-foreground transition-colors duration-200">
+                <h3 className="text-foreground mb-2.5 text-2xl font-bold tracking-tight transition-colors duration-200 group-hover:text-[#0CBAA6]">
                   {domain.name}
                 </h3>
 
@@ -91,7 +91,7 @@ export default function DomainsPage() {
                   ))}
                 </div>
 
-                <div className="text-[#0CBAA6] mt-auto flex items-center text-sm font-semibold">
+                <div className="mt-auto flex items-center text-sm font-semibold text-[#0CBAA6]">
                   Explore Domain
                   <ArrowRight className="ml-1.5 h-4 w-4" />
                 </div>
@@ -103,6 +103,3 @@ export default function DomainsPage() {
     </div>
   );
 }
-
-
-
