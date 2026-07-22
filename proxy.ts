@@ -61,14 +61,9 @@ export async function proxy(request: NextRequest) {
   );
 
   if (!user && !isPublicRoute) {
-    // NOTE: Auth enforcement is disabled because the app currently uses mock login
-    // (client-side router.push) which doesn't create a real Supabase session.
-    // Protected pages handle their own auth state on the client side.
-    // TODO: Re-enable this when real Supabase auth is fully wired up.
-    //
-    // const url = request.nextUrl.clone();
-    // url.pathname = "/auth/login";
-    // return NextResponse.redirect(url);
+    const url = request.nextUrl.clone();
+    url.pathname = "/auth/login";
+    return NextResponse.redirect(url);
   }
 
   // IMPORTANT: You *must* return the supabaseResponse object as it is.

@@ -1,4 +1,6 @@
 "use client";
+
+import { useEffect, useState } from "react";
 import {
   Bell,
   Search,
@@ -8,9 +10,12 @@ import {
   Settings,
   User,
   LogOut,
+  ShieldCheck,
 } from "lucide-react";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
+
+import { createClient } from "@/lib/supabase/client";
 
 const SIDEBAR_LINKS = [
   { name: "Dashboard", icon: LayoutDashboard, href: "/member" },
@@ -27,6 +32,35 @@ export default function MemberLayout({
 }) {
   const pathname = usePathname();
   const router = useRouter();
+  const supabase = createClient();
+  const [isAdmin, setIsAdmin] = useState(false);
+
+  useEffect(() => {
+    async function checkAdminStatus() {
+      const {
+        data: { user },
+      } = await supabase.auth.getUser();
+
+      if (user) {
+        const { data: adminRow } = await supabase
+          .from("admins")
+          .select("user_id")
+          .eq("user_id", user.id)
+          .maybeSingle();
+
+        if (adminRow) {
+          setIsAdmin(true);
+        }
+      }
+    }
+
+    checkAdminStatus();
+  }, [supabase]);
+
+  const handleSignOut = async () => {
+    await supabase.auth.signOut();
+    router.push("/auth/login");
+  };
 
   return (
     <div className="bg-muted/20 flex min-h-screen flex-col md:flex-row">
@@ -54,10 +88,24 @@ export default function MemberLayout({
                 </Link>
               );
             })}
+
+            {/* Render Admin Panel link ONLY for admins */}
+            {isAdmin && (
+              <Link
+                href="/admin"
+                className="text-primary hover:bg-primary/10 flex items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-semibold transition-colors"
+              >
+                <ShieldCheck className="h-4 w-4" />
+                Admin Panel
+              </Link>
+            )}
           </nav>
         </div>
         <div className="border-t p-4">
-          <button className="flex w-full items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-medium text-red-500 transition-colors hover:bg-red-500/10">
+          <button
+            onClick={handleSignOut}
+            className="flex w-full cursor-pointer items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-medium text-red-500 transition-colors hover:bg-red-500/10"
+          >
             <LogOut className="h-4 w-4" />
             Sign Out
           </button>
@@ -92,6 +140,15 @@ export default function MemberLayout({
             />
           </form>
           <div className="flex items-center gap-3 md:gap-4">
+            {isAdmin && (
+              <Link
+                href="/admin"
+                className="bg-primary/10 text-primary hover:bg-primary/20 flex items-center gap-1.5 rounded-full px-3 py-1 text-xs font-semibold transition-colors"
+              >
+                <ShieldCheck className="h-3.5 w-3.5" />
+                Admin
+              </Link>
+            )}
             <Link href="/member/notifications">
               <button className="text-muted-foreground hover:bg-muted relative rounded-full p-2 transition-colors">
                 <Bell className="h-5 w-5" />
@@ -126,10 +183,20 @@ export default function MemberLayout({
                 </Link>
               );
             })}
+            {isAdmin && (
+              <Link
+                href="/admin"
+                className="bg-primary/10 text-primary flex shrink-0 items-center gap-1 rounded-lg px-3 py-1.5 text-xs font-semibold"
+              >
+                <ShieldCheck className="h-3.5 w-3.5" />
+                Admin
+              </Link>
+            )}
           </nav>
           <button
+            onClick={handleSignOut}
             title="Sign Out"
-            className="text-muted-foreground ml-2 shrink-0 rounded-lg p-2 transition-colors hover:bg-red-500/10 hover:text-red-500"
+            className="text-muted-foreground ml-2 shrink-0 cursor-pointer rounded-lg p-2 transition-colors hover:bg-red-500/10 hover:text-red-500"
           >
             <LogOut className="h-4 w-4" />
           </button>

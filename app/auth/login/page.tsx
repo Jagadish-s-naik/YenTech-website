@@ -3,38 +3,67 @@
 import { useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
+import { createClient } from "@/lib/supabase/client";
 import {
   Card,
   CardContent,
   CardDescription,
-  CardFooter,
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Button } from "@/components/ui/button";
-import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { Loader2 } from "lucide-react";
+import { Loader2, AlertCircle } from "lucide-react";
 
 export default function LoginPage() {
   const router = useRouter();
-  const [isLoading, setIsLoading] = useState(false);
-  const [role, setRole] = useState("member");
+  const supabase = createClient();
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
+  const [errorMessage, setErrorMessage] = useState<string | null>(null);
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsLoading(true);
+    setErrorMessage(null);
 
-    // Simulate API Call
-    setTimeout(() => {
-      setIsLoading(false);
-      if (role === "admin") {
-        router.push("/admin");
-      } else {
-        router.push("/member");
+    try {
+      const { data, error: signInError } =
+        await supabase.auth.signInWithPassword({
+          email,
+          password,
+        });
+
+      if (signInError) {
+        setErrorMessage(signInError.message);
+        setIsLoading(false);
+        return;
       }
-    }, 1500);
+
+      if (data?.user) {
+        // Redirect to member portal (or admin if admin)
+        const { data: adminRow } = await supabase
+          .from("admins")
+          .select("user_id")
+          .eq("user_id", data.user.id)
+          .maybeSingle();
+
+        if (adminRow) {
+          router.push("/admin");
+        } else {
+          router.push("/member");
+        }
+      }
+    } catch (err: unknown) {
+      setErrorMessage(
+        err instanceof Error ? err.message : "An unexpected error occurred",
+      );
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   return (
@@ -51,72 +80,62 @@ export default function LoginPage() {
           </CardDescription>
         </CardHeader>
 
-        <Tabs defaultValue="member" onValueChange={setRole} className="w-full">
-          <div className="px-6 pb-4">
-            <TabsList className="bg-muted/50 grid w-full grid-cols-2">
-              <TabsTrigger value="member">Member</TabsTrigger>
-              <TabsTrigger value="admin">Admin</TabsTrigger>
-            </TabsList>
-          </div>
+        <CardContent>
+          {errorMessage && (
+            <div className="border-destructive/30 bg-destructive/10 text-destructive mb-4 flex items-center gap-2 rounded-lg border p-3 text-xs font-medium">
+              <AlertCircle className="h-4 w-4 shrink-0" />
+              <span>{errorMessage}</span>
+            </div>
+          )}
 
-          <CardContent>
-            <form onSubmit={handleSubmit} className="space-y-4">
-              <div className="space-y-2">
-                <Label htmlFor="email">Email</Label>
-                <Input
-                  id="email"
-                  type="email"
-                  placeholder="m@example.com"
-                  required
-                  className="bg-background/50 border-muted-foreground/20 focus-visible:ring-primary/50"
-                />
+          <form onSubmit={handleSubmit} className="space-y-4">
+            <div className="space-y-2">
+              <Label htmlFor="email">Email</Label>
+              <Input
+                id="email"
+                type="email"
+                placeholder="m@example.com"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                required
+                className="bg-background/50 border-muted-foreground/20 focus-visible:ring-primary/50"
+              />
+            </div>
+            <div className="space-y-2">
+              <div className="flex items-center justify-between">
+                <Label htmlFor="password">Password</Label>
+                <Link
+                  href="/forgot-password"
+                  className="text-primary text-xs font-medium transition-colors hover:underline"
+                >
+                  Forgot password?
+                </Link>
               </div>
-              <div className="space-y-2">
-                <div className="flex items-center justify-between">
-                  <Label htmlFor="password">Password</Label>
-                  <Link
-                    href="/forgot-password"
-                    className="text-primary text-xs font-medium transition-colors hover:underline"
-                  >
-                    Forgot password?
-                  </Link>
-                </div>
-                <Input
-                  id="password"
-                  type="password"
-                  required
-                  className="bg-background/50 border-muted-foreground/20 focus-visible:ring-primary/50"
-                />
-              </div>
-              <Button
-                type="submit"
-                className="mt-6 w-full shadow-md transition-all hover:shadow-lg"
-                disabled={isLoading}
-              >
-                {isLoading ? (
-                  <>
-                    <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                    Signing in...
-                  </>
-                ) : (
-                  "Sign In"
-                )}
-              </Button>
-            </form>
-          </CardContent>
-        </Tabs>
-
-        <CardFooter className="border-muted/50 flex flex-col items-center border-t pt-6">
-          <div className="text-muted-foreground text-sm">
-            Don't have an account?{" "}
-            <Link
-              href="/auth/register"
-              className="text-primary font-medium transition-colors hover:underline"
+              <Input
+                id="password"
+                type="password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                required
+                className="bg-background/50 border-muted-foreground/20 focus-visible:ring-primary/50"
+              />
+            </div>
+            <Button
+              type="submit"
+              className="mt-6 w-full shadow-md transition-all hover:shadow-lg"
+              disabled={isLoading}
             >
-              Sign up
-            </Link>
-          </div>
-        </CardFooter>
+              {isLoading ? (
+                <>
+                  <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                  Signing in...
+                </>
+              ) : (
+                "Sign In"
+              )}
+            </Button>
+          </form>
+        </CardContent>
       </Card>
     </div>
   );

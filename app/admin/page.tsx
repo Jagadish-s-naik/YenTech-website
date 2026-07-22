@@ -1,16 +1,84 @@
-import { Users, FileText, Activity, Settings } from "lucide-react";
+"use client";
+
+import { useEffect, useState } from "react";
+import {
+  Users,
+  FileText,
+  Activity,
+  Settings,
+  LogOut,
+  Loader2,
+} from "lucide-react";
+import { createClient } from "@/lib/supabase/client";
+import { useRouter } from "next/navigation";
+import { Button } from "@/components/ui/button";
 
 export default function AdminDashboard() {
+  const router = useRouter();
+  const supabase = createClient();
+  const [checkingAuth, setCheckingAuth] = useState(true);
+
+  useEffect(() => {
+    async function checkAdmin() {
+      const {
+        data: { user },
+      } = await supabase.auth.getUser();
+
+      if (!user) {
+        router.push("/auth/login");
+        return;
+      }
+
+      const { data: adminRow } = await supabase
+        .from("admins")
+        .select("user_id")
+        .eq("user_id", user.id)
+        .maybeSingle();
+
+      if (!adminRow) {
+        router.push("/member");
+        return;
+      }
+
+      setCheckingAuth(false);
+    }
+
+    checkAdmin();
+  }, [router, supabase]);
+
+  const handleSignOut = async () => {
+    await supabase.auth.signOut();
+    router.push("/auth/login");
+  };
+
+  if (checkingAuth) {
+    return (
+      <div className="bg-muted/20 flex min-h-screen items-center justify-center">
+        <Loader2 className="text-primary h-8 w-8 animate-spin" />
+      </div>
+    );
+  }
+
   return (
     <div className="bg-muted/20 min-h-screen p-6 md:p-10">
       <div className="mx-auto max-w-6xl space-y-8">
-        <div>
-          <h1 className="mb-2 text-3xl font-bold tracking-tight">
-            Admin Dashboard
-          </h1>
-          <p className="text-muted-foreground">
-            Manage the YenTech platform, users, and content.
-          </p>
+        <div className="flex items-center justify-between">
+          <div>
+            <h1 className="mb-2 text-3xl font-bold tracking-tight">
+              Admin Dashboard
+            </h1>
+            <p className="text-muted-foreground">
+              Manage the YenTech platform, users, and content.
+            </p>
+          </div>
+          <Button
+            variant="outline"
+            onClick={handleSignOut}
+            className="flex items-center gap-2 text-red-500 hover:bg-red-500/10 hover:text-red-600"
+          >
+            <LogOut className="h-4 w-4" />
+            Sign Out
+          </Button>
         </div>
 
         <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
