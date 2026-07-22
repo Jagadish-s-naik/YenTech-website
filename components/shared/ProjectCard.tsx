@@ -18,11 +18,11 @@ export interface ProjectProps {
 export function ProjectCard({ project }: { project: ProjectProps }) {
   return (
     <div className="bg-background group flex flex-col overflow-hidden rounded-2xl border shadow-sm transition-all hover:shadow-md">
-      <div className="bg-muted relative h-48 w-full overflow-hidden">
+      <div className="bg-muted/40 relative h-48 w-full overflow-hidden flex items-center justify-center">
         <img
           src={project.imageUrl}
           alt={project.title}
-          className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+          className="h-full w-full object-contain transition-transform duration-500 group-hover:scale-105"
         />
         <div className="absolute inset-0 flex items-center justify-center gap-4 bg-black/60 opacity-0 transition-opacity group-hover:opacity-100">
           {project.demoUrl && (

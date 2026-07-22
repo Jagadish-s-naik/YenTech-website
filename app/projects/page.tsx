@@ -8,17 +8,15 @@ import { Plus } from "lucide-react";
 const MOCK_PROJECTS: ProjectProps[] = [
   {
     id: "1",
-    title: "EcoTrack Mobile App",
-    author: "Sarah J. & Team Alpha",
+    title: "AgroNova",
+    author: "Dhanush Shenoy H, Anand M, Jagadish S Naik & Ashwin Nethan",
     description:
-      "A mobile application built with React Native that tracks user's daily carbon footprint and suggests eco-friendly alternatives.",
-    tags: ["React Native", "Firebase", "Node.js"],
-    imageUrl:
-      "https://images.unsplash.com/photo-1512428559087-560fa5ceab42?q=80&w=800&auto=format&fit=crop",
-    likes: 124,
-    comments: 18,
-    demoUrl: "#",
-    repoUrl: "#",
+      "An AI-powered farming assistant. Empowering Indian farmers with AI-driven insights, pest detection, real-time mandi prices, and soil health analysis. To know more, just check out the app.",
+    tags: ["AI / ML", "Next.js", "AgriTech", "Python"],
+    imageUrl: "/images/Agronova_Thumbnail.png",
+    likes: 184,
+    comments: 24,
+    demoUrl: "https://www.agronova.in/",
   },
   {
     id: "2",
