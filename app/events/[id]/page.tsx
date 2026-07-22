@@ -111,6 +111,7 @@ export default async function EventDetailsPage({
     Workshop: "bg-blue-500/10 text-blue-500 border-blue-500/20",
     Hackathon: "bg-orange-500/10 text-orange-500 border-orange-500/20",
     Seminar: "bg-green-500/10 text-green-500 border-green-500/20",
+    "Tech Talk": "bg-green-500/10 text-green-500 border-green-500/20",
   };
 
   return (

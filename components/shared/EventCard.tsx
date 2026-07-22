@@ -5,7 +5,7 @@ import Link from "next/link";
 export interface EventProps {
   id: string;
   title: string;
-  type: "Workshop" | "Hackathon" | "Seminar";
+  type: "Workshop" | "Hackathon" | "Seminar" | "Tech Talk";
   date: string;
   time: string;
   location: string;
@@ -23,6 +23,7 @@ export function EventCard({ event }: { event: EventProps }) {
     Workshop: "bg-blue-500/10 text-blue-500 border-blue-500/20",
     Hackathon: "bg-orange-500/10 text-orange-500 border-orange-500/20",
     Seminar: "bg-green-500/10 text-green-500 border-green-500/20",
+    "Tech Talk": "bg-green-500/10 text-green-500 border-green-500/20",
   };
 
   const isCompleted = event.status === "completed";

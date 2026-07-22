@@ -49,7 +49,7 @@ const MOCK_EVENTS: EventProps[] = [
   {
     id: "3",
     title: "Cyber Security in the Modern Age",
-    type: "Seminar",
+    type: "Tech Talk",
     date: "October 20, 2026",
     time: "10:00 AM - 12:00 PM",
     location: "Seminar Hall B",
@@ -67,7 +67,7 @@ export default function EventsPage() {
       <PageHeader
         badge="Community Gatherings"
         title="Events Hub"
-        description="Discover and register for upcoming technical workshops, national hackathons, and guest seminars."
+        description="Discover and register for upcoming technical workshops, national hackathons, and tech talks."
       />
       <PageContainer>
         {/* Filters */}
@@ -82,7 +82,7 @@ export default function EventsPage() {
             Hackathons
           </button>
           <button className="bg-muted/60 text-muted-foreground hover:bg-muted hover:text-foreground rounded-full px-4 py-1.5 text-xs font-medium transition-colors">
-            Seminars
+            Tech Talks
           </button>
         </div>
 
