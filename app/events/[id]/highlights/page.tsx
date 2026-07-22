@@ -1,5 +1,13 @@
 import { EventProps } from "@/components/shared/EventCard";
-import { ArrowLeft, Calendar, User, Clock } from "lucide-react";
+import {
+  ArrowLeft,
+  Calendar,
+  User,
+  Clock,
+  ExternalLink,
+  Video,
+  Newspaper,
+} from "lucide-react";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 
@@ -32,6 +40,36 @@ const MOCK_EVENTS: EventProps[] = [
       "https://daijiworld.ap-south-1.linodeobjects.com/Linode/images3/ASM_hackathon_27042026_1.jpg",
     status: "completed",
   },
+  {
+    id: "openloop-2026",
+    title: "OpenLoop 2026 National Hackathon",
+    type: "Hackathon",
+    date: "April 26-27, 2026",
+    time: "24 Hours",
+    location: "YMK Auditorium, Kulur Campus",
+    description:
+      "A national-level 24-hour hackathon organized by Yenepoya School of Engineering and Technology in collaboration with DK24, Nxtwave, and Kalvium.",
+    attendees: 300,
+    imageUrl:
+      "https://daijiworld.ap-south-1.linodeobjects.com/Linode/images3/ASM_hackathon_27042026_1.jpg",
+    status: "completed",
+  },
+  {
+    id: "project-sankalp",
+    title: "Project Sankalp Code4Change National Hackathon",
+    type: "Hackathon",
+    date: "May 25-26, 2026",
+    time: "24 Hours",
+    location: "Yendance Zone, Yenepoya University, Deralakatte",
+    description:
+      "Project Sankalp Code4Change is a premier 24-hour national hackathon designed to empower the next generation of innovators to solve critical real-world problems.",
+    attendees: 350,
+    imageUrl: "/images/Code4Change.jpg",
+    status: "completed",
+    newsUrl: "https://www.varthabharati.in/DakshinaKannada/--2249771",
+    youtubeUrl: "https://youtu.be/Tss2pwHXhrA?si=6dZj1tw8uJKeWUBM",
+    youtubeEmbedId: "Tss2pwHXhrA",
+  },
 ];
 
 export default async function EventHighlightsPage({
@@ -40,7 +78,14 @@ export default async function EventHighlightsPage({
   params: Promise<{ id: string }>;
 }) {
   const { id } = await params;
-  const event = MOCK_EVENTS.find((e) => e.id === id);
+  const decodedId = decodeURIComponent(id).toLowerCase();
+
+  const event = MOCK_EVENTS.find(
+    (e) =>
+      e.id.toLowerCase() === decodedId ||
+      (decodedId.includes("sankalp") && e.id.includes("sankalp")) ||
+      (decodedId.includes("openloop") && e.id.includes("openloop")),
+  );
 
   if (!event || event.status !== "completed") {
     notFound();
@@ -75,7 +120,7 @@ export default async function EventHighlightsPage({
               </span>
               <span className="flex items-center gap-1.5">
                 <Calendar className="h-4 w-4" />
-                Published April 28, 2026
+                {event.date}
               </span>
               <span className="flex items-center gap-1.5">
                 <User className="h-4 w-4" />
@@ -98,25 +143,17 @@ export default async function EventHighlightsPage({
               </p>
 
               <p>
-                <strong>Mangaluru:</strong> '{event.title}', a national-level
-                event, concluded successfully at the {event.location} on
-                Saturday. Organized by the Yenepoya School of Engineering and
-                Technology, the event was held in collaboration with industry
-                leaders including DK24, Nxtwave, and Kalvium.
-              </p>
-
-              <p>
-                Drawing participants from across the region, the 24-hour event
-                saw brilliant minds collaborating, building innovative
-                solutions, and pushing the boundaries of technology. The
-                atmosphere was electric with non-stop coding, mentorship
-                sessions, and engaging activities.
+                <strong>Mangaluru:</strong> '{event.title}', a premier
+                national-level hackathon, concluded successfully at{" "}
+                {event.location}. Organized by Yenepoya University, the event
+                witnessed brilliant minds collaborating, building innovative
+                solutions, and pushing technological boundaries.
               </p>
 
               <blockquote className="border-primary text-muted-foreground bg-muted/30 my-8 rounded-r-lg border-l-4 py-2 pl-6 text-lg italic">
                 "The energy and innovation displayed by the students at{" "}
-                {event.title} was truly inspiring. We witnessed some incredible
-                projects that have real-world potential." - Organizing Committee
+                {event.title} was truly inspiring. We witnessed groundbreaking
+                projects that solve real-world problems." - Organizing Committee
               </blockquote>
 
               <h3>Key Highlights</h3>
@@ -124,32 +161,59 @@ export default async function EventHighlightsPage({
                 <li>
                   <strong>Record Participation:</strong> Over {event.attendees}{" "}
                   attendees registered and actively participated throughout the
-                  event duration.
+                  event.
                 </li>
                 <li>
-                  <strong>Industry Collaboration:</strong> Expert mentors from
-                  DK24, Nxtwave, and Kalvium provided invaluable guidance to the
-                  participants.
+                  <strong>Mentorship & Support:</strong> Industry mentors and
+                  university leaders provided guidance to all teams.
                 </li>
                 <li>
-                  <strong>Innovative Solutions:</strong> Teams built outstanding
-                  projects ranging from AI-powered applications to sustainable
-                  tech solutions.
+                  <strong>Impactful Solutions:</strong> Participants presented
+                  software and hardware prototypes addressing critical social
+                  and industrial challenges.
                 </li>
               </ul>
 
-              <p>
-                The event culminated in an exciting presentation round where the
-                top teams showcased their projects to a panel of esteemed
-                judges. Prizes were awarded to the winners, but every
-                participant left with new skills, connections, and an
-                unforgettable experience.
-              </p>
+              {event.youtubeEmbedId && (
+                <div className="not-prose my-8">
+                  <h3 className="mb-4 flex items-center gap-2 text-xl font-bold">
+                    <Video className="h-5 w-5 text-[#0CBAA6]" /> Event
+                    Highlights Video
+                  </h3>
+                  <div className="bg-muted aspect-video w-full overflow-hidden rounded-2xl border shadow-md">
+                    <iframe
+                      src={`https://www.youtube.com/embed/${event.youtubeEmbedId}`}
+                      title={`${event.title} Video Highlights`}
+                      className="h-full w-full border-0"
+                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                      allowFullScreen
+                    />
+                  </div>
+                </div>
+              )}
 
-              <p>
-                We look forward to hosting even more engaging and impactful
-                events in the future. Stay tuned for our upcoming announcements!
-              </p>
+              {event.newsUrl && (
+                <div className="not-prose bg-muted/40 border-border/60 my-8 space-y-3 rounded-2xl border p-6">
+                  <h3 className="flex items-center gap-2 text-xl font-bold">
+                    <Newspaper className="h-5 w-5 text-[#0CBAA6]" /> Official
+                    Press Coverage
+                  </h3>
+                  <p className="text-muted-foreground text-sm">
+                    Check out the official news published in Vartha Bharati
+                    regarding the Project Sankalp Code4Change National
+                    Hackathon.
+                  </p>
+                  <a
+                    href={event.newsUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 font-semibold text-[#0CBAA6] hover:underline"
+                  >
+                    Read published news article on Vartha Bharati
+                    <ExternalLink className="h-4 w-4" />
+                  </a>
+                </div>
+              )}
             </div>
 
             <hr className="my-10" />

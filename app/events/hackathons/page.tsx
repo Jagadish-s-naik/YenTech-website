@@ -16,6 +16,22 @@ const MOCK_EVENTS: EventProps[] = [
       "https://daijiworld.ap-south-1.linodeobjects.com/Linode/images3/ASM_hackathon_27042026_1.jpg",
     status: "completed",
   },
+  {
+    id: "project-sankalp",
+    title: "Project Sankalp Code4Change National Hackathon",
+    type: "Hackathon",
+    date: "May 25-26, 2026",
+    time: "24 Hours",
+    location: "Yendance Zone, Yenepoya University, Deralakatte",
+    description:
+      "Project Sankalp Code4Change is a premier 24-hour national hackathon designed to empower the next generation of innovators to solve critical real-world problems.",
+    attendees: 350,
+    imageUrl: "/images/Code4Change.jpg",
+    status: "completed",
+    newsUrl: "https://www.varthabharati.in/DakshinaKannada/--2249771",
+    youtubeUrl: "https://youtu.be/Tss2pwHXhrA?si=6dZj1tw8uJKeWUBM",
+    youtubeEmbedId: "Tss2pwHXhrA",
+  },
 ];
 
 export default function EventsSubPage() {

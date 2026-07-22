@@ -2,8 +2,18 @@ import { PageHeader } from "@/components/shared/PageHeader";
 import { PageContainer } from "@/components/shared/PageContainer";
 import { Clock, User, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import Link from "next/link";
 
 const POSTS = [
+  {
+    title: "Project Sankalp Code4Change National Hackathon",
+    excerpt:
+      "A premier 24-hour national hackathon organized at Yenepoya University empowering student innovators to solve critical real-world problems.",
+    author: "YenTech Events",
+    time: "24 Hours • May 25",
+    img: "/images/Code4Change.jpg",
+    href: "/events/project-sankalp",
+  },
   {
     title: "OpenLoop 2026 National Hackathon",
     excerpt:
@@ -11,6 +21,7 @@ const POSTS = [
     author: "YenTech Events",
     time: "24 Hours • Apr 26",
     img: "https://daijiworld.ap-south-1.linodeobjects.com/Linode/images3/ASM_hackathon_27042026_1.jpg",
+    href: "/events/openloop-2026",
   },
   {
     title: "How to Build a Next.js App from Scratch",
@@ -91,36 +102,43 @@ export default function BlogPage() {
         </div>
 
         <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
-          {POSTS.map((post, i) => (
-            <div
-              key={i}
-              className="group border-border/60 bg-card flex cursor-pointer flex-col overflow-hidden rounded-xl border shadow-xs transition-all duration-300 hover:border-[#0CBAA6]/40 hover:shadow-md"
-            >
-              <div className="relative h-44 overflow-hidden">
-                <img
-                  src={post.img}
-                  alt={post.title}
-                  className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
-                />
-              </div>
-              <div className="flex flex-1 flex-col p-5">
-                <h4 className="text-foreground mb-2 line-clamp-2 text-lg font-bold transition-colors group-hover:text-[#0CBAA6]">
-                  {post.title}
-                </h4>
-                <p className="text-muted-foreground mb-4 line-clamp-2 flex-1 text-xs leading-relaxed">
-                  {post.excerpt}
-                </p>
-                <div className="text-muted-foreground border-border/50 flex items-center justify-between border-t pt-3 text-xs">
-                  <span className="flex items-center gap-1">
-                    <User className="h-3 w-3 text-[#0CBAA6]" /> {post.author}
-                  </span>
-                  <span className="flex items-center gap-1">
-                    <Clock className="h-3 w-3" /> {post.time}
-                  </span>
+          {POSTS.map((post, i) => {
+            const cardContent = (
+              <div className="group border-border/60 bg-card flex h-full cursor-pointer flex-col overflow-hidden rounded-xl border shadow-xs transition-all duration-300 hover:border-[#0CBAA6]/40 hover:shadow-md">
+                <div className="relative h-44 overflow-hidden">
+                  <img
+                    src={post.img}
+                    alt={post.title}
+                    className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                  />
+                </div>
+                <div className="flex flex-1 flex-col p-5">
+                  <h4 className="text-foreground mb-2 line-clamp-2 text-lg font-bold transition-colors group-hover:text-[#0CBAA6]">
+                    {post.title}
+                  </h4>
+                  <p className="text-muted-foreground mb-4 line-clamp-2 flex-1 text-xs leading-relaxed">
+                    {post.excerpt}
+                  </p>
+                  <div className="text-muted-foreground border-border/50 flex items-center justify-between border-t pt-3 text-xs">
+                    <span className="flex items-center gap-1">
+                      <User className="h-3 w-3 text-[#0CBAA6]" /> {post.author}
+                    </span>
+                    <span className="flex items-center gap-1">
+                      <Clock className="h-3 w-3" /> {post.time}
+                    </span>
+                  </div>
                 </div>
               </div>
-            </div>
-          ))}
+            );
+
+            return post.href ? (
+              <Link key={i} href={post.href}>
+                {cardContent}
+              </Link>
+            ) : (
+              <div key={i}>{cardContent}</div>
+            );
+          })}
         </div>
 
         <div className="mt-12 text-center">

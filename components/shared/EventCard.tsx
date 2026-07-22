@@ -13,6 +13,9 @@ export interface EventProps {
   attendees: number;
   imageUrl?: string;
   status?: "upcoming" | "completed";
+  newsUrl?: string;
+  youtubeUrl?: string;
+  youtubeEmbedId?: string;
 }
 
 export function EventCard({ event }: { event: EventProps }) {

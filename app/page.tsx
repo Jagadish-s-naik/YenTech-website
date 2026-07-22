@@ -5,7 +5,7 @@ import { CtaSection } from "@/components/shared/CtaSection";
 
 const FEATURED_EVENTS = [
   {
-    id: "openloop-2026",
+    id: "2",
     title: "OpenLoop 2026 National Hackathon",
     description:
       "A national-level 24-hour hackathon organized by Yenepoya School of Engineering and Technology in collaboration with DK24, Nxtwave, and Kalvium.",
