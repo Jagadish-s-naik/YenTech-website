@@ -6,18 +6,9 @@ import { Calendar, MapPin, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import type { EventItem } from "@/types/event";
 
 gsap.registerPlugin(ScrollTrigger);
-
-export interface EventItem {
-  id: string;
-  title: string;
-  description: string;
-  date: string;
-  location: string;
-  imageUrl: string;
-  imageLeft: boolean;
-}
 
 interface EventsSectionProps {
   events: EventItem[];
@@ -148,12 +139,12 @@ export function EventsSection({ events }: EventsSectionProps) {
                 </div>
 
                 <div className="pt-2">
-                  <Link href={`/events/${event.id}`}>
+                  <Link href={`/events/${event.id}/highlights`}>
                     <Button
                       size="lg"
                       className="group rounded-full bg-[#0CBAA6] px-7 py-3 text-sm font-semibold text-white shadow-md shadow-[#0CBAA6]/20 transition-all duration-300 hover:bg-[#0a9e8d] hover:shadow-lg hover:shadow-[#0CBAA6]/30"
                     >
-                      View Event Details
+                      View Highlights
                       <ArrowRight className="ml-2 h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
                     </Button>
                   </Link>

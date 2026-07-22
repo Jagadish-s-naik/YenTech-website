@@ -2,30 +2,7 @@ import { HeroSection } from "@/components/shared/HeroSection";
 import { EventsSection } from "@/components/shared/EventsSection";
 import { DomainCards } from "@/components/shared/DomainCards";
 import { CtaSection } from "@/components/shared/CtaSection";
-
-const FEATURED_EVENTS = [
-  {
-    id: "2",
-    title: "OpenLoop 2026 National Hackathon",
-    description:
-      "A national-level 24-hour hackathon organized by Yenepoya School of Engineering and Technology in collaboration with DK24, Nxtwave, and Kalvium.",
-    date: "April 26-27, 2026",
-    location: "YMK Auditorium, YIASCM Kulur Campus",
-    imageUrl:
-      "https://daijiworld.ap-south-1.linodeobjects.com/Linode/images3/ASM_hackathon_27042026_1.jpg",
-    imageLeft: false,
-  },
-  {
-    id: "project-sankalp",
-    title: "Project Sankalp Code4Change National Hackathon",
-    description:
-      "Project Sankalp is a premier 24-hour hackathon designed to empower the next generation of innovators to solve critical real-world problems.",
-    date: "May 25-26, 2026",
-    location: "Yendance Zone, Yenepoya University, Deralakatte",
-    imageUrl: "/images/Code4Change.jpg",
-    imageLeft: true,
-  },
-];
+import { FEATURED_EVENTS } from "@/data/events";
 
 export default function Home() {
   return (

@@ -1,22 +1,7 @@
 import { Calendar, MapPin, Clock, Users } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
-
-export interface EventProps {
-  id: string;
-  title: string;
-  type: "Workshop" | "Hackathon" | "Seminar" | "Tech Talk";
-  date: string;
-  time: string;
-  location: string;
-  description: string;
-  attendees: number;
-  imageUrl?: string;
-  status?: "upcoming" | "completed";
-  newsUrl?: string;
-  youtubeUrl?: string;
-  youtubeEmbedId?: string;
-}
+import type { EventProps } from "@/types/event";
 
 export function EventCard({ event }: { event: EventProps }) {
   const typeColors = {

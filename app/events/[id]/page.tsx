@@ -1,4 +1,3 @@
-import { EventProps } from "@/components/shared/EventCard";
 import {
   Calendar,
   MapPin,
@@ -12,54 +11,7 @@ import {
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-
-// In a real app, this would be fetched from an API or database
-const MOCK_EVENTS: EventProps[] = [
-  {
-    id: "2",
-    title: "OpenLoop 2026 National Hackathon",
-    type: "Hackathon",
-    date: "April 26-27, 2026",
-    time: "24 Hours",
-    location: "YMK Auditorium, Kulur Campus",
-    description:
-      "A national-level 24-hour hackathon organized by Yenepoya School of Engineering and Technology in collaboration with DK24, Nxtwave, and Kalvium. Join us for an exciting 24 hours of coding, problem-solving, and innovation. Prizes will be awarded to the top 3 teams.",
-    attendees: 300,
-    imageUrl:
-      "https://daijiworld.ap-south-1.linodeobjects.com/Linode/images3/ASM_hackathon_27042026_1.jpg",
-    status: "completed",
-  },
-  {
-    id: "openloop-2026",
-    title: "OpenLoop 2026 National Hackathon",
-    type: "Hackathon",
-    date: "April 26-27, 2026",
-    time: "24 Hours",
-    location: "YMK Auditorium, Kulur Campus",
-    description:
-      "A national-level 24-hour hackathon organized by Yenepoya School of Engineering and Technology in collaboration with DK24, Nxtwave, and Kalvium. Join us for an exciting 24 hours of coding, problem-solving, and innovation. Prizes will be awarded to the top 3 teams.",
-    attendees: 300,
-    imageUrl:
-      "https://daijiworld.ap-south-1.linodeobjects.com/Linode/images3/ASM_hackathon_27042026_1.jpg",
-    status: "completed",
-  },
-  {
-    id: "project-sankalp",
-    title: "Project Sankalp Code4Change National Hackathon",
-    type: "Hackathon",
-    date: "May 25-26, 2026",
-    time: "24 Hours",
-    location: "Yendance Zone, Yenepoya University, Deralakatte",
-    description:
-      "Project Sankalp Code4Change is a premier 24-hour national-level hackathon designed to empower student developers and innovators to build creative solutions for critical real-world challenges. Organized at Yenepoya University, this flagship event brought together passionate minds across the nation for an intensive hackathon experience.",
-    attendees: 350,
-    imageUrl: "/images/Code4Change.jpg",
-    status: "completed",
-    newsUrl: "https://www.varthabharati.in/DakshinaKannada/--2249771",
-    youtubeUrl: "https://youtu.be/Tss2pwHXhrA?si=6dZj1tw8uJKeWUBM",
-    youtubeEmbedId: "Tss2pwHXhrA",
-  },
-];
+import { getEventById } from "@/data/events";
 
 export default async function EventDetailsPage({
   params,
@@ -67,15 +19,7 @@ export default async function EventDetailsPage({
   params: Promise<{ id: string }>;
 }) {
   const { id } = await params;
-  const decodedId = decodeURIComponent(id).toLowerCase();
-
-  const event = MOCK_EVENTS.find(
-    (e) =>
-      e.id.toLowerCase() === decodedId ||
-      e.title.toLowerCase().replace(/[^a-z0-9]+/g, "-") === decodedId ||
-      (decodedId.includes("sankalp") && e.id.includes("sankalp")) ||
-      (decodedId.includes("openloop") && e.id.includes("openloop")),
-  );
+  const event = getEventById(id);
 
   if (!event) {
     notFound();

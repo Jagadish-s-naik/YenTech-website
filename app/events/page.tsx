@@ -1,39 +1,7 @@
 import { PageHeader } from "@/components/shared/PageHeader";
 import { PageContainer } from "@/components/shared/PageContainer";
-import { EventCard, EventProps } from "@/components/shared/EventCard";
-
-const MOCK_EVENTS: EventProps[] = [
-  {
-    id: "openloop-2026",
-    title: "OpenLoop 2026 National Hackathon",
-    type: "Hackathon",
-    date: "April 26-27, 2026",
-    time: "24 Hours",
-    location: "YMK Auditorium, Kulur Campus",
-    description:
-      "A national-level 24-hour hackathon organized by Yenepoya School of Engineering and Technology in collaboration with DK24, Nxtwave, and Kalvium.",
-    attendees: 300,
-    imageUrl:
-      "https://daijiworld.ap-south-1.linodeobjects.com/Linode/images3/ASM_hackathon_27042026_1.jpg",
-    status: "completed",
-  },
-  {
-    id: "project-sankalp",
-    title: "Project Sankalp Code4Change National Hackathon",
-    type: "Hackathon",
-    date: "May 25-26, 2026",
-    time: "24 Hours",
-    location: "Yendance Zone, Yenepoya University, Deralakatte",
-    description:
-      "Project Sankalp Code4Change is a premier 24-hour national hackathon designed to empower the next generation of innovators to solve critical real-world problems.",
-    attendees: 350,
-    imageUrl: "/images/Code4Change.jpg",
-    status: "completed",
-    newsUrl: "https://www.varthabharati.in/DakshinaKannada/--2249771",
-    youtubeUrl: "https://youtu.be/Tss2pwHXhrA?si=6dZj1tw8uJKeWUBM",
-    youtubeEmbedId: "Tss2pwHXhrA",
-  },
-];
+import { EventCard } from "@/components/shared/EventCard";
+import { MOCK_EVENTS } from "@/data/events";
 
 export default function EventsPage() {
   return (

@@ -1,7 +1,7 @@
 import { createServerClient } from "@supabase/ssr";
 import { NextResponse, type NextRequest } from "next/server";
 
-export async function updateSession(request: NextRequest) {
+export async function proxy(request: NextRequest) {
   let supabaseResponse = NextResponse.next({
     request,
   });
@@ -40,15 +40,35 @@ export async function updateSession(request: NextRequest) {
   const { data } = await supabase.auth.getClaims();
   const user = data?.claims;
 
-  if (
-    !user &&
-    !request.nextUrl.pathname.startsWith("/login") &&
-    !request.nextUrl.pathname.startsWith("/auth")
-  ) {
-    // no user, potentially respond by redirecting the user to the login page
-    const url = request.nextUrl.clone();
-    url.pathname = "/auth/login";
-    return NextResponse.redirect(url);
+  // Public routes that don't require authentication
+  const publicRoutes = [
+    "/",
+    "/auth",
+    "/login",
+    "/events",
+    "/projects",
+    "/domains",
+    "/blog",
+    "/resources",
+    "/badges",
+    "/verify",
+  ];
+
+  const isPublicRoute = publicRoutes.some(
+    (route) =>
+      request.nextUrl.pathname === route ||
+      request.nextUrl.pathname.startsWith(route + "/"),
+  );
+
+  if (!user && !isPublicRoute) {
+    // NOTE: Auth enforcement is disabled because the app currently uses mock login
+    // (client-side router.push) which doesn't create a real Supabase session.
+    // Protected pages handle their own auth state on the client side.
+    // TODO: Re-enable this when real Supabase auth is fully wired up.
+    //
+    // const url = request.nextUrl.clone();
+    // url.pathname = "/auth/login";
+    // return NextResponse.redirect(url);
   }
 
   // IMPORTANT: You *must* return the supabaseResponse object as it is.
@@ -66,3 +86,12 @@ export async function updateSession(request: NextRequest) {
 
   return supabaseResponse;
 }
+
+export const config = {
+  matcher: [
+    // Skip Next.js internals and all static files, unless found in search params
+    "/((?!_next|[^?]*\\.(?:html?|css|js(?!on)|jpe?g|webp|png|gif|svg|ttf|woff2?|ico|csv|docx?|xlsx?|zip|webmanifest)).*)",
+    // Always run for API routes
+    "/(api|trpc)(.*)",
+  ],
+};

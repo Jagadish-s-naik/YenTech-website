@@ -1,53 +1,8 @@
 import { PageHeader } from "@/components/shared/PageHeader";
 import { PageContainer } from "@/components/shared/PageContainer";
 import Link from "next/link";
-import {
-  Monitor,
-  Cpu,
-  Palette,
-  ShieldCheck,
-  ArrowRight,
-  LucideIcon,
-} from "lucide-react";
-
-interface Domain {
-  name: string;
-  icon: LucideIcon;
-  href: string;
-  desc: string;
-  tech: string[];
-}
-
-const DOMAINS: Domain[] = [
-  {
-    name: "Web Development",
-    icon: Monitor,
-    href: "/domains/web-development",
-    desc: "Build modern, responsive, and dynamic web applications with state-of-the-art tooling.",
-    tech: ["Next.js", "TypeScript", "TailwindCSS"],
-  },
-  {
-    name: "AI & Machine Learning",
-    icon: Cpu,
-    href: "/domains/ai-ml",
-    desc: "Explore the frontiers of artificial intelligence, neural networks, and data science.",
-    tech: ["Python", "PyTorch", "Scikit-Learn"],
-  },
-  {
-    name: "Graphics Design",
-    icon: Palette,
-    href: "/domains/graphics-design",
-    desc: "Create visually stunning UI/UX, brand identities, and 3D web graphics.",
-    tech: ["Figma", "Illustrator", "Three.js"],
-  },
-  {
-    name: "Cyber Security",
-    icon: ShieldCheck,
-    href: "/domains/cyber-security",
-    desc: "Learn ethical hacking, defense mechanisms, and secure network infrastructure.",
-    tech: ["Linux", "Wireshark", "Metasploit"],
-  },
-];
+import { ArrowRight } from "lucide-react";
+import { DOMAINS } from "@/data/domains";
 
 export default function DomainsPage() {
   return (

@@ -1,19 +1,7 @@
 import { Heart, MessageSquare, ExternalLink, Code } from "lucide-react";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-
-export interface ProjectProps {
-  id: string;
-  title: string;
-  author: string;
-  description: string;
-  tags: string[];
-  imageUrl: string;
-  likes: number;
-  comments: number;
-  repoUrl?: string;
-  demoUrl?: string;
-}
+import type { ProjectProps } from "@/types/project";
 
 export function ProjectCard({ project }: { project: ProjectProps }) {
   return (
