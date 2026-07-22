@@ -18,7 +18,7 @@ export interface ProjectProps {
 export function ProjectCard({ project }: { project: ProjectProps }) {
   return (
     <div className="bg-background group flex flex-col overflow-hidden rounded-2xl border shadow-sm transition-all hover:shadow-md">
-      <div className="bg-muted/40 relative h-48 w-full overflow-hidden flex items-center justify-center">
+      <div className="bg-muted/40 relative flex h-48 w-full items-center justify-center overflow-hidden">
         <img
           src={project.imageUrl}
           alt={project.title}

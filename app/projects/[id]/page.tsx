@@ -31,12 +31,7 @@ export const MOCK_PROJECTS_DETAIL: (ProjectProps & {
     likes: 184,
     comments: 24,
     demoUrl: "https://www.agronova.in/",
-    team: [
-      "Dhanush Shenoy H",
-      "Anand M",
-      "Jagadish S Naik",
-      "Ashwin Nethan",
-    ],
+    team: ["Dhanush Shenoy H", "Anand M", "Jagadish S Naik", "Ashwin Nethan"],
     features: [
       "AI Crop Disease & Pest Detection from camera photos",
       "Real-time Mandi Market Prices from across India",
@@ -140,7 +135,7 @@ export default async function ProjectDetailPage({ params }: PageProps) {
                 {project.tags.map((tag) => (
                   <span
                     key={tag}
-                    className="bg-[#0CBAA6]/10 text-[#0CBAA6] rounded-full px-3 py-1 text-xs font-semibold"
+                    className="rounded-full bg-[#0CBAA6]/10 px-3 py-1 text-xs font-semibold text-[#0CBAA6]"
                   >
                     {tag}
                   </span>
@@ -151,21 +146,35 @@ export default async function ProjectDetailPage({ params }: PageProps) {
               </h1>
               <p className="text-muted-foreground mt-2 flex items-center gap-2 text-sm">
                 <User className="h-4 w-4" />
-                <span>Created by <strong className="text-foreground">{project.author}</strong></span>
+                <span>
+                  Created by{" "}
+                  <strong className="text-foreground">{project.author}</strong>
+                </span>
               </p>
             </div>
 
             <div className="flex items-center gap-3">
               {project.demoUrl && (
-                <a href={project.demoUrl} target="_blank" rel="noopener noreferrer">
-                  <Button className="bg-[#0CBAA6] hover:bg-[#0a9e8d] gap-2 rounded-full font-semibold text-white">
+                <a
+                  href={project.demoUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <Button className="gap-2 rounded-full bg-[#0CBAA6] font-semibold text-white hover:bg-[#0a9e8d]">
                     <ExternalLink className="h-4 w-4" /> Live App / Demo
                   </Button>
                 </a>
               )}
               {project.repoUrl && (
-                <a href={project.repoUrl} target="_blank" rel="noopener noreferrer">
-                  <Button variant="outline" className="gap-2 rounded-full font-semibold">
+                <a
+                  href={project.repoUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <Button
+                    variant="outline"
+                    className="gap-2 rounded-full font-semibold"
+                  >
                     <Code className="h-4 w-4" /> View Code
                   </Button>
                 </a>
@@ -178,7 +187,7 @@ export default async function ProjectDetailPage({ params }: PageProps) {
       <PageContainer className="mt-8">
         <div className="grid grid-cols-1 gap-8 lg:grid-cols-3">
           <div className="space-y-6 lg:col-span-2">
-            <div className="border-border/60 bg-muted/40 relative aspect-video w-full overflow-hidden rounded-2xl border shadow-lg flex items-center justify-center">
+            <div className="border-border/60 bg-muted/40 relative flex aspect-video w-full items-center justify-center overflow-hidden rounded-2xl border shadow-lg">
               <img
                 src={project.imageUrl}
                 alt={project.title}
@@ -197,8 +206,11 @@ export default async function ProjectDetailPage({ params }: PageProps) {
                   <h3 className="mb-3 font-semibold">Key Features</h3>
                   <ul className="space-y-2">
                     {project.features.map((feature, i) => (
-                      <li key={i} className="text-muted-foreground flex items-start gap-2.5 text-sm">
-                        <span className="bg-[#0CBAA6]/20 text-[#0CBAA6] mt-1 flex h-4 w-4 shrink-0 items-center justify-center rounded-full text-[10px] font-bold">
+                      <li
+                        key={i}
+                        className="text-muted-foreground flex items-start gap-2.5 text-sm"
+                      >
+                        <span className="mt-1 flex h-4 w-4 shrink-0 items-center justify-center rounded-full bg-[#0CBAA6]/20 text-[10px] font-bold text-[#0CBAA6]">
                           ✓
                         </span>
                         <span>{feature}</span>
@@ -216,7 +228,9 @@ export default async function ProjectDetailPage({ params }: PageProps) {
 
               <div className="space-y-4 text-sm">
                 <div>
-                  <span className="text-muted-foreground block text-xs">Creators / Team</span>
+                  <span className="text-muted-foreground block text-xs">
+                    Creators / Team
+                  </span>
                   <div className="mt-1 font-medium">
                     {project.team ? (
                       <ul className="space-y-1">
@@ -236,10 +250,15 @@ export default async function ProjectDetailPage({ params }: PageProps) {
                 </div>
 
                 <div className="border-border/60 border-t pt-3">
-                  <span className="text-muted-foreground block text-xs">Technologies</span>
+                  <span className="text-muted-foreground block text-xs">
+                    Technologies
+                  </span>
                   <div className="mt-2 flex flex-wrap gap-1.5">
                     {project.tags.map((t) => (
-                      <span key={t} className="bg-muted rounded px-2.5 py-1 text-xs font-medium">
+                      <span
+                        key={t}
+                        className="bg-muted rounded px-2.5 py-1 text-xs font-medium"
+                      >
                         {t}
                       </span>
                     ))}
@@ -249,10 +268,12 @@ export default async function ProjectDetailPage({ params }: PageProps) {
                 <div className="border-border/60 flex items-center justify-between border-t pt-3">
                   <div className="flex items-center gap-4 text-xs font-medium">
                     <span className="flex items-center gap-1 text-red-500">
-                      <Heart className="h-4 w-4 fill-red-500/20" /> {project.likes} Likes
+                      <Heart className="h-4 w-4 fill-red-500/20" />{" "}
+                      {project.likes} Likes
                     </span>
                     <span className="flex items-center gap-1 text-blue-500">
-                      <MessageSquare className="h-4 w-4" /> {project.comments} Comments
+                      <MessageSquare className="h-4 w-4" /> {project.comments}{" "}
+                      Comments
                     </span>
                   </div>
                 </div>
@@ -260,10 +281,11 @@ export default async function ProjectDetailPage({ params }: PageProps) {
             </div>
 
             {project.demoUrl && (
-              <div className="border-[#0CBAA6]/30 bg-[#0CBAA6]/5 rounded-2xl border p-6">
+              <div className="rounded-2xl border border-[#0CBAA6]/30 bg-[#0CBAA6]/5 p-6">
                 <h4 className="font-bold text-[#0CBAA6]">Try AgroNova Live</h4>
                 <p className="text-muted-foreground mt-1 text-xs leading-relaxed">
-                  Experience the full AI-powered smart farming application live on web.
+                  Experience the full AI-powered smart farming application live
+                  on web.
                 </p>
                 <a
                   href={project.demoUrl}
@@ -271,8 +293,9 @@ export default async function ProjectDetailPage({ params }: PageProps) {
                   rel="noopener noreferrer"
                   className="mt-4 block"
                 >
-                  <Button className="bg-[#0CBAA6] hover:bg-[#0a9e8d] w-full rounded-xl font-semibold text-white shadow-sm">
-                    Visit agronova.in <ExternalLink className="ml-1 h-3.5 w-3.5" />
+                  <Button className="w-full rounded-xl bg-[#0CBAA6] font-semibold text-white shadow-sm hover:bg-[#0a9e8d]">
+                    Visit agronova.in{" "}
+                    <ExternalLink className="ml-1 h-3.5 w-3.5" />
                   </Button>
                 </a>
               </div>
