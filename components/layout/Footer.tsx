@@ -108,13 +108,15 @@ export function Footer() {
             >
               <span>Domains</span>
               <ChevronDown
-                className={`text-muted-foreground h-4 w-4 transition-transform duration-200 md:hidden ${openSections["domains"] ? "rotate-180" : ""
-                  }`}
+                className={`text-muted-foreground h-4 w-4 transition-transform duration-200 md:hidden ${
+                  openSections["domains"] ? "rotate-180" : ""
+                }`}
               />
             </button>
             <ul
-              className={`mt-3 space-y-2 text-sm md:block ${openSections["domains"] ? "block" : "hidden"
-                }`}
+              className={`mt-3 space-y-2 text-sm md:block ${
+                openSections["domains"] ? "block" : "hidden"
+              }`}
             >
               <li>
                 <Link
@@ -161,13 +163,15 @@ export function Footer() {
             >
               <span>Quick Links</span>
               <ChevronDown
-                className={`text-muted-foreground h-4 w-4 transition-transform duration-200 md:hidden ${openSections["quickLinks"] ? "rotate-180" : ""
-                  }`}
+                className={`text-muted-foreground h-4 w-4 transition-transform duration-200 md:hidden ${
+                  openSections["quickLinks"] ? "rotate-180" : ""
+                }`}
               />
             </button>
             <ul
-              className={`mt-3 space-y-2 text-sm md:block ${openSections["quickLinks"] ? "block" : "hidden"
-                }`}
+              className={`mt-3 space-y-2 text-sm md:block ${
+                openSections["quickLinks"] ? "block" : "hidden"
+              }`}
             >
               <li>
                 <Link
@@ -221,13 +225,15 @@ export function Footer() {
             >
               <span>Contact</span>
               <ChevronDown
-                className={`text-muted-foreground h-4 w-4 transition-transform duration-200 md:hidden ${openSections["contact"] ? "rotate-180" : ""
-                  }`}
+                className={`text-muted-foreground h-4 w-4 transition-transform duration-200 md:hidden ${
+                  openSections["contact"] ? "rotate-180" : ""
+                }`}
               />
             </button>
             <ul
-              className={`mt-3 space-y-3 text-sm md:block ${openSections["contact"] ? "block" : "hidden"
-                }`}
+              className={`mt-3 space-y-3 text-sm md:block ${
+                openSections["contact"] ? "block" : "hidden"
+              }`}
             >
               <li className="flex items-start gap-2">
                 <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-[#0CBAA6]" />
