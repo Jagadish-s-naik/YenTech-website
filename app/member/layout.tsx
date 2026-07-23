@@ -63,13 +63,13 @@ export default function MemberLayout({
   };
 
   return (
-    <div className="bg-muted/20 flex min-h-screen flex-col md:flex-row">
+    <div className="bg-muted/20 flex min-h-screen flex-col md:h-[calc(100vh-5rem)] md:min-h-0 md:flex-row md:overflow-hidden">
       {/* Desktop Sidebar */}
-      <aside className="bg-background hidden border-r md:flex md:w-64 md:shrink-0 md:flex-col">
-        <div className="flex h-16 items-center border-b px-6">
+      <aside className="bg-background hidden border-r md:flex md:h-full md:w-64 md:shrink-0 md:flex-col">
+        <div className="flex h-16 shrink-0 items-center border-b px-6">
           <span className="font-heading text-lg font-bold">Member Portal</span>
         </div>
-        <div className="flex-1 p-4">
+        <div className="flex-1 overflow-y-auto p-4">
           <nav className="space-y-1">
             {SIDEBAR_LINKS.map((link) => {
               const isActive = pathname === link.href;
@@ -101,7 +101,7 @@ export default function MemberLayout({
             )}
           </nav>
         </div>
-        <div className="border-t p-4">
+        <div className="shrink-0 border-t p-4">
           <button
             onClick={handleSignOut}
             className="flex w-full cursor-pointer items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-medium text-red-500 transition-colors hover:bg-red-500/10"
@@ -113,9 +113,9 @@ export default function MemberLayout({
       </aside>
 
       {/* Main Content */}
-      <main className="flex min-w-0 flex-1 flex-col">
+      <main className="flex min-w-0 flex-1 flex-col md:h-full md:overflow-hidden">
         {/* Top Header */}
-        <header className="bg-background flex h-16 items-center justify-between border-b px-4 md:px-6">
+        <header className="bg-background flex h-16 shrink-0 items-center justify-between border-b px-4 md:px-6">
           <form
             onSubmit={(e) => {
               e.preventDefault();
@@ -164,7 +164,7 @@ export default function MemberLayout({
         </header>
 
         {/* Mobile Horizontal Navigation Tabs */}
-        <div className="bg-background flex items-center justify-between border-b px-4 py-2 md:hidden">
+        <div className="bg-background flex shrink-0 items-center justify-between border-b px-4 py-2 md:hidden">
           <nav className="no-scrollbar flex items-center gap-1 overflow-x-auto py-0.5">
             {SIDEBAR_LINKS.map((link) => {
               const isActive = pathname === link.href;
@@ -202,8 +202,8 @@ export default function MemberLayout({
           </button>
         </div>
 
-        {/* Dashboard Content */}
-        {children}
+        {/* Dashboard Content Container (Scrollable) */}
+        <div className="flex-1 overflow-y-auto">{children}</div>
       </main>
     </div>
   );

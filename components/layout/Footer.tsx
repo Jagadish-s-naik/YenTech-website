@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import {
   Monitor,
   Cpu,
@@ -14,7 +15,12 @@ import {
 } from "lucide-react";
 
 export function Footer() {
+  const pathname = usePathname();
   const [openSections, setOpenSections] = useState<Record<string, boolean>>({});
+
+  if (pathname.startsWith("/member") || pathname.startsWith("/admin")) {
+    return null;
+  }
 
   const toggleSection = (sectionKey: string) => {
     setOpenSections((prev) => ({

@@ -1,8 +1,8 @@
 "use client";
 
-import { useState, useEffect, Suspense } from "react";
+import { useState, Suspense } from "react";
 import Link from "next/link";
-import { useRouter, useSearchParams } from "next/navigation";
+import { useRouter } from "next/navigation";
 import { createClient } from "@/lib/supabase/client";
 import {
   Card,
@@ -14,42 +14,31 @@ import {
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Button } from "@/components/ui/button";
-import { Loader2, AlertCircle, Mail, Lock, Eye, EyeOff } from "lucide-react";
+import {
+  Loader2,
+  AlertCircle,
+  Mail,
+  Lock,
+  Eye,
+  EyeOff,
+  User,
+  CheckCircle2,
+} from "lucide-react";
 
-function LoginForm() {
+function SignupForm() {
   const router = useRouter();
-  const searchParams = useSearchParams();
   const supabase = createClient();
 
+  const [fullName, setFullName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
+  const [successMessage, setSuccessMessage] = useState<string | null>(null);
 
-  const errorParam = searchParams.get("error");
-  useEffect(() => {
-    if (errorParam) {
-      const ERROR_MESSAGES: Record<string, string> = {
-        invalid_domain: "Only @yenepoya.edu.in email addresses are allowed.",
-        not_whitelisted:
-          "Your campus ID is not pre-authorized. Please contact the administrator.",
-        access_denied:
-          "Access denied. Only pre-authorized @yenepoya.edu.in accounts are permitted to sign in.",
-        auth_failed: "Authentication failed. Please try again.",
-      };
-
-      const friendlyMsg =
-        ERROR_MESSAGES[errorParam] || decodeURIComponent(errorParam);
-
-      const timer = setTimeout(() => {
-        setErrorMessage(friendlyMsg);
-      }, 0);
-      return () => clearTimeout(timer);
-    }
-  }, [errorParam]);
-
-  const handleGoogleLogin = async () => {
+  const handleGoogleSignup = async () => {
     setIsLoading(true);
     setErrorMessage(null);
     try {
@@ -75,27 +64,78 @@ function LoginForm() {
     e.preventDefault();
     setIsLoading(true);
     setErrorMessage(null);
+    setSuccessMessage(null);
+
+    const cleanEmail = email.trim().toLowerCase();
+
+    if (!cleanEmail.endsWith("@yenepoya.edu.in")) {
+      setErrorMessage("Only @yenepoya.edu.in email addresses are permitted.");
+      setIsLoading(false);
+      return;
+    }
+
+    if (password.length < 6) {
+      setErrorMessage("Password must be at least 6 characters long.");
+      setIsLoading(false);
+      return;
+    }
+
+    if (password !== confirmPassword) {
+      setErrorMessage("Passwords do not match.");
+      setIsLoading(false);
+      return;
+    }
 
     try {
-      const { data: signInData, error: signInError } =
-        await supabase.auth.signInWithPassword({
-          email,
-          password,
-        });
+      // First check if campus ID is whitelisted via RPC
+      const { data: status, error: statusErr } = await supabase.rpc(
+        "check_member_status",
+        { p_email: cleanEmail },
+      );
 
-      if (signInError) {
-        setErrorMessage(signInError.message);
+      if (statusErr) {
+        setErrorMessage(statusErr.message);
         setIsLoading(false);
         return;
       }
 
-      if (signInData?.user) {
-        const { data: isAdmin } = await supabase.rpc("is_admin");
+      if (status && typeof status === "object") {
+        const s = status as { valid_domain: boolean; whitelisted: boolean };
+        if (!s.whitelisted) {
+          setErrorMessage(
+            "Your campus ID is not pre-authorized. Please contact the administrator to get whitelisted.",
+          );
+          setIsLoading(false);
+          return;
+        }
+      }
 
-        if (isAdmin) {
-          router.push("/admin");
-        } else {
+      const { data: signUpData, error: signUpError } =
+        await supabase.auth.signUp({
+          email: cleanEmail,
+          password,
+          options: {
+            data: {
+              full_name: fullName.trim() || undefined,
+            },
+          },
+        });
+
+      if (signUpError) {
+        setErrorMessage(signUpError.message);
+        setIsLoading(false);
+        return;
+      }
+
+      if (signUpData?.user) {
+        if (signUpData.session) {
+          // Auto signed in
           router.push("/member");
+        } else {
+          // Email confirmation required or sign up successful
+          setSuccessMessage(
+            "Account created successfully! Please check your email to confirm your account or log in.",
+          );
         }
       }
     } catch (err: unknown) {
@@ -121,10 +161,10 @@ function LoginForm() {
 
         <div className="space-y-1">
           <CardTitle className="font-heading text-2xl font-bold tracking-tight">
-            Welcome Back!
+            Create Account
           </CardTitle>
           <CardDescription className="text-xs">
-            Sign in with Google SSO or enter credentials to access your account
+            Sign up with your pre-authorized @yenepoya.edu.in email
           </CardDescription>
         </div>
       </CardHeader>
@@ -135,7 +175,7 @@ function LoginForm() {
           <Button
             type="button"
             variant="outline"
-            onClick={handleGoogleLogin}
+            onClick={handleGoogleSignup}
             disabled={isLoading}
             className="border-muted-foreground/20 hover:bg-muted/50 hover:text-foreground flex h-11 w-full cursor-pointer items-center justify-center gap-3 rounded-xl border text-sm font-semibold transition-all duration-200"
           >
@@ -157,7 +197,7 @@ function LoginForm() {
                 d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52z"
               />
             </svg>
-            Sign in with Google
+            Sign up with Google
           </Button>
 
           <div className="relative flex items-center justify-center py-2">
@@ -168,6 +208,24 @@ function LoginForm() {
           </div>
 
           <form onSubmit={handleSubmit} className="space-y-4">
+            {/* Full Name Field */}
+            <div className="space-y-2">
+              <Label htmlFor="fullName" className="text-xs font-medium">
+                Full Name
+              </Label>
+              <div className="relative">
+                <User className="text-muted-foreground absolute top-1/2 left-3.5 h-4 w-4 -translate-y-1/2" />
+                <Input
+                  id="fullName"
+                  type="text"
+                  placeholder="John Doe"
+                  value={fullName}
+                  onChange={(e) => setFullName(e.target.value)}
+                  className="bg-background/50 border-muted-foreground/20 focus-visible:ring-primary/50 h-11 pl-10 text-sm"
+                />
+              </div>
+            </div>
+
             {/* Email Field */}
             <div className="space-y-2">
               <Label htmlFor="email" className="text-xs font-medium">
@@ -205,6 +263,7 @@ function LoginForm() {
                 />
                 <button
                   type="button"
+                  tabIndex={-1}
                   onClick={() => setShowPassword(!showPassword)}
                   className="text-muted-foreground hover:text-foreground absolute top-1/2 right-3 -translate-y-1/2 p-1 transition-colors"
                 >
@@ -215,17 +274,28 @@ function LoginForm() {
                   )}
                 </button>
               </div>
-              <div className="flex justify-end pt-1">
-                <Link
-                  href="/forgot-password"
-                  className="text-primary text-xs font-medium transition-colors hover:underline"
-                >
-                  Forgot password?
-                </Link>
+            </div>
+
+            {/* Confirm Password Field */}
+            <div className="space-y-2">
+              <Label htmlFor="confirmPassword" className="text-xs font-medium">
+                Confirm Password
+              </Label>
+              <div className="relative">
+                <Lock className="text-muted-foreground absolute top-1/2 left-3.5 h-4 w-4 -translate-y-1/2" />
+                <Input
+                  id="confirmPassword"
+                  type={showPassword ? "text" : "password"}
+                  placeholder="••••••••"
+                  value={confirmPassword}
+                  onChange={(e) => setConfirmPassword(e.target.value)}
+                  required
+                  className="bg-background/50 border-muted-foreground/20 focus-visible:ring-primary/50 h-11 pr-10 pl-10 text-sm"
+                />
               </div>
             </div>
 
-            {/* Sign In Button */}
+            {/* Sign Up Button */}
             <Button
               type="submit"
               className="mt-6 h-11 w-full cursor-pointer text-sm font-semibold transition-all duration-200"
@@ -234,21 +304,21 @@ function LoginForm() {
               {isLoading ? (
                 <>
                   <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                  Signing in...
+                  Creating Account...
                 </>
               ) : (
-                "Sign In"
+                "Create Account"
               )}
             </Button>
           </form>
 
           <div className="text-muted-foreground pt-2 text-center text-xs">
-            Don&apos;t have an account?{" "}
+            Already have an account?{" "}
             <Link
-              href="/auth/signup"
+              href="/auth/login"
               className="text-primary font-medium transition-colors hover:underline"
             >
-              Sign Up
+              Sign In
             </Link>
           </div>
 
@@ -258,13 +328,20 @@ function LoginForm() {
               <span>{errorMessage}</span>
             </div>
           )}
+
+          {successMessage && (
+            <div className="mt-4 flex items-center gap-2.5 rounded-xl border border-green-500/30 bg-green-500/10 p-3.5 text-xs font-medium text-green-500">
+              <CheckCircle2 className="h-4 w-4 shrink-0" />
+              <span>{successMessage}</span>
+            </div>
+          )}
         </div>
       </CardContent>
     </Card>
   );
 }
 
-export default function LoginPage() {
+export default function SignupPage() {
   return (
     <div className="bg-muted/20 flex min-h-screen items-center justify-center p-4">
       <Suspense
@@ -274,7 +351,7 @@ export default function LoginPage() {
           </div>
         }
       >
-        <LoginForm />
+        <SignupForm />
       </Suspense>
     </div>
   );
