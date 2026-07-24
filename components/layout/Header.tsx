@@ -24,9 +24,6 @@ export function Header() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const isLoggedIn =
-    pathname.startsWith("/admin") || pathname.startsWith("/member");
-
   const toggleDropdown = (name: string) => {
     setActiveDropdown(activeDropdown === name ? null : name);
   };
@@ -101,30 +98,6 @@ export function Header() {
 
         {/* Action Buttons */}
         <div className="flex items-center gap-3">
-          <div className="hidden items-center gap-3 md:flex">
-            {!isLoggedIn ? (
-              <Link href="/auth/login">
-                <Button
-                  variant="outline"
-                  size="sm"
-                  className="border-border/80 px-6 py-2 text-sm font-medium transition-colors hover:border-[#0CBAA6] hover:text-[#0CBAA6]"
-                >
-                  Login
-                </Button>
-              </Link>
-            ) : (
-              <Link href={pathname.startsWith("/admin") ? "/admin" : "/member"}>
-                <Button
-                  variant="outline"
-                  size="sm"
-                  className="border-border/80 px-6 py-2 text-sm font-medium hover:border-[#0CBAA6] hover:text-[#0CBAA6]"
-                >
-                  Dashboard
-                </Button>
-              </Link>
-            )}
-          </div>
-
           <ThemeToggle />
 
           {/* Mobile Menu Toggle */}
@@ -248,33 +221,6 @@ export function Header() {
                 )}
               </div>
             ))}
-            <div className="border-border/60 mt-4 flex flex-col gap-3 border-t pt-4">
-              {!isLoggedIn ? (
-                <Link
-                  href="/auth/login"
-                  onClick={() => setMobileMenuOpen(false)}
-                >
-                  <Button
-                    variant="outline"
-                    className="border-border/80 w-full rounded-full"
-                  >
-                    Login
-                  </Button>
-                </Link>
-              ) : (
-                <Link
-                  href={pathname.startsWith("/admin") ? "/admin" : "/member"}
-                  onClick={() => setMobileMenuOpen(false)}
-                >
-                  <Button
-                    variant="outline"
-                    className="border-border/80 w-full rounded-full"
-                  >
-                    Dashboard
-                  </Button>
-                </Link>
-              )}
-            </div>
           </nav>
         </div>
       )}

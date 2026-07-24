@@ -2,16 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import {
-  Monitor,
-  Cpu,
-  Palette,
-  ShieldCheck,
-  Mail,
-  MapPin,
-  Phone,
-  ChevronDown,
-} from "lucide-react";
+import { Mail, MapPin, Phone, ChevronDown } from "lucide-react";
 
 export function Footer() {
   const [openSections, setOpenSections] = useState<Record<string, boolean>>({});
@@ -26,9 +17,9 @@ export function Footer() {
   return (
     <footer className="bg-card/50 text-muted-foreground border-border/60 mt-auto w-full border-t backdrop-blur-sm">
       <div className="container mx-auto px-4 py-8 sm:px-8 sm:py-12">
-        <div className="grid grid-cols-1 gap-6 md:grid-cols-4 md:gap-8">
+        <div className="grid grid-cols-1 gap-8 md:grid-cols-2 md:gap-8 lg:grid-cols-4 lg:gap-12">
           {/* Brand */}
-          <div className="space-y-4 md:col-span-1">
+          <div className="space-y-4">
             <Link href="/" className="group flex items-center gap-2.5">
               <img
                 src="/yentech.svg"
@@ -99,61 +90,6 @@ export function Footer() {
             </div>
           </div>
 
-          {/* Domains */}
-          <div className="border-border/40 border-t pt-4 md:border-t-0 md:pt-0">
-            <button
-              onClick={() => toggleSection("domains")}
-              className="font-heading text-foreground flex w-full items-center justify-between text-sm font-semibold tracking-wider uppercase md:cursor-default"
-              aria-expanded={openSections["domains"]}
-            >
-              <span>Domains</span>
-              <ChevronDown
-                className={`text-muted-foreground h-4 w-4 transition-transform duration-200 md:hidden ${
-                  openSections["domains"] ? "rotate-180" : ""
-                }`}
-              />
-            </button>
-            <ul
-              className={`mt-3 space-y-2 text-sm md:block ${
-                openSections["domains"] ? "block" : "hidden"
-              }`}
-            >
-              <li>
-                <Link
-                  href="/domains/web-development"
-                  className="flex items-center gap-2 transition-colors hover:text-[#0CBAA6]"
-                >
-                  <Monitor className="h-4 w-4 text-[#0CBAA6]" /> Web Development
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/domains/ai-ml"
-                  className="flex items-center gap-2 transition-colors hover:text-[#0CBAA6]"
-                >
-                  <Cpu className="h-4 w-4 text-[#0CBAA6]" /> AI & ML
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/domains/graphics-design"
-                  className="flex items-center gap-2 transition-colors hover:text-[#0CBAA6]"
-                >
-                  <Palette className="h-4 w-4 text-[#0CBAA6]" /> Graphics Design
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/domains/cyber-security"
-                  className="flex items-center gap-2 transition-colors hover:text-[#0CBAA6]"
-                >
-                  <ShieldCheck className="h-4 w-4 text-[#0CBAA6]" /> Cyber
-                  Security
-                </Link>
-              </li>
-            </ul>
-          </div>
-
           {/* Quick Links */}
           <div className="border-border/40 border-t pt-4 md:border-t-0 md:pt-0">
             <button
@@ -161,7 +97,7 @@ export function Footer() {
               className="font-heading text-foreground flex w-full items-center justify-between text-sm font-semibold tracking-wider uppercase md:cursor-default"
               aria-expanded={openSections["quickLinks"]}
             >
-              <span>Quick Links</span>
+              <span>Navigation</span>
               <ChevronDown
                 className={`text-muted-foreground h-4 w-4 transition-transform duration-200 md:hidden ${
                   openSections["quickLinks"] ? "rotate-180" : ""
@@ -175,10 +111,18 @@ export function Footer() {
             >
               <li>
                 <Link
+                  href="/"
+                  className="transition-colors hover:text-[#0CBAA6]"
+                >
+                  Home
+                </Link>
+              </li>
+              <li>
+                <Link
                   href="/events"
                   className="transition-colors hover:text-[#0CBAA6]"
                 >
-                  Events Hub
+                  Events
                 </Link>
               </li>
               <li>
@@ -186,23 +130,7 @@ export function Footer() {
                   href="/projects"
                   className="transition-colors hover:text-[#0CBAA6]"
                 >
-                  Project Showcase
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/badges"
-                  className="transition-colors hover:text-[#0CBAA6]"
-                >
-                  Leaderboard
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/resources"
-                  className="transition-colors hover:text-[#0CBAA6]"
-                >
-                  Resource Library
+                  Projects
                 </Link>
               </li>
               <li>
@@ -211,6 +139,52 @@ export function Footer() {
                   className="transition-colors hover:text-[#0CBAA6]"
                 >
                   Blog
+                </Link>
+              </li>
+            </ul>
+          </div>
+
+          {/* Events */}
+          <div className="border-border/40 border-t pt-4 md:border-t-0 md:pt-0">
+            <button
+              onClick={() => toggleSection("events")}
+              className="font-heading text-foreground flex w-full items-center justify-between text-sm font-semibold tracking-wider uppercase md:cursor-default"
+              aria-expanded={openSections["events"]}
+            >
+              <span>Events</span>
+              <ChevronDown
+                className={`text-muted-foreground h-4 w-4 transition-transform duration-200 md:hidden ${
+                  openSections["events"] ? "rotate-180" : ""
+                }`}
+              />
+            </button>
+            <ul
+              className={`mt-3 space-y-2 text-sm md:block ${
+                openSections["events"] ? "block" : "hidden"
+              }`}
+            >
+              <li>
+                <Link
+                  href="/events/workshops"
+                  className="transition-colors hover:text-[#0CBAA6]"
+                >
+                  Workshops
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/events/hackathons"
+                  className="transition-colors hover:text-[#0CBAA6]"
+                >
+                  Hackathons
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/events/seminars"
+                  className="transition-colors hover:text-[#0CBAA6]"
+                >
+                  Tech Talks
                 </Link>
               </li>
             </ul>
@@ -264,29 +238,9 @@ export function Footer() {
           </div>
         </div>
 
-        {/* Bottom copyright & links */}
+        {/* Bottom copyright */}
         <div className="border-border/60 mt-8 flex flex-col items-center justify-between gap-4 border-t pt-6 text-center text-xs sm:mt-12 md:flex-row md:text-left">
           <p>&copy; {new Date().getFullYear()} YenTech. All rights reserved.</p>
-          <div className="flex flex-wrap justify-center gap-4 sm:gap-6">
-            <Link
-              href="/admin"
-              className="transition-colors hover:text-[#0CBAA6]"
-            >
-              Admin
-            </Link>
-            <Link
-              href="/privacy"
-              className="transition-colors hover:text-[#0CBAA6]"
-            >
-              Privacy Policy
-            </Link>
-            <Link
-              href="/terms"
-              className="transition-colors hover:text-[#0CBAA6]"
-            >
-              Terms of Service
-            </Link>
-          </div>
         </div>
       </div>
     </footer>

@@ -88,13 +88,13 @@ export function HeroSection() {
             </Link>
           </div>
           <div className="hero-cta w-full opacity-0 sm:w-auto">
-            <Link href="/domains">
+            <Link href="/projects">
               <Button
                 size="lg"
                 variant="outline"
                 className="border-border/80 bg-background dark:bg-card hover:bg-muted dark:hover:bg-muted w-full rounded-full px-8 py-6 text-base font-semibold shadow-xs transition-all duration-200 hover:border-[#0CBAA6] hover:text-[#0CBAA6] sm:w-auto"
               >
-                Explore Domains
+                Explore Projects
               </Button>
             </Link>
           </div>
