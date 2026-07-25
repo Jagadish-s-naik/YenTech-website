@@ -1,9 +1,7 @@
 import { PageHeader } from "@/components/shared/PageHeader";
 import { PageContainer } from "@/components/shared/PageContainer";
 import { ProjectCard } from "@/components/shared/ProjectCard";
-import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import { Plus } from "lucide-react";
 import { MOCK_PROJECTS } from "@/data/projects";
 
 export default function ProjectsPage() {
@@ -13,13 +11,7 @@ export default function ProjectsPage() {
         badge="Community Showcase"
         title="Student Projects"
         description="Explore innovative software, hardware, and AI projects built by the YenTech student community."
-      >
-        <Link href="/projects/submit">
-          <Button className="rounded-full bg-[#0CBAA6] px-6 py-2.5 text-sm font-semibold text-white shadow-md shadow-[#0CBAA6]/20 transition-all hover:bg-[#0a9e8d] hover:shadow-lg">
-            <Plus className="mr-2 h-4 w-4" /> Submit Project
-          </Button>
-        </Link>
-      </PageHeader>
+      />
 
       <PageContainer>
         <div className="border-border/60 mb-8 flex flex-col gap-4 border-b pb-6 sm:flex-row sm:items-center sm:justify-between">
