@@ -11,13 +11,19 @@ import { NavOverlay } from "@/components/layout/NavOverlay";
 const outfitHeading = Outfit({
   subsets: ["latin"],
   variable: "--font-heading",
+  display: "swap",
 });
 
-const figtree = Figtree({ subsets: ["latin"], variable: "--font-sans" });
+const figtree = Figtree({
+  subsets: ["latin"],
+  variable: "--font-sans",
+  display: "swap",
+});
 
 const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
   subsets: ["latin"],
+  display: "swap",
 });
 
 export const metadata: Metadata = {
