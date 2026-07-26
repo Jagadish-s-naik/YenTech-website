@@ -4,16 +4,25 @@ import { useEffect, useRef } from "react";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { gsap } from "gsap";
-import { StatsRibbon } from "./StatsRibbon";
 import { DotGridBackground } from "./DotGridBackground";
+
+const ROTATING_TITLES = [
+  "Tech Innovators",
+  "Web Developers",
+  "AI Engineers",
+  "Graphic Designers",
+  "Security Analysts",
+];
 
 export function HeroSection() {
   const containerRef = useRef<HTMLDivElement>(null);
+  const wordRef = useRef<HTMLSpanElement>(null);
 
   useEffect(() => {
     if (!containerRef.current) return;
 
     const ctx = gsap.context(() => {
+      // 1. Initial Page Load Animation
       const tl = gsap.timeline({ defaults: { ease: "power4.out" } });
 
       tl.fromTo(
@@ -39,6 +48,56 @@ export function HeroSection() {
           { opacity: 1, scale: 1, y: 0, duration: 0.6, stagger: 0.1 },
           "-=0.6",
         );
+
+      // 2. Lock Radial Gradient Orbit Strictly to Timeline Progress
+      // Title loop: 2.2s hold + 0.35s flip out + 0.45s flip in = 3.0s total per title
+      // Angle phase offset of -0.4s aligns the 180° sweep center precisely with the 0.8s flip window
+      let index = 0;
+      let loopCount = 0;
+
+      const updateGradientForTimeline = (timelineProgress: number) => {
+        // Offset +0.65 aligns the orbital sweep center directly over the 0.8s flip window
+        const angle = (timelineProgress + 0.65) * 180;
+        const rad = (angle * Math.PI) / 180;
+        const x = 50 + 90 * Math.cos(rad);
+        const y = 50 + 110 * Math.sin(rad);
+
+        if (wordRef.current) {
+          wordRef.current.style.backgroundImage = `radial-gradient(circle at ${x.toFixed(1)}% ${y.toFixed(1)}%, #D9FB02 0%, #0CBAA6 100%)`;
+        }
+      };
+
+      const wordLoop = gsap.timeline({
+        repeat: -1,
+        onRepeat: () => {
+          loopCount += 1;
+        },
+        onUpdate: function () {
+          updateGradientForTimeline(loopCount + this.progress());
+        },
+      });
+
+      wordLoop
+        .to({}, { duration: 2.2 }) // Hold word visible while gradient rests/prepares
+        .to(wordRef.current, {
+          y: -20,
+          opacity: 0,
+          duration: 0.35,
+          ease: "power2.in",
+        })
+        .add(() => {
+          index = (index + 1) % ROTATING_TITLES.length;
+          if (wordRef.current) {
+            wordRef.current.textContent = ROTATING_TITLES[index];
+          }
+        })
+        .set(wordRef.current, { y: 20 })
+        .to(wordRef.current, {
+          y: 0,
+          opacity: 1,
+          duration: 0.45,
+          ease: "back.out(1.7)",
+        });
     }, containerRef);
 
     return () => ctx.revert();
@@ -60,9 +119,23 @@ export function HeroSection() {
         </div>
 
         {/* Hero Title */}
-        <h1 className="hero-title font-heading text-foreground mb-6 text-4xl leading-[1.1] font-medium tracking-tight opacity-0 md:text-6xl">
-          Empowering the Next <br />
-          Generation of Innovators
+        <h1 className="hero-title font-heading text-foreground mb-6 text-4xl leading-[1.15] font-medium tracking-tight opacity-0 md:text-6xl">
+          <span>Empowering the</span>
+          <br />
+          <span>Next Generation of</span>
+          <br />
+          <span className="relative inline-block leading-normal">
+            <span
+              ref={wordRef}
+              className="inline-block bg-clip-text px-1 pb-1 font-bold text-transparent"
+              style={{
+                backgroundImage:
+                  "radial-gradient(circle at 140% -40%, #D9FB02 0%, #0CBAA6 100%)",
+              }}
+            >
+              {ROTATING_TITLES[0]}
+            </span>
+          </span>
         </h1>
 
         {/* Hero Subtitle Description */}
@@ -100,7 +173,6 @@ export function HeroSection() {
           </div>
         </div>
       </div>
-      <StatsRibbon />
     </section>
   );
 }

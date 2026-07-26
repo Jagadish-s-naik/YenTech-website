@@ -57,8 +57,8 @@ export function DotGridBackground() {
 
       const baseR = 1.2 * sizeScale;
       const baseRRange = 1.2 * sizeScale;
-      const baseO = 0.15 * Math.min(1, sizeScale + 0.3);
-      const baseORange = 0.15 * Math.min(1, sizeScale + 0.3);
+      const baseO = 0.18 * Math.min(1, sizeScale + 0.3);
+      const baseORange = 0.18 * Math.min(1, sizeScale + 0.3);
 
       for (let r = 0; r < rows; r++) {
         for (let c = 0; c < cols; c++) {
@@ -236,8 +236,8 @@ export function DotGridBackground() {
         const u = dot.x / (w || 1);
         const v = ((h || 1) - dot.y) / (h || 1);
         const rawRatio = Math.max(0, Math.min(1, (u + v) / 2));
-        // Power curve (2.5) gives dominance to primary teal (#0cbaa6) across majority of grid
-        const posRatio = Math.pow(rawRatio, 2.5);
+        // Power curve gives dominance to primary teal (#0cbaa6) across majority of grid
+        const posRatio = Math.pow(rawRatio, 2);
 
         // #0cbaa6 (12, 186, 166) -> #d9fb02 (217, 251, 2)
         const rVal = Math.round(12 + (217 - 12) * posRatio);
