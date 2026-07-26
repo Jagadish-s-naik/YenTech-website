@@ -14,6 +14,29 @@ const ROTATING_TITLES = [
   "Security Analysts",
 ];
 
+const HERO_STATS = [
+  {
+    id: "members",
+    label: "Members",
+    value: "50+",
+  },
+  {
+    id: "projects",
+    label: "Projects",
+    value: "5+",
+  },
+  {
+    id: "events",
+    label: "Events",
+    value: "5+",
+  },
+  {
+    id: "prizes",
+    label: "Prizes",
+    value: "₹1.5L+",
+  },
+];
+
 export function HeroSection() {
   const containerRef = useRef<HTMLDivElement>(null);
   const wordRef = useRef<HTMLSpanElement>(null);
@@ -43,20 +66,23 @@ export function HeroSection() {
           "-=0.7",
         )
         .fromTo(
+          ".hero-stats",
+          { opacity: 0, y: 15 },
+          { opacity: 1, y: 0, duration: 0.8 },
+          "-=0.6",
+        )
+        .fromTo(
           ".hero-cta",
           { opacity: 0, scale: 0.95, y: 15 },
           { opacity: 1, scale: 1, y: 0, duration: 0.6, stagger: 0.1 },
           "-=0.6",
         );
 
-      // 2. Lock Radial Gradient Orbit Strictly to Timeline Progress
-      // Title loop: 2.2s hold + 0.35s flip out + 0.45s flip in = 3.0s total per title
-      // Angle phase offset of -0.4s aligns the 180° sweep center precisely with the 0.8s flip window
+      // 2. Synchronized Radial Spotlight Orbit & Word Rotator
       let index = 0;
       let loopCount = 0;
 
       const updateGradientForTimeline = (timelineProgress: number) => {
-        // Offset +0.65 aligns the orbital sweep center directly over the 0.8s flip window
         const angle = (timelineProgress + 0.65) * 180;
         const rad = (angle * Math.PI) / 180;
         const x = 50 + 90 * Math.cos(rad);
@@ -78,7 +104,7 @@ export function HeroSection() {
       });
 
       wordLoop
-        .to({}, { duration: 2.2 }) // Hold word visible while gradient rests/prepares
+        .to({}, { duration: 2.2 })
         .to(wordRef.current, {
           y: -20,
           opacity: 0,
@@ -106,10 +132,10 @@ export function HeroSection() {
   return (
     <section
       ref={containerRef}
-      className="bg-background relative flex flex-col overflow-hidden md:h-[calc(100svh-5rem)]"
+      className="bg-background relative flex flex-col justify-around overflow-hidden md:h-[calc(100svh-5rem)]"
     >
       <DotGridBackground />
-      <div className="relative z-10 container mx-auto flex max-w-4xl flex-1 flex-col justify-center px-4 py-8 text-center sm:px-8">
+      <div className="relative z-10 container mx-auto flex max-w-4xl flex-col justify-center px-4 py-8 text-center sm:px-8">
         {/* Brand Logo & Name Badge */}
         <div className="hero-logo mb-6 inline-flex items-center justify-center gap-2.5 opacity-0">
           <img src="/yentech.svg" alt="YenTech Logo" className="h-16 w-16" />
@@ -139,7 +165,7 @@ export function HeroSection() {
         </h1>
 
         {/* Hero Subtitle Description */}
-        <div className="hero-desc text-muted-foreground mx-auto px-4 pb-12 text-center text-base leading-relaxed opacity-0 md:text-lg">
+        <div className="hero-desc text-muted-foreground mx-auto px-4 pb-8 text-center text-base leading-relaxed opacity-0 md:text-lg">
           <p>
             The official tech community of Yenepoya School of Engineering &
             Technology. <br className="hidden md:block" />
@@ -171,6 +197,25 @@ export function HeroSection() {
               </Button>
             </Link>
           </div>
+        </div>
+      </div>
+
+      {/* Typographic Hero Stats (Docked at Section Bottom - Flex Space-Around, No Wrapping) */}
+      <div className="hero-stats relative z-10 container mx-auto mb-6 max-w-5xl px-2 opacity-0 sm:mb-8 sm:px-8">
+        <div className="divide-border/80 flex flex-nowrap items-center justify-around divide-x text-center">
+          {HERO_STATS.map((stat) => (
+            <div
+              key={stat.id}
+              className="flex flex-1 flex-col items-center px-1 text-center sm:px-4 md:px-8"
+            >
+              <div className="font-heading text-foreground text-2xl font-bold tracking-tight sm:text-4xl md:text-5xl">
+                {stat.value}
+              </div>
+              <div className="text-muted-foreground mt-1 text-[10px] font-semibold tracking-wider uppercase sm:text-xs md:text-sm">
+                {stat.label}
+              </div>
+            </div>
+          ))}
         </div>
       </div>
     </section>
