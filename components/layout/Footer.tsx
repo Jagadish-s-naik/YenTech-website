@@ -3,6 +3,7 @@
 import { useState } from "react";
 import Link from "next/link";
 import { Mail, MapPin, Phone, ChevronDown } from "lucide-react";
+import YenTechLogo from "@/public/yentech.svg";
 
 export function Footer() {
   const [openSections, setOpenSections] = useState<Record<string, boolean>>({});
@@ -21,14 +22,7 @@ export function Footer() {
           {/* Brand */}
           <div className="space-y-4">
             <Link href="/" className="group flex items-center gap-2.5">
-              <img
-                src="/yentech.svg"
-                alt="YenTech Logo"
-                className="h-8 w-8 transition-transform duration-300 group-hover:scale-105"
-              />
-              <span className="font-heading text-foreground text-base font-bold tracking-widest uppercase transition-colors group-hover:text-[#0CBAA6]">
-                YENTECH
-              </span>
+              <YenTechLogo className="text-foreground h-10 w-auto transition-transform duration-300 group-hover:scale-105" />
             </Link>
             <p className="max-w-sm text-sm leading-relaxed">
               Yenepoya School of Engineering & Technology. Building the future

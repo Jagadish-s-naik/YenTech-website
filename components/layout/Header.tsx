@@ -9,6 +9,7 @@ import { Menu, X, ChevronDown, ChevronUp, ArrowUpRight } from "lucide-react";
 import { useState, useEffect } from "react";
 import { useNav } from "./NavContext";
 import { NAV_LINKS } from "./nav-data";
+import YenTechLogo from "@/public/yentech.svg";
 
 export function Header() {
   const pathname = usePathname();
@@ -49,14 +50,7 @@ export function Header() {
     >
       <div className="container mx-auto flex h-16 items-center justify-between px-4 sm:px-8">
         <Link href="/" className="group flex items-center gap-2.5">
-          <img
-            src="/yentech.svg"
-            alt="YenTech Logo"
-            className="h-8 w-8 transition-transform duration-300 group-hover:scale-105"
-          />
-          <span className="font-heading text-foreground text-base font-bold tracking-widest uppercase transition-colors group-hover:text-[#0CBAA6]">
-            YENTECH
-          </span>
+          <YenTechLogo className="h-10 w-auto transition-transform duration-300 group-hover:scale-105" />
         </Link>
 
         {/* Desktop Navigation Links */}

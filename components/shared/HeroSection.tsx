@@ -4,6 +4,9 @@ import { useEffect, useRef } from "react";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { gsap } from "gsap";
+import YenepoyaLogo from "@/public/yenepoya.svg";
+import YSETLogo from "@/public/yset.svg";
+import YenTechLogo from "@/public/yentech.svg";
 import { DotGridBackground } from "./DotGridBackground";
 
 const ROTATING_TITLES = [
@@ -49,10 +52,16 @@ export function HeroSection() {
       const tl = gsap.timeline({ defaults: { ease: "power4.out" } });
 
       tl.fromTo(
-        ".hero-logo",
+        ".hero-brand-logo",
         { opacity: 0, y: 15, scale: 0.9 },
         { opacity: 1, y: 0, scale: 1, duration: 0.8 },
       )
+        .fromTo(
+          ".hero-parent-logo",
+          { opacity: 0, y: 15, scale: 0.9 },
+          { opacity: 0.8, y: 0, scale: 1, duration: 0.8 },
+          "-=0.6",
+        )
         .fromTo(
           ".hero-title",
           { opacity: 0, y: 25 },
@@ -132,20 +141,24 @@ export function HeroSection() {
   return (
     <section
       ref={containerRef}
-      className="bg-background relative flex flex-col justify-around overflow-hidden md:h-[calc(100svh-5rem)]"
+      className="bg-background relative flex h-[calc(100svh-5rem)] flex-col justify-around overflow-hidden"
     >
       <DotGridBackground />
       <div className="relative z-10 container mx-auto flex max-w-4xl flex-col justify-center px-4 py-8 text-center sm:px-8">
+        {/* Parent Organization Logos (Yenepoya & YSET) */}
+        <div className="hero-parent-logo text-foreground mb-8 inline-flex items-center justify-center gap-4 opacity-0">
+          <YenepoyaLogo className="h-6 w-auto object-contain md:h-8" />
+          <div className="bg-border/70 h-2 w-px md:h-4" />
+          <YSETLogo className="h-6 w-auto object-contain md:h-8" />
+        </div>
+
         {/* Brand Logo & Name Badge */}
-        <div className="hero-logo mb-6 inline-flex items-center justify-center gap-2.5 opacity-0">
-          <img src="/yentech.svg" alt="YenTech Logo" className="h-16 w-16" />
-          <span className="font-heading text-foreground text-3xl font-bold tracking-widest uppercase">
-            YENTECH
-          </span>
+        <div className="hero-brand-logo mb-4 inline-flex items-center justify-center gap-2 opacity-0">
+          <YenTechLogo className="h-12 w-auto md:h-20" />
         </div>
 
         {/* Hero Title */}
-        <h1 className="hero-title font-heading text-foreground mb-6 text-4xl leading-[1.15] font-medium tracking-tight opacity-0 md:text-6xl">
+        <h1 className="hero-title text-foreground font-heading mb-6 text-4xl leading-[1.15] font-medium tracking-tight opacity-0 md:text-6xl">
           <span>Empowering the</span>
           <br />
           <span>Next Generation of</span>
