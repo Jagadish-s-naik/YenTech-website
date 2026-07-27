@@ -67,7 +67,7 @@ export default async function BlogPostPage({
           <div className="lg:col-span-8">
             <article className="border-border/60 bg-card/60 overflow-hidden rounded-3xl border shadow-sm backdrop-blur-md">
               {event?.imageUrl ? (
-                <div className="bg-muted border-border/50 relative aspect-[21/9] w-full overflow-hidden border-b">
+                <div className="bg-muted border-border/50 relative aspect-21/9 w-full overflow-hidden border-b">
                   <img
                     src={event.imageUrl}
                     alt={title}
@@ -75,7 +75,7 @@ export default async function BlogPostPage({
                   />
                 </div>
               ) : (
-                <div className="bg-muted border-border/50 relative aspect-[21/9] w-full overflow-hidden border-b">
+                <div className="bg-muted border-border/50 relative aspect-21/9 w-full overflow-hidden border-b">
                   <img
                     src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=1200&q=80"
                     alt={title}

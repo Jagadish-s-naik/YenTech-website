@@ -54,7 +54,10 @@ function EventsContent() {
     if (activeCategory.slug === "all") {
       return [{ label: "Events" }];
     }
-    return [{ label: "Events", href: "/events" }, { label: activeCategory.label }];
+    return [
+      { label: "Events", href: "/events" },
+      { label: activeCategory.label },
+    ];
   }, [activeCategory]);
 
   return (
@@ -74,10 +77,10 @@ function EventsContent() {
               <button
                 key={cat.slug}
                 onClick={() => handleSelectCategory(cat.slug)}
-                className={`rounded-full px-5 py-2 text-xs font-semibold transition-all cursor-pointer ${
+                className={`cursor-pointer rounded-full px-5 py-2 text-xs font-semibold transition-all ${
                   isActive
                     ? "bg-[#0CBAA6] text-white shadow-md shadow-[#0CBAA6]/20"
-                    : "border-border/60 bg-card/60 text-muted-foreground hover:border-[#0CBAA6]/50 hover:text-[#0CBAA6] border backdrop-blur-xs"
+                    : "border-border/60 bg-card/60 text-muted-foreground border backdrop-blur-xs hover:border-[#0CBAA6]/50 hover:text-[#0CBAA6]"
                 }`}
               >
                 {cat.label}
@@ -117,7 +120,7 @@ export default function EventsPage() {
 
       <Suspense
         fallback={
-          <div className="container mx-auto px-4 py-20 text-center text-muted-foreground">
+          <div className="text-muted-foreground container mx-auto px-4 py-20 text-center">
             Loading events...
           </div>
         }

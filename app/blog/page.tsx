@@ -160,10 +160,10 @@ export default function BlogPage() {
               <button
                 key={cat}
                 onClick={() => setActiveCategory(cat)}
-                className={`rounded-full px-5 py-2 text-xs font-semibold transition-all cursor-pointer ${
+                className={`cursor-pointer rounded-full px-5 py-2 text-xs font-semibold transition-all ${
                   isActive
                     ? "bg-[#0CBAA6] text-white shadow-md shadow-[#0CBAA6]/20"
-                    : "border-border/60 bg-card/60 text-muted-foreground hover:border-[#0CBAA6]/50 hover:text-[#0CBAA6] border backdrop-blur-xs"
+                    : "border-border/60 bg-card/60 text-muted-foreground border backdrop-blur-xs hover:border-[#0CBAA6]/50 hover:text-[#0CBAA6]"
                 }`}
               >
                 {cat}
@@ -184,7 +184,7 @@ export default function BlogPage() {
                     className="h-full w-full object-cover"
                   />
                   <div className="absolute top-3 left-3">
-                    <span className="border-border/60 bg-card/80 text-foreground flex items-center gap-1 rounded-full border px-3 py-0.5 text-[11px] font-semibold backdrop-blur-sm shadow-xs">
+                    <span className="border-border/60 bg-card/80 text-foreground flex items-center gap-1 rounded-full border px-3 py-0.5 text-[11px] font-semibold shadow-xs backdrop-blur-sm">
                       <Tag className="h-3 w-3 text-[#0CBAA6]" />
                       {post.category}
                     </span>
@@ -199,7 +199,8 @@ export default function BlogPage() {
                   </p>
                   <div className="text-muted-foreground border-border/50 flex items-center justify-between border-t pt-4 text-xs">
                     <span className="flex items-center gap-1.5">
-                      <User className="h-3.5 w-3.5 text-[#0CBAA6]" /> {post.author}
+                      <User className="h-3.5 w-3.5 text-[#0CBAA6]" />{" "}
+                      {post.author}
                     </span>
                     <span className="flex items-center gap-1.5">
                       <Clock className="h-3.5 w-3.5" /> {post.time}

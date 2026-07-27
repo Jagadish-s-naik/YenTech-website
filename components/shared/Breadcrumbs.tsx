@@ -15,15 +15,15 @@ export function Breadcrumbs({ items, className = "" }: BreadcrumbsProps) {
   return (
     <nav
       aria-label="Breadcrumb"
-      className={`flex items-center min-w-0 text-xs font-medium text-muted-foreground ${className}`}
+      className={`text-muted-foreground flex min-w-0 items-center text-xs font-medium ${className}`}
     >
-      <ol className="flex items-center flex-wrap min-w-0 gap-1.5">
-        <li className="inline-flex items-center shrink-0">
+      <ol className="flex min-w-0 flex-wrap items-center gap-1.5">
+        <li className="inline-flex shrink-0 items-center">
           <Link
             href="/"
             className="flex items-center gap-1 transition-colors hover:text-[#0CBAA6]"
           >
-            <Home className="h-3.5 w-3.5 text-muted-foreground/80 shrink-0" />
+            <Home className="text-muted-foreground/80 h-3.5 w-3.5 shrink-0" />
             <span className="sr-only sm:not-sr-only">Home</span>
           </Link>
         </li>
@@ -32,13 +32,16 @@ export function Breadcrumbs({ items, className = "" }: BreadcrumbsProps) {
           const isLast = index === items.length - 1;
 
           return (
-            <li key={index} className="inline-flex items-center min-w-0 gap-1.5">
-              <ChevronRight className="h-3.5 w-3.5 text-muted-foreground/60 shrink-0" />
+            <li
+              key={index}
+              className="inline-flex min-w-0 items-center gap-1.5"
+            >
+              <ChevronRight className="text-muted-foreground/60 h-3.5 w-3.5 shrink-0" />
               {item.href && !isLast ? (
                 <Link
                   href={item.href}
                   title={item.label}
-                  className="truncate max-w-[110px] sm:max-w-[180px] md:max-w-[260px] transition-colors hover:text-[#0CBAA6]"
+                  className="max-w-27.5 truncate transition-colors hover:text-[#0CBAA6] sm:max-w-45 md:max-w-65"
                 >
                   {item.label}
                 </Link>
@@ -46,7 +49,7 @@ export function Breadcrumbs({ items, className = "" }: BreadcrumbsProps) {
                 <span
                   aria-current="page"
                   title={item.label}
-                  className="truncate font-semibold text-foreground max-w-[140px] sm:max-w-[240px] md:max-w-[380px]"
+                  className="text-foreground max-w-35 truncate font-semibold sm:max-w-60 md:max-w-95"
                 >
                   {item.label}
                 </span>

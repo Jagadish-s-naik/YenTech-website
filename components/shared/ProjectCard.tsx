@@ -12,7 +12,7 @@ export function ProjectCard({ project }: { project: ProjectProps }) {
           alt={project.title}
           className="h-full w-full object-cover"
         />
-        <div className="absolute inset-0 flex items-center justify-center gap-3 bg-gradient-to-t from-black/80 via-black/40 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+        <div className="absolute inset-0 flex items-center justify-center gap-3 bg-linear-to-t from-black/80 via-black/40 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100">
           {project.demoUrl && (
             <a href={project.demoUrl} target="_blank" rel="noopener noreferrer">
               <Button
@@ -28,7 +28,7 @@ export function ProjectCard({ project }: { project: ProjectProps }) {
               <Button
                 size="sm"
                 variant="outline"
-                className="border-border/80 gap-1.5 rounded-full bg-background/80 text-xs font-semibold backdrop-blur-xs hover:border-[#0CBAA6] hover:text-[#0CBAA6]"
+                className="border-border/80 bg-background/80 gap-1.5 rounded-full text-xs font-semibold backdrop-blur-xs hover:border-[#0CBAA6] hover:text-[#0CBAA6]"
               >
                 <Code className="h-3.5 w-3.5" /> Code
               </Button>

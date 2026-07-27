@@ -221,8 +221,11 @@ export function EventsSection({ events }: EventsSectionProps) {
                   event.imageLeft ? "lg:order-1" : "lg:order-2"
                 }`}
               >
-                <Link href={`/events/${event.id}`} className="min-h-55 w-full flex-1">
-                  <div className="border-border/70 bg-card relative h-full w-full overflow-hidden rounded-2xl border shadow-sm transition-all duration-300 cursor-pointer">
+                <Link
+                  href={`/events/${event.id}`}
+                  className="min-h-55 w-full flex-1"
+                >
+                  <div className="border-border/70 bg-card relative h-full w-full cursor-pointer overflow-hidden rounded-2xl border shadow-sm transition-all duration-300">
                     <img
                       src={event.imageUrl}
                       alt={event.title}
@@ -231,10 +234,7 @@ export function EventsSection({ events }: EventsSectionProps) {
                   </div>
                 </Link>
 
-                <Link
-                  href={`/events/${event.id}`}
-                  className="w-full"
-                >
+                <Link href={`/events/${event.id}`} className="w-full">
                   <Button
                     size="lg"
                     className="group w-full rounded-full border-none bg-[#0CBAA6] py-3 text-sm font-semibold text-white shadow-md shadow-[#0CBAA6]/20 transition-all duration-300 hover:bg-[#0a9e8d]"

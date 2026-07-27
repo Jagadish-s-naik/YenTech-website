@@ -21,13 +21,13 @@ export default function ProjectsPage() {
           <button className="rounded-full bg-[#0CBAA6] px-5 py-2 text-xs font-semibold text-white shadow-md shadow-[#0CBAA6]/20 transition-all">
             All Projects
           </button>
-          <button className="border-border/60 bg-card/60 text-muted-foreground hover:border-[#0CBAA6]/50 hover:text-[#0CBAA6] rounded-full border px-5 py-2 text-xs font-semibold backdrop-blur-xs transition-all">
+          <button className="border-border/60 bg-card/60 text-muted-foreground rounded-full border px-5 py-2 text-xs font-semibold backdrop-blur-xs transition-all hover:border-[#0CBAA6]/50 hover:text-[#0CBAA6]">
             Web Dev
           </button>
-          <button className="border-border/60 bg-card/60 text-muted-foreground hover:border-[#0CBAA6]/50 hover:text-[#0CBAA6] rounded-full border px-5 py-2 text-xs font-semibold backdrop-blur-xs transition-all">
+          <button className="border-border/60 bg-card/60 text-muted-foreground rounded-full border px-5 py-2 text-xs font-semibold backdrop-blur-xs transition-all hover:border-[#0CBAA6]/50 hover:text-[#0CBAA6]">
             AI / ML
           </button>
-          <button className="border-border/60 bg-card/60 text-muted-foreground hover:border-[#0CBAA6]/50 hover:text-[#0CBAA6] rounded-full border px-5 py-2 text-xs font-semibold backdrop-blur-xs transition-all">
+          <button className="border-border/60 bg-card/60 text-muted-foreground rounded-full border px-5 py-2 text-xs font-semibold backdrop-blur-xs transition-all hover:border-[#0CBAA6]/50 hover:text-[#0CBAA6]">
             Mobile Apps
           </button>
         </div>

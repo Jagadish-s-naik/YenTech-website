@@ -48,7 +48,7 @@ export default async function EventDetailsPage({
           {/* Main Content */}
           <div className="space-y-8 lg:col-span-2">
             {event.imageUrl && (
-              <div className="border-border/60 bg-muted/40 aspect-[16/9] w-full overflow-hidden rounded-3xl border shadow-sm">
+              <div className="border-border/60 bg-muted/40 aspect-video w-full overflow-hidden rounded-3xl border shadow-sm">
                 <img
                   src={event.imageUrl}
                   alt={event.title}
@@ -127,7 +127,9 @@ export default async function EventDetailsPage({
                     <Calendar className="h-4.5 w-4.5" />
                   </div>
                   <div>
-                    <p className="text-xs font-semibold text-muted-foreground uppercase tracking-wider">Date</p>
+                    <p className="text-muted-foreground text-xs font-semibold tracking-wider uppercase">
+                      Date
+                    </p>
                     <p className="text-foreground text-sm font-medium">
                       {event.date}
                     </p>
@@ -139,7 +141,9 @@ export default async function EventDetailsPage({
                     <Clock className="h-4.5 w-4.5" />
                   </div>
                   <div>
-                    <p className="text-xs font-semibold text-muted-foreground uppercase tracking-wider">Time</p>
+                    <p className="text-muted-foreground text-xs font-semibold tracking-wider uppercase">
+                      Time
+                    </p>
                     <p className="text-foreground text-sm font-medium">
                       {event.time}
                     </p>
@@ -151,7 +155,9 @@ export default async function EventDetailsPage({
                     <MapPin className="h-4.5 w-4.5" />
                   </div>
                   <div>
-                    <p className="text-xs font-semibold text-muted-foreground uppercase tracking-wider">Location</p>
+                    <p className="text-muted-foreground text-xs font-semibold tracking-wider uppercase">
+                      Location
+                    </p>
                     <p className="text-foreground text-sm font-medium">
                       {event.location}
                     </p>
@@ -163,7 +169,9 @@ export default async function EventDetailsPage({
                     <Users className="h-4.5 w-4.5" />
                   </div>
                   <div>
-                    <p className="text-xs font-semibold text-muted-foreground uppercase tracking-wider">Attendance</p>
+                    <p className="text-muted-foreground text-xs font-semibold tracking-wider uppercase">
+                      Attendance
+                    </p>
                     <p className="text-foreground text-sm font-medium">
                       {event.attendees} Registered
                     </p>
@@ -171,16 +179,11 @@ export default async function EventDetailsPage({
                 </div>
               </div>
 
-              <div className="flex flex-col gap-3.5 border-t border-border/50 pt-6">
+              <div className="border-border/50 flex flex-col gap-3.5 border-t pt-6">
                 {isCompleted ? (
                   <>
-                    <Link
-                      href={`/blog/${event.id}`}
-                      className="w-full"
-                    >
-                      <Button
-                        className="border-none bg-[#0CBAA6] text-white shadow-md shadow-[#0CBAA6]/20 hover:bg-[#0a9e8d] h-11 w-full rounded-full text-sm font-semibold"
-                      >
+                    <Link href={`/blog/${event.id}`} className="w-full">
+                      <Button className="h-11 w-full rounded-full border-none bg-[#0CBAA6] text-sm font-semibold text-white shadow-md shadow-[#0CBAA6]/20 hover:bg-[#0a9e8d]">
                         View Event Highlights
                       </Button>
                     </Link>
@@ -193,7 +196,7 @@ export default async function EventDetailsPage({
                       >
                         <Button
                           variant="outline"
-                          className="border-border/80 hover:border-[#0CBAA6] hover:text-[#0CBAA6] h-11 w-full gap-2 rounded-full border text-sm font-semibold backdrop-blur-xs transition-colors"
+                          className="border-border/80 h-11 w-full gap-2 rounded-full border text-sm font-semibold backdrop-blur-xs transition-colors hover:border-[#0CBAA6] hover:text-[#0CBAA6]"
                         >
                           <Newspaper className="h-4 w-4 text-[#0CBAA6]" />
                           View News Article

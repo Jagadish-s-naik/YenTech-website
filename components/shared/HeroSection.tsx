@@ -141,7 +141,7 @@ export function HeroSection() {
   return (
     <section
       ref={containerRef}
-      className="bg-background relative flex h-[calc(100svh-5rem)] flex-col justify-around overflow-hidden"
+      className="bg-background relative flex min-h-[calc(100svh-5rem)] flex-col justify-around overflow-hidden"
     >
       <DotGridBackground />
       <div className="relative z-10 container mx-auto flex max-w-4xl flex-col justify-center px-4 py-8 text-center sm:px-8">

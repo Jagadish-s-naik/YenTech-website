@@ -14,7 +14,7 @@ export function EventCard({ event }: { event: EventProps }) {
     >
       {event.imageUrl && (
         <Link href={`/events/${event.id}`}>
-          <div className="bg-muted border-border/50 relative h-48 w-full overflow-hidden border-b cursor-pointer">
+          <div className="bg-muted border-border/50 relative h-48 w-full cursor-pointer overflow-hidden border-b">
             <img
               src={event.imageUrl}
               alt={event.title}
@@ -23,7 +23,7 @@ export function EventCard({ event }: { event: EventProps }) {
               }`}
             />
             {isCompleted && (
-              <div className="border-border/60 bg-card/80 text-foreground absolute top-3 right-3 rounded-full border px-3 py-1 text-xs font-semibold backdrop-blur-sm shadow-xs">
+              <div className="border-border/60 bg-card/80 text-foreground absolute top-3 right-3 rounded-full border px-3 py-1 text-xs font-semibold shadow-xs backdrop-blur-sm">
                 Completed
               </div>
             )}

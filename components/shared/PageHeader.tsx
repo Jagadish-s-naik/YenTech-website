@@ -18,7 +18,7 @@ export function PageHeader({
     <div className="border-border/60 bg-card/50 relative overflow-hidden border-b py-10 backdrop-blur-sm md:py-14">
       {/* Background ambient teal glow */}
       <div
-        className="pointer-events-none absolute top-0 left-1/2 -translate-x-1/2 h-64 w-[600px] rounded-full bg-[#0CBAA6]/8 blur-3xl"
+        className="pointer-events-none absolute top-0 left-1/2 h-64 w-150 -translate-x-1/2 rounded-full bg-[#0CBAA6]/8 blur-3xl"
         aria-hidden="true"
       />
 
