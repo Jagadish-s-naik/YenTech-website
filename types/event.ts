@@ -17,6 +17,7 @@ export interface EventProps {
 export interface EventItem {
   id: string;
   title: string;
+  type: "Workshop" | "Hackathon" | "Seminar" | "Tech Talk";
   description: string;
   date: string;
   location: string;

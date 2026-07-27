@@ -1,6 +1,7 @@
 import { HeroSection } from "@/components/shared/HeroSection";
 import { EventsSection } from "@/components/shared/EventsSection";
 import { ProjectsSection } from "@/components/shared/ProjectsSection";
+import { CommunitySection } from "@/components/shared/CommunitySection";
 import { FEATURED_EVENTS } from "@/data/events";
 
 export default function Home() {
@@ -14,6 +15,9 @@ export default function Home() {
 
       {/* Featured Projects Section */}
       <ProjectsSection />
+
+      {/* Community / CTA Band */}
+      <CommunitySection />
     </div>
   );
 }

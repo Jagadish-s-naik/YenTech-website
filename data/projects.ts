@@ -13,6 +13,7 @@ export const MOCK_PROJECTS: ProjectProps[] = [
     comments: 24,
     demoUrl: "https://www.agronova.in/",
     repoUrl: "https://github.com/Ashwinnethan64-maker/Agro-Nova",
+    featured: true,
   },
   {
     id: "2",

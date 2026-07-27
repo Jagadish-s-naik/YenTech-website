@@ -9,6 +9,7 @@ export interface ProjectProps {
   comments: number;
   repoUrl?: string;
   demoUrl?: string;
+  featured?: boolean;
 }
 
 export interface ProjectDetailProps extends ProjectProps {

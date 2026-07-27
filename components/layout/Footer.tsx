@@ -1,33 +1,40 @@
 "use client";
 
-import { useState } from "react";
 import Link from "next/link";
-import { Mail, MapPin, Phone, ChevronDown } from "lucide-react";
+import { MapPin } from "lucide-react";
 import YenTechLogo from "@/public/yentech.svg";
 
 export function Footer() {
-  const [openSections, setOpenSections] = useState<Record<string, boolean>>({});
-
-  const toggleSection = (sectionKey: string) => {
-    setOpenSections((prev) => ({
-      ...prev,
-      [sectionKey]: !prev[sectionKey],
-    }));
-  };
-
   return (
-    <footer className="bg-card/50 text-muted-foreground border-border/60 mt-auto w-full border-t backdrop-blur-sm">
-      <div className="container mx-auto px-4 py-8 sm:px-8 sm:py-12">
-        <div className="grid grid-cols-1 gap-8 md:grid-cols-2 md:gap-8 lg:grid-cols-4 lg:gap-12">
-          {/* Brand */}
-          <div className="space-y-4">
-            <Link href="/" className="group flex items-center gap-2.5">
-              <YenTechLogo className="text-foreground h-10 w-auto transition-transform duration-300 group-hover:scale-105" />
+    <footer className="bg-card text-muted-foreground border-border/80 mt-auto w-full border-t">
+      <div className="container mx-auto px-4 py-10 sm:px-8 sm:py-14">
+        <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-6 lg:gap-8">
+          {/* Column 1: Logo Only (Centered) */}
+          <div className="border-border/40 flex items-center justify-center border-b pb-6 md:border-b-0 md:pb-0 lg:col-span-1">
+            <Link
+              href="/"
+              className="group flex items-center justify-center gap-2.5"
+            >
+              <YenTechLogo className="text-foreground h-16 w-auto p-2 transition-transform duration-300 group-hover:scale-105" />
             </Link>
-            <p className="max-w-sm text-sm leading-relaxed">
-              Yenepoya School of Engineering & Technology. Building the future
-              of innovation through technology.
+          </div>
+
+          {/* Column 2: About YenTech + Address + Social Icons (3x width) */}
+          <div className="border-border/40 space-y-4 border-b pb-6 md:border-b-0 md:pb-0 lg:col-span-3">
+            <h3 className="font-heading text-foreground text-sm font-semibold tracking-wider uppercase">
+              About
+            </h3>
+            <p className="text-sm leading-relaxed">
+              YenTech is the premier student developer & tech community driving
+              open-source innovation, hands-on workshops, and hackathons.
             </p>
+            <div className="flex items-start gap-2 pt-0.5 text-xs sm:text-sm">
+              <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-[#0CBAA6]" />
+              <span>
+                Yenepoya School of Engineering & Technology, Balmatta,
+                Mangaluru, Karnataka 575002
+              </span>
+            </div>
             <div className="flex items-center gap-4 pt-1">
               <a
                 href="https://github.com/Jagadish-s-naik/YenTech-website"
@@ -84,25 +91,12 @@ export function Footer() {
             </div>
           </div>
 
-          {/* Quick Links */}
-          <div className="border-border/40 border-t pt-4 md:border-t-0 md:pt-0">
-            <button
-              onClick={() => toggleSection("quickLinks")}
-              className="font-heading text-foreground flex w-full items-center justify-between text-sm font-semibold tracking-wider uppercase md:cursor-default"
-              aria-expanded={openSections["quickLinks"]}
-            >
-              <span>Navigation</span>
-              <ChevronDown
-                className={`text-muted-foreground h-4 w-4 transition-transform duration-200 md:hidden ${
-                  openSections["quickLinks"] ? "rotate-180" : ""
-                }`}
-              />
-            </button>
-            <ul
-              className={`mt-3 space-y-2 text-sm md:block ${
-                openSections["quickLinks"] ? "block" : "hidden"
-              }`}
-            >
+          {/* Column 3: Navigation */}
+          <div className="border-border/40 border-b pb-6 md:border-b-0 md:pb-0 lg:col-span-1">
+            <h3 className="font-heading text-foreground text-sm font-semibold tracking-wider uppercase">
+              Navigation
+            </h3>
+            <ul className="mt-3.5 space-y-2 text-sm">
               <li>
                 <Link
                   href="/"
@@ -138,25 +132,12 @@ export function Footer() {
             </ul>
           </div>
 
-          {/* Events */}
-          <div className="border-border/40 border-t pt-4 md:border-t-0 md:pt-0">
-            <button
-              onClick={() => toggleSection("events")}
-              className="font-heading text-foreground flex w-full items-center justify-between text-sm font-semibold tracking-wider uppercase md:cursor-default"
-              aria-expanded={openSections["events"]}
-            >
-              <span>Events</span>
-              <ChevronDown
-                className={`text-muted-foreground h-4 w-4 transition-transform duration-200 md:hidden ${
-                  openSections["events"] ? "rotate-180" : ""
-                }`}
-              />
-            </button>
-            <ul
-              className={`mt-3 space-y-2 text-sm md:block ${
-                openSections["events"] ? "block" : "hidden"
-              }`}
-            >
+          {/* Column 4: Events */}
+          <div className="pb-6 md:border-b-0 md:pb-0 lg:col-span-1">
+            <h3 className="font-heading text-foreground text-sm font-semibold tracking-wider uppercase">
+              Events
+            </h3>
+            <ul className="mt-3.5 space-y-2 text-sm">
               <li>
                 <Link
                   href="/events/workshops"
@@ -183,58 +164,14 @@ export function Footer() {
               </li>
             </ul>
           </div>
-
-          {/* Contact */}
-          <div className="border-border/40 border-t pt-4 md:border-t-0 md:pt-0">
-            <button
-              onClick={() => toggleSection("contact")}
-              className="font-heading text-foreground flex w-full items-center justify-between text-sm font-semibold tracking-wider uppercase md:cursor-default"
-              aria-expanded={openSections["contact"]}
-            >
-              <span>Contact</span>
-              <ChevronDown
-                className={`text-muted-foreground h-4 w-4 transition-transform duration-200 md:hidden ${
-                  openSections["contact"] ? "rotate-180" : ""
-                }`}
-              />
-            </button>
-            <ul
-              className={`mt-3 space-y-3 text-sm md:block ${
-                openSections["contact"] ? "block" : "hidden"
-              }`}
-            >
-              <li className="flex items-start gap-2">
-                <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-[#0CBAA6]" />
-                <span>
-                  Yenepoya School of Engineering & Technology, Balmatta,
-                  Mangaluru, Karnataka 575002
-                </span>
-              </li>
-              <li className="flex items-center gap-2">
-                <Mail className="h-4 w-4 shrink-0 text-[#0CBAA6]" />
-                <a
-                  href="mailto:info@yentech.edu"
-                  className="transition-colors hover:text-[#0CBAA6]"
-                >
-                  info@yentech.edu
-                </a>
-              </li>
-              <li className="flex items-center gap-2">
-                <Phone className="h-4 w-4 shrink-0 text-[#0CBAA6]" />
-                <a
-                  href="tel:+911234567890"
-                  className="transition-colors hover:text-[#0CBAA6]"
-                >
-                  +91 123 456 7890
-                </a>
-              </li>
-            </ul>
-          </div>
         </div>
 
         {/* Bottom copyright */}
         <div className="border-border/60 mt-8 flex flex-col items-center justify-between gap-4 border-t pt-6 text-center text-xs sm:mt-12 md:flex-row md:text-left">
           <p>&copy; {new Date().getFullYear()} YenTech. All rights reserved.</p>
+          <p className="text-muted-foreground/70">
+            Built with ❤️ by the YenTech Community
+          </p>
         </div>
       </div>
     </footer>

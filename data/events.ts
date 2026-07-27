@@ -63,6 +63,7 @@ export const FEATURED_EVENTS: EventItem[] = [
   {
     id: "openloop-2026",
     title: "OpenLoop 2026 National Hackathon",
+    type: "Hackathon",
     description:
       "A national-level 24-hour hackathon organized by Yenepoya School of Engineering and Technology in collaboration with DK24, Nxtwave, and Kalvium.",
     date: "April 26-27, 2026",
@@ -74,6 +75,7 @@ export const FEATURED_EVENTS: EventItem[] = [
   {
     id: "project-sankalp",
     title: "Project Sankalp Code4Change National Hackathon",
+    type: "Hackathon",
     description:
       "Project Sankalp is a premier 24-hour hackathon designed to empower the next generation of innovators to solve critical real-world problems.",
     date: "May 25-26, 2026",
