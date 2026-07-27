@@ -50,7 +50,7 @@ export function Header() {
     >
       <div className="container mx-auto flex h-16 items-center justify-between px-4 sm:px-8">
         <Link href="/" className="group flex items-center gap-2.5">
-          <YenTechLogo className="h-10 w-auto transition-transform duration-300 group-hover:scale-105" />
+          <YenTechLogo className="h-8 w-auto" />
         </Link>
 
         {/* Desktop Navigation Links */}

@@ -22,9 +22,9 @@ export const NAV_LINKS: NavItem[] = [
     description:
       "Workshops, hackathons, and tech talks designed to help you learn, build, and connect.",
     subLinks: [
-      { name: "Workshops", href: "/events/workshops", icon: Wrench },
-      { name: "Hackathons", href: "/events/hackathons", icon: Code2 },
-      { name: "Tech Talks", href: "/events/seminars", icon: Radio },
+      { name: "Workshops", href: "/events?category=workshops", icon: Wrench },
+      { name: "Hackathons", href: "/events?category=hackathons", icon: Code2 },
+      { name: "Tech Talks", href: "/events?category=tech-talks", icon: Radio },
     ],
   },
   {

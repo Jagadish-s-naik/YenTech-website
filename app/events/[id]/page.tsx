@@ -3,7 +3,6 @@ import {
   MapPin,
   Clock,
   Users,
-  ArrowLeft,
   ExternalLink,
   Video,
   Newspaper,
@@ -12,6 +11,8 @@ import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { getEventById } from "@/data/events";
+import { PageHeader } from "@/components/shared/PageHeader";
+import { PageContainer } from "@/components/shared/PageContainer";
 
 export default async function EventDetailsPage({
   params,
@@ -25,46 +26,29 @@ export default async function EventDetailsPage({
     notFound();
   }
 
-  const typeColors = {
-    Workshop: "bg-blue-500/10 text-blue-500 border-blue-500/20",
-    Hackathon: "bg-orange-500/10 text-orange-500 border-orange-500/20",
-    Seminar: "bg-green-500/10 text-green-500 border-green-500/20",
-    "Tech Talk": "bg-green-500/10 text-green-500 border-green-500/20",
-  };
+  const isCompleted = event.status === "completed";
 
   return (
-    <div className="min-h-screen">
-      <div className="container mx-auto px-4 py-8 sm:px-8">
-        <Link
-          href="/events"
-          className="text-muted-foreground hover:text-foreground mb-8 inline-flex items-center text-sm font-medium transition-colors"
-        >
-          <ArrowLeft className="mr-2 h-4 w-4" />
-          Back to Events
-        </Link>
+    <div className="bg-background relative min-h-screen overflow-hidden">
+      {/* Background ambient lighting */}
+      <div className="pointer-events-none absolute top-1/4 left-1/4 -z-10 h-112 w-md -translate-x-1/2 rounded-full bg-[#0CBAA6]/8 blur-3xl" />
+      <div className="pointer-events-none absolute right-1/4 bottom-1/3 -z-10 h-96 w-96 translate-x-1/2 rounded-full bg-[#D9FB02]/5 blur-3xl" />
 
+      <PageHeader
+        breadcrumbs={[
+          { label: "Events", href: "/events" },
+          { label: event.title },
+        ]}
+        title={event.title}
+        description={`${event.date} • ${event.location}`}
+      />
+
+      <PageContainer>
         <div className="grid grid-cols-1 gap-12 lg:grid-cols-3">
           {/* Main Content */}
           <div className="space-y-8 lg:col-span-2">
-            <div>
-              <div className="mb-4 flex items-center gap-3">
-                <span
-                  className={`rounded-full border px-3 py-1 text-sm font-semibold ${typeColors[event.type]}`}
-                >
-                  {event.type}
-                </span>
-                <span className="text-muted-foreground flex items-center gap-1 text-sm font-medium">
-                  <Users className="h-4 w-4" />
-                  {event.attendees} attendees registered
-                </span>
-              </div>
-              <h1 className="text-foreground mb-4 text-4xl font-extrabold tracking-tight sm:text-5xl">
-                {event.title}
-              </h1>
-            </div>
-
             {event.imageUrl && (
-              <div className="bg-muted aspect-[16/9] w-full overflow-hidden rounded-2xl border shadow-sm">
+              <div className="border-border/60 bg-muted/40 aspect-[16/9] w-full overflow-hidden rounded-3xl border shadow-sm">
                 <img
                   src={event.imageUrl}
                   alt={event.title}
@@ -73,10 +57,12 @@ export default async function EventDetailsPage({
               </div>
             )}
 
-            <div>
-              <h2 className="mb-4 text-2xl font-bold">About this event</h2>
+            <div className="border-border/60 bg-card/60 rounded-3xl border p-8 shadow-sm backdrop-blur-xs">
+              <h2 className="font-heading mb-4 text-2xl font-bold tracking-tight">
+                About this event
+              </h2>
               <div className="prose prose-neutral dark:prose-invert max-w-none space-y-4">
-                <p className="text-muted-foreground text-lg leading-relaxed">
+                <p className="text-muted-foreground text-base leading-relaxed md:text-lg">
                   {event.description}
                 </p>
               </div>
@@ -84,14 +70,14 @@ export default async function EventDetailsPage({
 
             {/* Video & News Coverage Section if available */}
             {(event.youtubeEmbedId || event.newsUrl) && (
-              <div className="space-y-6 pt-4">
+              <div className="space-y-8 pt-2">
                 {event.youtubeEmbedId && (
-                  <div className="space-y-3">
-                    <h3 className="flex items-center gap-2 text-xl font-bold">
+                  <div className="space-y-4">
+                    <h3 className="font-heading flex items-center gap-2 text-xl font-bold tracking-tight">
                       <Video className="h-5 w-5 text-[#0CBAA6]" /> Video
                       Highlights
                     </h3>
-                    <div className="bg-muted aspect-video w-full overflow-hidden rounded-2xl border shadow-md">
+                    <div className="border-border/60 bg-card/60 aspect-video w-full overflow-hidden rounded-3xl border shadow-sm backdrop-blur-xs">
                       <iframe
                         src={`https://www.youtube.com/embed/${event.youtubeEmbedId}`}
                         title={`${event.title} Video Highlights`}
@@ -104,12 +90,12 @@ export default async function EventDetailsPage({
                 )}
 
                 {event.newsUrl && (
-                  <div className="bg-muted/40 border-border/60 space-y-3 rounded-2xl border p-6">
-                    <h3 className="flex items-center gap-2 text-xl font-bold">
+                  <div className="border-border/60 bg-card/60 space-y-3.5 rounded-3xl border p-8 shadow-sm backdrop-blur-xs">
+                    <h3 className="font-heading flex items-center gap-2 text-xl font-bold tracking-tight">
                       <Newspaper className="h-5 w-5 text-[#0CBAA6]" /> Press
                       Coverage
                     </h3>
-                    <p className="text-muted-foreground text-sm">
+                    <p className="text-muted-foreground text-sm leading-relaxed">
                       Read official news report and media coverage published in
                       Vartha Bharati:
                     </p>
@@ -117,7 +103,7 @@ export default async function EventDetailsPage({
                       href={event.newsUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center gap-2 font-semibold text-[#0CBAA6] hover:underline"
+                      className="inline-flex items-center gap-2 text-sm font-semibold text-[#0CBAA6] transition-colors hover:underline"
                     >
                       Read published article on Vartha Bharati
                       <ExternalLink className="h-4 w-4" />
@@ -130,63 +116,70 @@ export default async function EventDetailsPage({
 
           {/* Sidebar */}
           <div>
-            <div className="bg-background sticky top-24 rounded-2xl border p-6 shadow-sm">
-              <h3 className="mb-6 text-xl font-bold">Event Details</h3>
+            <div className="border-border/60 bg-card/60 sticky top-28 rounded-3xl border p-7 shadow-sm backdrop-blur-md">
+              <h3 className="font-heading mb-6 text-xl font-bold tracking-tight">
+                Event Details
+              </h3>
 
-              <div className="mb-8 space-y-6">
-                <div className="flex items-start gap-4">
-                  <div className="bg-primary/10 text-primary shrink-0 rounded-xl p-2.5">
-                    <Calendar className="h-5 w-5" />
+              <div className="mb-8 space-y-5">
+                <div className="flex items-center gap-3.5">
+                  <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-[#0CBAA6]/10 text-[#0CBAA6]">
+                    <Calendar className="h-4.5 w-4.5" />
                   </div>
                   <div>
-                    <p className="mb-1 text-sm font-semibold">Date</p>
-                    <p className="text-muted-foreground text-sm">
+                    <p className="text-xs font-semibold text-muted-foreground uppercase tracking-wider">Date</p>
+                    <p className="text-foreground text-sm font-medium">
                       {event.date}
                     </p>
                   </div>
                 </div>
 
-                <div className="flex items-start gap-4">
-                  <div className="bg-primary/10 text-primary shrink-0 rounded-xl p-2.5">
-                    <Clock className="h-5 w-5" />
+                <div className="flex items-center gap-3.5">
+                  <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-[#0CBAA6]/10 text-[#0CBAA6]">
+                    <Clock className="h-4.5 w-4.5" />
                   </div>
                   <div>
-                    <p className="mb-1 text-sm font-semibold">Time</p>
-                    <p className="text-muted-foreground text-sm">
+                    <p className="text-xs font-semibold text-muted-foreground uppercase tracking-wider">Time</p>
+                    <p className="text-foreground text-sm font-medium">
                       {event.time}
                     </p>
                   </div>
                 </div>
 
-                <div className="flex items-start gap-4">
-                  <div className="bg-primary/10 text-primary shrink-0 rounded-xl p-2.5">
-                    <MapPin className="h-5 w-5" />
+                <div className="flex items-center gap-3.5">
+                  <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-[#0CBAA6]/10 text-[#0CBAA6]">
+                    <MapPin className="h-4.5 w-4.5" />
                   </div>
                   <div>
-                    <p className="mb-1 text-sm font-semibold">Location</p>
-                    <p className="text-muted-foreground text-sm">
+                    <p className="text-xs font-semibold text-muted-foreground uppercase tracking-wider">Location</p>
+                    <p className="text-foreground text-sm font-medium">
                       {event.location}
+                    </p>
+                  </div>
+                </div>
+
+                <div className="flex items-center gap-3.5">
+                  <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-[#0CBAA6]/10 text-[#0CBAA6]">
+                    <Users className="h-4.5 w-4.5" />
+                  </div>
+                  <div>
+                    <p className="text-xs font-semibold text-muted-foreground uppercase tracking-wider">Attendance</p>
+                    <p className="text-foreground text-sm font-medium">
+                      {event.attendees} Registered
                     </p>
                   </div>
                 </div>
               </div>
 
-              <div className="space-y-3">
-                {event.status === "completed" ? (
+              <div className="flex flex-col gap-3.5 border-t border-border/50 pt-6">
+                {isCompleted ? (
                   <>
-                    <Button
-                      className="bg-muted text-muted-foreground hover:bg-muted h-12 w-full text-base font-bold"
-                      disabled
-                    >
-                      Event Concluded
-                    </Button>
                     <Link
-                      href={`/events/${event.id}/highlights`}
+                      href={`/blog/${event.id}`}
                       className="w-full"
                     >
                       <Button
-                        variant="outline"
-                        className="h-12 w-full text-base font-bold"
+                        className="border-none bg-[#0CBAA6] text-white shadow-md shadow-[#0CBAA6]/20 hover:bg-[#0a9e8d] h-11 w-full rounded-full text-sm font-semibold"
                       >
                         View Event Highlights
                       </Button>
@@ -199,10 +192,10 @@ export default async function EventDetailsPage({
                         className="w-full"
                       >
                         <Button
-                          variant="secondary"
-                          className="h-12 w-full gap-2 text-base font-bold"
+                          variant="outline"
+                          className="border-border/80 hover:border-[#0CBAA6] hover:text-[#0CBAA6] h-11 w-full gap-2 rounded-full border text-sm font-semibold backdrop-blur-xs transition-colors"
                         >
-                          <Newspaper className="h-4 w-4" />
+                          <Newspaper className="h-4 w-4 text-[#0CBAA6]" />
                           View News Article
                         </Button>
                       </a>
@@ -210,7 +203,7 @@ export default async function EventDetailsPage({
                   </>
                 ) : (
                   <>
-                    <Button className="h-12 w-full text-base font-bold">
+                    <Button className="h-12 w-full rounded-full border-none bg-[#0CBAA6] text-sm font-semibold text-white shadow-md shadow-[#0CBAA6]/20 hover:bg-[#0a9e8d]">
                       Register Now
                     </Button>
                     <p className="text-muted-foreground text-center text-xs">
@@ -222,7 +215,7 @@ export default async function EventDetailsPage({
             </div>
           </div>
         </div>
-      </div>
+      </PageContainer>
     </div>
   );
 }

@@ -15,7 +15,7 @@ export function Footer() {
               href="/"
               className="group flex items-center justify-center gap-2.5"
             >
-              <YenTechLogo className="text-foreground h-16 w-auto p-2 transition-transform duration-300 group-hover:scale-105" />
+              <YenTechLogo className="text-foreground h-16 w-auto p-2" />
             </Link>
           </div>
 
@@ -140,7 +140,7 @@ export function Footer() {
             <ul className="mt-3.5 space-y-2 text-sm">
               <li>
                 <Link
-                  href="/events/workshops"
+                  href="/events?category=workshops"
                   className="transition-colors hover:text-[#0CBAA6]"
                 >
                   Workshops
@@ -148,7 +148,7 @@ export function Footer() {
               </li>
               <li>
                 <Link
-                  href="/events/hackathons"
+                  href="/events?category=hackathons"
                   className="transition-colors hover:text-[#0CBAA6]"
                 >
                   Hackathons
@@ -156,7 +156,7 @@ export function Footer() {
               </li>
               <li>
                 <Link
-                  href="/events/seminars"
+                  href="/events?category=tech-talks"
                   className="transition-colors hover:text-[#0CBAA6]"
                 >
                   Tech Talks

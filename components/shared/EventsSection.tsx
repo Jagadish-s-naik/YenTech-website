@@ -188,9 +188,11 @@ export function EventsSection({ events }: EventsSectionProps) {
                       Completed
                     </span>
                   </div>
-                  <h3 className="font-heading text-foreground text-2xl leading-tight font-bold tracking-tight sm:text-3xl md:text-4xl">
-                    {event.title}
-                  </h3>
+                  <Link href={`/events/${event.id}`}>
+                    <h3 className="font-heading text-foreground text-2xl leading-tight font-bold tracking-tight transition-colors hover:text-[#0CBAA6] sm:text-3xl md:text-4xl">
+                      {event.title}
+                    </h3>
+                  </Link>
                 </div>
 
                 <p className="text-muted-foreground text-base leading-relaxed">
@@ -219,23 +221,25 @@ export function EventsSection({ events }: EventsSectionProps) {
                   event.imageLeft ? "lg:order-1" : "lg:order-2"
                 }`}
               >
-                <div className="border-border/70 bg-card relative min-h-55 w-full flex-1 overflow-hidden rounded-2xl border shadow-sm transition-all duration-300">
-                  <img
-                    src={event.imageUrl}
-                    alt={event.title}
-                    className="h-full w-full object-cover"
-                  />
-                </div>
+                <Link href={`/events/${event.id}`} className="min-h-55 w-full flex-1">
+                  <div className="border-border/70 bg-card relative h-full w-full overflow-hidden rounded-2xl border shadow-sm transition-all duration-300 cursor-pointer">
+                    <img
+                      src={event.imageUrl}
+                      alt={event.title}
+                      className="h-full w-full object-cover"
+                    />
+                  </div>
+                </Link>
 
                 <Link
-                  href={`/events/${event.id}/highlights`}
+                  href={`/events/${event.id}`}
                   className="w-full"
                 >
                   <Button
                     size="lg"
                     className="group w-full rounded-full border-none bg-[#0CBAA6] py-3 text-sm font-semibold text-white shadow-md shadow-[#0CBAA6]/20 transition-all duration-300 hover:bg-[#0a9e8d]"
                   >
-                    View Highlights
+                    View Details
                     <ArrowRight className="ml-2 h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
                   </Button>
                 </Link>

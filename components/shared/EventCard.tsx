@@ -4,72 +4,83 @@ import Link from "next/link";
 import type { EventProps } from "@/types/event";
 
 export function EventCard({ event }: { event: EventProps }) {
-  const typeColors = {
-    Workshop: "bg-blue-500/10 text-blue-500 border-blue-500/20",
-    Hackathon: "bg-orange-500/10 text-orange-500 border-orange-500/20",
-    Seminar: "bg-green-500/10 text-green-500 border-green-500/20",
-    "Tech Talk": "bg-green-500/10 text-green-500 border-green-500/20",
-  };
-
   const isCompleted = event.status === "completed";
 
   return (
     <div
-      className={`bg-background flex flex-col overflow-hidden rounded-2xl border shadow-sm transition-all hover:shadow-md ${isCompleted ? "opacity-80" : ""}`}
+      className={`border-border/60 bg-card/60 relative flex flex-col overflow-hidden rounded-3xl border shadow-sm backdrop-blur-xs transition-all duration-300 hover:-translate-y-1 hover:shadow-md ${
+        isCompleted ? "opacity-90" : ""
+      }`}
     >
       {event.imageUrl && (
-        <div className="bg-muted relative h-48 w-full overflow-hidden">
-          <img
-            src={event.imageUrl}
-            alt={event.title}
-            className={`h-full w-full object-cover transition-transform hover:scale-105 ${isCompleted ? "grayscale-[0.5]" : ""}`}
-          />
-          {isCompleted && (
-            <div className="absolute top-3 right-3 rounded-full bg-black/70 px-3 py-1 text-xs font-bold text-white backdrop-blur-sm">
-              Completed
-            </div>
-          )}
-        </div>
+        <Link href={`/events/${event.id}`}>
+          <div className="bg-muted border-border/50 relative h-48 w-full overflow-hidden border-b cursor-pointer">
+            <img
+              src={event.imageUrl}
+              alt={event.title}
+              className={`h-full w-full object-cover ${
+                isCompleted ? "grayscale-[0.3]" : ""
+              }`}
+            />
+            {isCompleted && (
+              <div className="border-border/60 bg-card/80 text-foreground absolute top-3 right-3 rounded-full border px-3 py-1 text-xs font-semibold backdrop-blur-sm shadow-xs">
+                Completed
+              </div>
+            )}
+          </div>
+        </Link>
       )}
-      <div className="flex flex-1 flex-col p-6">
-        <div className="mb-4 flex items-start justify-between">
-          <span
-            className={`rounded-full border px-2.5 py-0.5 text-xs font-medium ${typeColors[event.type]}`}
-          >
+      <div className="flex flex-1 flex-col p-6 sm:p-7">
+        <div className="mb-4 flex items-center justify-between">
+          <span className="rounded-full border border-[#0CBAA6]/20 bg-[#0CBAA6]/10 px-3 py-1 text-xs font-bold tracking-wider text-[#0CBAA6] uppercase">
             {event.type}
           </span>
-          <div className="text-muted-foreground flex items-center gap-1 text-xs font-medium">
-            <Users className="h-3 w-3" />
+          <div className="text-muted-foreground flex items-center gap-1.5 text-xs font-medium">
+            <Users className="h-3.5 w-3.5 text-[#0CBAA6]" />
             {event.attendees} attended
           </div>
         </div>
 
-        <h3 className="mb-2 line-clamp-2 text-xl font-bold">{event.title}</h3>
-        <p className="text-muted-foreground mb-6 line-clamp-3 flex-1 text-sm">
+        <Link href={`/events/${event.id}`}>
+          <h3 className="font-heading mb-2 line-clamp-2 text-xl font-bold tracking-tight transition-colors hover:text-[#0CBAA6]">
+            {event.title}
+          </h3>
+        </Link>
+        <p className="text-muted-foreground mb-6 line-clamp-3 flex-1 text-sm leading-relaxed">
           {event.description}
         </p>
 
-        <div className="mb-6 space-y-2">
-          <div className="text-muted-foreground flex items-center gap-2 text-sm">
-            <Calendar className="h-4 w-4 shrink-0" />
+        <div className="border-border/50 bg-card/40 mb-6 space-y-2.5 rounded-2xl border p-4 text-xs font-medium backdrop-blur-xs">
+          <div className="text-foreground/90 flex items-center gap-2.5">
+            <div className="flex h-7 w-7 items-center justify-center rounded-lg bg-[#0CBAA6]/10 text-[#0CBAA6]">
+              <Calendar className="h-3.5 w-3.5" />
+            </div>
             <span>{event.date}</span>
           </div>
-          <div className="text-muted-foreground flex items-center gap-2 text-sm">
-            <Clock className="h-4 w-4 shrink-0" />
+          <div className="text-foreground/90 flex items-center gap-2.5">
+            <div className="flex h-7 w-7 items-center justify-center rounded-lg bg-[#0CBAA6]/10 text-[#0CBAA6]">
+              <Clock className="h-3.5 w-3.5" />
+            </div>
             <span>{event.time}</span>
           </div>
-          <div className="text-muted-foreground flex items-center gap-2 text-sm">
-            <MapPin className="h-4 w-4 shrink-0" />
+          <div className="text-foreground/90 flex items-center gap-2.5">
+            <div className="flex h-7 w-7 items-center justify-center rounded-lg bg-[#0CBAA6]/10 text-[#0CBAA6]">
+              <MapPin className="h-3.5 w-3.5" />
+            </div>
             <span>{event.location}</span>
           </div>
         </div>
 
         <Link href={`/events/${event.id}`} className="mt-auto w-full">
           <Button
-            className="w-full"
-            variant={isCompleted ? "secondary" : "default"}
+            className={`w-full rounded-full text-sm font-semibold transition-all duration-300 ${
+              isCompleted
+                ? "border-border/80 bg-background text-foreground hover:border-[#0CBAA6] hover:text-[#0CBAA6]"
+                : "border-none bg-[#0CBAA6] text-white shadow-md shadow-[#0CBAA6]/20 hover:bg-[#0a9e8d]"
+            }`}
+            variant={isCompleted ? "outline" : "default"}
           >
-            {isCompleted ? "View Highlights" : "View Details"}
+            View Details
           </Button>
         </Link>
       </div>

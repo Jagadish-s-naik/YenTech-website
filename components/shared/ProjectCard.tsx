@@ -1,26 +1,25 @@
-import { Heart, MessageSquare, ExternalLink, Code } from "lucide-react";
+import { ExternalLink, Code } from "lucide-react";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import type { ProjectProps } from "@/types/project";
 
 export function ProjectCard({ project }: { project: ProjectProps }) {
   return (
-    <div className="bg-background group flex flex-col overflow-hidden rounded-2xl border shadow-sm transition-all hover:shadow-md">
-      <div className="bg-muted/40 relative flex h-48 w-full items-center justify-center overflow-hidden">
+    <div className="border-border/60 bg-card/60 group relative flex flex-col overflow-hidden rounded-3xl border shadow-sm backdrop-blur-xs transition-all duration-300 hover:-translate-y-1 hover:shadow-md">
+      <div className="border-border/50 bg-muted/40 relative flex h-48 w-full items-center justify-center overflow-hidden border-b">
         <img
           src={project.imageUrl}
           alt={project.title}
-          className="h-full w-full object-contain transition-transform duration-500 group-hover:scale-105"
+          className="h-full w-full object-cover"
         />
-        <div className="absolute inset-0 flex items-center justify-center gap-4 bg-black/60 opacity-0 transition-opacity group-hover:opacity-100">
+        <div className="absolute inset-0 flex items-center justify-center gap-3 bg-gradient-to-t from-black/80 via-black/40 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100">
           {project.demoUrl && (
             <a href={project.demoUrl} target="_blank" rel="noopener noreferrer">
               <Button
                 size="sm"
-                variant="secondary"
-                className="gap-2 rounded-full"
+                className="gap-1.5 rounded-full border-none bg-[#0CBAA6] text-xs font-semibold text-white shadow-xs hover:bg-[#0a9e8d]"
               >
-                <ExternalLink className="h-4 w-4" /> Demo
+                <ExternalLink className="h-3.5 w-3.5" /> Demo
               </Button>
             </a>
           )}
@@ -28,51 +27,46 @@ export function ProjectCard({ project }: { project: ProjectProps }) {
             <a href={project.repoUrl} target="_blank" rel="noopener noreferrer">
               <Button
                 size="sm"
-                variant="secondary"
-                className="gap-2 rounded-full"
+                variant="outline"
+                className="border-border/80 gap-1.5 rounded-full bg-background/80 text-xs font-semibold backdrop-blur-xs hover:border-[#0CBAA6] hover:text-[#0CBAA6]"
               >
-                <Code className="h-4 w-4" /> Code
+                <Code className="h-3.5 w-3.5" /> Code
               </Button>
             </a>
           )}
         </div>
       </div>
-      <div className="flex flex-1 flex-col p-5">
-        <h3 className="mb-1 text-lg font-bold">{project.title}</h3>
-        <p className="text-muted-foreground mb-3 text-xs">
+      <div className="flex flex-1 flex-col p-6">
+        <h3 className="font-heading mb-1 text-xl font-bold tracking-tight transition-colors duration-200 group-hover:text-[#0CBAA6]">
+          {project.title}
+        </h3>
+        <p className="text-muted-foreground mb-3 text-xs font-medium">
           by {project.author}
         </p>
-        <p className="text-muted-foreground mb-4 line-clamp-2 flex-1 text-sm">
+        <p className="text-muted-foreground mb-4 line-clamp-2 flex-1 text-sm leading-relaxed">
           {project.description}
         </p>
 
-        <div className="mb-4 flex flex-wrap gap-1.5">
+        <div className="mb-6 flex flex-wrap gap-1.5">
           {project.tags.map((tag) => (
             <span
               key={tag}
-              className="bg-muted text-muted-foreground rounded px-2 py-0.5 text-[10px] font-medium"
+              className="rounded-full border border-[#0CBAA6]/20 bg-[#0CBAA6]/10 px-2.5 py-0.5 text-[11px] font-semibold text-[#0CBAA6]"
             >
               {tag}
             </span>
           ))}
         </div>
 
-        <div className="flex items-center justify-between border-t pt-4">
-          <div className="text-muted-foreground flex gap-4">
-            <button className="flex items-center gap-1 text-xs transition-colors hover:text-red-500">
-              <Heart className="h-4 w-4" />
-              <span>{project.likes}</span>
-            </button>
-            <button className="flex items-center gap-1 text-xs transition-colors hover:text-blue-500">
-              <MessageSquare className="h-4 w-4" />
-              <span>{project.comments}</span>
-            </button>
-          </div>
-          <Link
-            href={`/projects/${project.id}`}
-            className="text-primary text-xs font-medium hover:underline"
-          >
-            View Details
+        <div className="border-border/50 border-t pt-4">
+          <Link href={`/projects/${project.id}`} className="block w-full">
+            <Button
+              size="sm"
+              variant="outline"
+              className="border-border/70 w-full rounded-full text-xs font-semibold hover:border-[#0CBAA6] hover:text-[#0CBAA6]"
+            >
+              View Details
+            </Button>
           </Link>
         </div>
       </div>
