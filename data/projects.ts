@@ -30,7 +30,7 @@ export const MOCK_PROJECTS: ProjectProps[] = [
   {
     id: "3",
     title: "checkDK",
-    author: "Dhanush Shenoy H & Radhesh Pai",
+    author: "Dhanush Shenoy H, Radhesh Pai & Jagadish S Naik",
     description:
       "An AI-powered CLI tool & dev environment designed to predict, diagnose, and fix Docker and Kubernetes issues before execution.",
     tags: ["DevOps", "AI / ML", "CLI", "Docker", "Kubernetes"],
@@ -38,7 +38,7 @@ export const MOCK_PROJECTS: ProjectProps[] = [
     likes: 168,
     comments: 21,
     demoUrl: "https://checkdk.app/",
-    repoUrl: "https://github.com/Ashwinnethan64-maker/checkDK",
+    repoUrl: "https://github.com/radheshpai87/checkDK",
   },
   {
     id: "4",
@@ -51,7 +51,7 @@ export const MOCK_PROJECTS: ProjectProps[] = [
     likes: 195,
     comments: 27,
     demoUrl: "https://hackmate.anandmahadev.in/",
-    repoUrl: "https://github.com/Ashwinnethan64-maker/HACK-MATE",
+    repoUrl: "https://github.com/anandmahadevv/HACK-MATE",
   },
   {
     id: "5",
@@ -119,7 +119,7 @@ export const MOCK_PROJECTS_DETAIL: ProjectDetailProps[] = [
   {
     id: "3",
     title: "checkDK",
-    author: "Dhanush Shenoy H & Radhesh Pai",
+    author: "Dhanush Shenoy H, Radhesh Pai & Jagadish S Naik",
     description:
       "An AI-powered CLI tool & dev environment designed to predict, diagnose, and fix Docker and Kubernetes issues before execution.",
     fullDescription:
@@ -129,8 +129,8 @@ export const MOCK_PROJECTS_DETAIL: ProjectDetailProps[] = [
     likes: 168,
     comments: 21,
     demoUrl: "https://checkdk.app/",
-    repoUrl: "https://github.com/Ashwinnethan64-maker/checkDK",
-    team: ["Dhanush Shenoy H", "Radhesh Pai"],
+    repoUrl: "https://github.com/radheshpai87/checkDK",
+    team: ["Dhanush Shenoy H", "Radhesh Pai", "Jagadish S Naik"],
     features: [
       "Predictive static analysis for Docker & Kubernetes configurations",
       "Automated root-cause diagnosis and AI-suggested error fixes",
@@ -152,7 +152,7 @@ export const MOCK_PROJECTS_DETAIL: ProjectDetailProps[] = [
     likes: 195,
     comments: 27,
     demoUrl: "https://hackmate.anandmahadev.in/",
-    repoUrl: "https://github.com/Ashwinnethan64-maker/HACK-MATE",
+    repoUrl: "https://github.com/anandmahadevv/HACK-MATE",
     team: ["Anand Mahadev", "Dhanush Shenoy H", "Dinesh A"],
     features: [
       "AI-assisted problem statement parsing and feature breakdown",
