@@ -52,13 +52,13 @@ export function DotGridBackground() {
       // Scale dot size relative to viewport diagonal so they look the same
       // size on all screens — small phones get smaller dots, big monitors get bigger ones
       const diag = Math.sqrt(w * w + h * h);
-      const sizeScale = Math.max(0.5, Math.min(1.5, diag / REF_DIAG));
+      const sizeScale = Math.max(0.75, Math.min(1.5, diag / REF_DIAG));
       dimsRef.current.sizeScale = sizeScale;
 
       const baseR = 1.2 * sizeScale;
       const baseRRange = 1.2 * sizeScale;
-      const baseO = 0.18 * Math.min(1, sizeScale + 0.3);
-      const baseORange = 0.18 * Math.min(1, sizeScale + 0.3);
+      const baseO = 0.2;
+      const baseORange = 0.2;
 
       for (let r = 0; r < rows; r++) {
         for (let c = 0; c < cols; c++) {
@@ -139,6 +139,25 @@ export function DotGridBackground() {
       }
     };
 
+    const handleTouch = (e: TouchEvent) => {
+      if (!canvas || e.touches.length === 0) return;
+      const rect = canvas.getBoundingClientRect();
+      if (!rect.width || !rect.height) return;
+
+      const touch = e.touches[0];
+      const rawX = touch.clientX - rect.left;
+      const rawY = touch.clientY - rect.top;
+
+      if (rawX >= 0 && rawX <= rect.width && rawY >= 0 && rawY <= rect.height) {
+        const { w, h } = dimsRef.current;
+        const x = (rawX / rect.width) * w;
+        const y = (rawY / rect.height) * h;
+        mouseRef.current = { x, y };
+      } else {
+        mouseRef.current = { x: -10000, y: -10000 };
+      }
+    };
+
     const handleLeave = () => {
       mouseRef.current = { x: -10000, y: -10000 };
     };
@@ -146,6 +165,10 @@ export function DotGridBackground() {
     // Listen on window so events work despite pointer-events:none on the canvas
     window.addEventListener("mousemove", handleMouse);
     window.addEventListener("mouseleave", handleLeave);
+    window.addEventListener("touchstart", handleTouch, { passive: true });
+    window.addEventListener("touchmove", handleTouch, { passive: true });
+    window.addEventListener("touchend", handleLeave, { passive: true });
+    window.addEventListener("touchcancel", handleLeave, { passive: true });
 
     let time = 0;
     let lastTime = 0;
@@ -261,6 +284,10 @@ export function DotGridBackground() {
       window.removeEventListener("resize", resize);
       window.removeEventListener("mousemove", handleMouse);
       window.removeEventListener("mouseleave", handleLeave);
+      window.removeEventListener("touchstart", handleTouch);
+      window.removeEventListener("touchmove", handleTouch);
+      window.removeEventListener("touchend", handleLeave);
+      window.removeEventListener("touchcancel", handleLeave);
     };
   }, [initDots]);
 
