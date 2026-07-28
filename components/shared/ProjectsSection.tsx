@@ -110,7 +110,7 @@ export function ProjectsSection() {
           <div className="project-featured-card group border-border/70 bg-card/60 relative mb-10 overflow-hidden rounded-3xl border opacity-0 shadow-sm backdrop-blur-md transition-all duration-300 hover:-translate-y-1 hover:shadow-md">
             <div className="grid grid-cols-1 items-center lg:grid-cols-12">
               {/* Image Side */}
-              <div className="border-border/50 relative aspect-16/10 w-full overflow-hidden border-b lg:col-span-7 lg:aspect-auto lg:h-full lg:border-r lg:border-b-0">
+              <div className="relative aspect-16/10 w-full overflow-hidden lg:col-span-6 lg:aspect-auto lg:h-full">
                 <img
                   src={featuredProject.imageUrl}
                   alt={featuredProject.title}
@@ -119,7 +119,7 @@ export function ProjectsSection() {
               </div>
 
               {/* Info Side */}
-              <div className="flex flex-col justify-between p-6 sm:p-8 lg:col-span-5 lg:p-10">
+              <div className="flex flex-col justify-between p-6 sm:p-8 lg:col-span-6 lg:p-10">
                 <div>
                   <div className="mb-3 flex flex-wrap items-center justify-between gap-2">
                     <span className="text-xs font-bold tracking-widest text-[#0CBAA6] uppercase">
@@ -217,7 +217,7 @@ export function ProjectsSection() {
               className="project-secondary-card group bg-card/60 hover:bg-card border-border/70 relative flex flex-col overflow-hidden rounded-3xl border opacity-0 shadow-sm backdrop-blur-xs transition-all duration-300 hover:-translate-y-1 hover:shadow-md"
             >
               {/* Thumbnail Container */}
-              <div className="border-border/50 relative h-48 w-full overflow-hidden border-b">
+              <div className="relative h-48 w-full overflow-hidden">
                 <img
                   src={project.imageUrl}
                   alt={project.title}

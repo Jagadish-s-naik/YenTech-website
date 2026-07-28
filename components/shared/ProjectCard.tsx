@@ -6,7 +6,7 @@ import type { ProjectProps } from "@/types/project";
 export function ProjectCard({ project }: { project: ProjectProps }) {
   return (
     <div className="border-border/60 bg-card/60 group relative flex flex-col overflow-hidden rounded-3xl border shadow-sm backdrop-blur-xs transition-all duration-300 hover:-translate-y-1 hover:shadow-md">
-      <div className="border-border/50 bg-muted/40 relative flex h-48 w-full items-center justify-center overflow-hidden border-b">
+      <div className="bg-muted/40 relative flex h-48 w-full items-center justify-center overflow-hidden">
         <img
           src={project.imageUrl}
           alt={project.title}

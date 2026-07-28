@@ -48,7 +48,7 @@ export default async function EventDetailsPage({
           {/* Main Content */}
           <div className="space-y-8 lg:col-span-2">
             {event.imageUrl && (
-              <div className="border-border/60 bg-muted/40 aspect-video w-full overflow-hidden rounded-3xl border shadow-sm">
+              <div className="bg-muted/40 aspect-video w-full overflow-hidden rounded-3xl shadow-sm">
                 <img
                   src={event.imageUrl}
                   alt={event.title}
@@ -77,7 +77,7 @@ export default async function EventDetailsPage({
                       <Video className="h-5 w-5 text-[#0CBAA6]" /> Video
                       Highlights
                     </h3>
-                    <div className="border-border/60 bg-card/60 aspect-video w-full overflow-hidden rounded-3xl border shadow-sm backdrop-blur-xs">
+                    <div className="bg-card/60 aspect-video w-full overflow-hidden rounded-3xl shadow-sm backdrop-blur-xs">
                       <iframe
                         src={`https://www.youtube.com/embed/${event.youtubeEmbedId}`}
                         title={`${event.title} Video Highlights`}
@@ -183,7 +183,7 @@ export default async function EventDetailsPage({
                 {isCompleted ? (
                   <>
                     <Link href={`/blog/${event.id}`} className="w-full">
-                      <Button className="h-11 w-full rounded-full border-none bg-[#0CBAA6] text-sm font-semibold text-white shadow-md shadow-[#0CBAA6]/20 hover:bg-[#0a9e8d]">
+                      <Button className="h-11 w-full rounded-full border-none bg-[#0CBAA6] text-sm font-semibold text-white shadow-sm shadow-[#0CBAA6]/20 hover:bg-[#0a9e8d]">
                         View Event Highlights
                       </Button>
                     </Link>
@@ -206,7 +206,7 @@ export default async function EventDetailsPage({
                   </>
                 ) : (
                   <>
-                    <Button className="h-12 w-full rounded-full border-none bg-[#0CBAA6] text-sm font-semibold text-white shadow-md shadow-[#0CBAA6]/20 hover:bg-[#0a9e8d]">
+                    <Button className="h-12 w-full rounded-full border-none bg-[#0CBAA6] text-sm font-semibold text-white shadow-sm shadow-[#0CBAA6]/20 hover:bg-[#0a9e8d]">
                       Register Now
                     </Button>
                     <p className="text-muted-foreground text-center text-xs">

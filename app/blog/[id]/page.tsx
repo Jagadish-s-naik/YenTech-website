@@ -183,7 +183,7 @@ export default async function BlogPostPage({
                             <Video className="h-5 w-5 text-[#0CBAA6]" /> Event
                             Highlights Video
                           </h3>
-                          <div className="border-border/60 bg-card/60 aspect-video w-full overflow-hidden rounded-3xl border shadow-sm backdrop-blur-xs">
+                          <div className="bg-card/60 aspect-video w-full overflow-hidden rounded-3xl shadow-sm backdrop-blur-xs">
                             <iframe
                               src={`https://www.youtube.com/embed/${event.youtubeEmbedId}`}
                               title={`${event.title} Video Highlights`}
@@ -315,7 +315,7 @@ export default async function BlogPostPage({
                   </div>
 
                   <Link href={`/events/${id}`} className="block pt-2">
-                    <Button className="h-10 w-full rounded-full border-none bg-[#0CBAA6] text-xs font-semibold text-white shadow-md shadow-[#0CBAA6]/20 hover:bg-[#0a9e8d]">
+                    <Button className="h-10 w-full rounded-full border-none bg-[#0CBAA6] text-xs font-semibold text-white shadow-sm shadow-[#0CBAA6]/20 hover:bg-[#0a9e8d]">
                       View Event Details
                     </Button>
                   </Link>

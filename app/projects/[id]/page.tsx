@@ -34,7 +34,7 @@ export default async function ProjectDetailPage({ params }: PageProps) {
         <div className="flex items-center gap-3">
           {project.demoUrl && (
             <a href={project.demoUrl} target="_blank" rel="noopener noreferrer">
-              <Button className="gap-2 rounded-full bg-[#0CBAA6] px-5 py-2 text-xs font-semibold text-white shadow-md shadow-[#0CBAA6]/20 hover:bg-[#0a9e8d]">
+              <Button className="gap-2 rounded-full bg-[#0CBAA6] px-5 py-2 text-xs font-semibold text-white shadow-sm shadow-[#0CBAA6]/20 hover:bg-[#0a9e8d]">
                 <ExternalLink className="h-3.5 w-3.5" /> Live Demo
               </Button>
             </a>
@@ -55,7 +55,7 @@ export default async function ProjectDetailPage({ params }: PageProps) {
       <PageContainer>
         <div className="grid grid-cols-1 gap-8 lg:grid-cols-3">
           <div className="space-y-8 lg:col-span-2">
-            <div className="border-border/60 bg-muted/40 relative flex aspect-video w-full items-center justify-center overflow-hidden rounded-3xl border shadow-sm backdrop-blur-xs">
+            <div className="bg-muted/40 relative flex aspect-video w-full items-center justify-center overflow-hidden rounded-3xl shadow-sm backdrop-blur-xs">
               <img
                 src={project.imageUrl}
                 alt={project.title}
@@ -159,7 +159,7 @@ export default async function ProjectDetailPage({ params }: PageProps) {
                   rel="noopener noreferrer"
                   className="mt-5 block"
                 >
-                  <Button className="w-full rounded-full border-none bg-[#0CBAA6] py-3 text-sm font-semibold text-white shadow-md shadow-[#0CBAA6]/20 hover:bg-[#0a9e8d]">
+                  <Button className="w-full rounded-full border-none bg-[#0CBAA6] py-3 text-sm font-semibold text-white shadow-sm shadow-[#0CBAA6]/20 hover:bg-[#0a9e8d]">
                     Visit {project.title}{" "}
                     <ExternalLink className="ml-1.5 h-4 w-4" />
                   </Button>

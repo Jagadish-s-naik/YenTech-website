@@ -67,7 +67,7 @@ export function CommunitySection() {
               >
                 <Button
                   size="lg"
-                  className="group rounded-full border-none bg-[#0CBAA6] px-8 py-6 text-base font-semibold text-white shadow-md shadow-[#0CBAA6]/20 transition-all duration-300 hover:bg-[#0a9e8d]"
+                  className="group rounded-full border-none bg-[#0CBAA6] px-8 py-6 text-base font-semibold text-white shadow-sm shadow-[#0CBAA6]/20 transition-all duration-300 hover:bg-[#0a9e8d]"
                 >
                   Connect on LinkedIn
                   <ArrowRight className="ml-2 h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />

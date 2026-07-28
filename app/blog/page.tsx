@@ -162,7 +162,7 @@ export default function BlogPage() {
                 onClick={() => setActiveCategory(cat)}
                 className={`cursor-pointer rounded-full px-5 py-2 text-xs font-semibold transition-all ${
                   isActive
-                    ? "bg-[#0CBAA6] text-white shadow-md shadow-[#0CBAA6]/20"
+                    ? "bg-[#0CBAA6] text-white shadow-sm shadow-[#0CBAA6]/20"
                     : "border-border/60 bg-card/60 text-muted-foreground border backdrop-blur-xs hover:border-[#0CBAA6]/50 hover:text-[#0CBAA6]"
                 }`}
               >

@@ -18,7 +18,7 @@ export default function ProjectsPage() {
 
       <PageContainer>
         <div className="mb-10 flex flex-wrap gap-2.5">
-          <button className="rounded-full bg-[#0CBAA6] px-5 py-2 text-xs font-semibold text-white shadow-md shadow-[#0CBAA6]/20 transition-all">
+          <button className="rounded-full bg-[#0CBAA6] px-5 py-2 text-xs font-semibold text-white shadow-sm shadow-[#0CBAA6]/20 transition-all">
             All Projects
           </button>
           <button className="border-border/60 bg-card/60 text-muted-foreground rounded-full border px-5 py-2 text-xs font-semibold backdrop-blur-xs transition-all hover:border-[#0CBAA6]/50 hover:text-[#0CBAA6]">
