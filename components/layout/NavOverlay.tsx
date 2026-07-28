@@ -1,7 +1,7 @@
 "use client";
 
-import { useNav } from "./NavContext";
-import { NAV_LINKS } from "./nav-data";
+import { useNav } from "@/components/layout/NavContext";
+import { NAV_LINKS } from "@/components/layout/nav-data";
 
 export function NavOverlay() {
   const { activeDropdown, setActiveDropdown } = useNav();

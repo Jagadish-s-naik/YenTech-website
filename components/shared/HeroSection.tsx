@@ -7,7 +7,7 @@ import { gsap } from "gsap";
 import YenepoyaLogo from "@/public/yenepoya.svg";
 import YSETLogo from "@/public/yset.svg";
 import YenTechLogo from "@/public/yentech.svg";
-import { DotGridBackground } from "./DotGridBackground";
+import { DotGridBackground } from "@/components/shared/DotGridBackground";
 
 const ROTATING_TITLES = [
   "Tech Innovators",

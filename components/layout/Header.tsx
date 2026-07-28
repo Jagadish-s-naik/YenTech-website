@@ -7,8 +7,8 @@ import { Button } from "@/components/ui/button";
 import { ThemeToggle } from "@/components/theme-toggle";
 import { Menu, X, ChevronDown, ChevronUp, ArrowUpRight } from "lucide-react";
 import { useState, useEffect } from "react";
-import { useNav } from "./NavContext";
-import { NAV_LINKS } from "./nav-data";
+import { useNav } from "@/components/layout/NavContext";
+import { NAV_LINKS } from "@/components/layout/nav-data";
 import YenTechLogo from "@/public/yentech.svg";
 
 export function Header() {

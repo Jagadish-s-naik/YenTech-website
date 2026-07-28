@@ -1,5 +1,5 @@
 import React from "react";
-import { Breadcrumbs, BreadcrumbItem } from "./Breadcrumbs";
+import { Breadcrumbs, BreadcrumbItem } from "@/components/shared/Breadcrumbs";
 
 interface PageHeaderProps {
   title: string;
