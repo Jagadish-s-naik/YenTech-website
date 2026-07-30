@@ -37,7 +37,7 @@ export function CommunitySection() {
   }, []);
 
   return (
-    <section ref={containerRef} className="relative py-16 md:py-24">
+    <section ref={containerRef} className="relative py-10 md:py-14">
       <div className="container mx-auto max-w-6xl px-4 sm:px-8">
         <div className="community-card border-border/80 bg-card relative overflow-hidden rounded-3xl border p-8 text-center opacity-0 shadow-lg sm:p-12 md:p-16">
           {/* Subtle ambient lighting inside card */}

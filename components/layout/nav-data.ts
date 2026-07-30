@@ -17,6 +17,10 @@ export interface NavItem {
 export const NAV_LINKS: NavItem[] = [
   { name: "Home", href: "/" },
   {
+    name: "About",
+    href: "/about",
+  },
+  {
     name: "Events",
     href: "/events",
     description:
