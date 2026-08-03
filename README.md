@@ -13,7 +13,7 @@
   [![GSAP](https://img.shields.io/badge/GSAP-3.15.0-88CE02?style=for-the-badge&logo=greensock&logoColor=white)](https://greensock.com/gsap/)
   [![pnpm](https://img.shields.io/badge/pnpm-Package_Manager-F69220?style=for-the-badge&logo=pnpm&logoColor=white)](https://pnpm.io/)
 
-  [Explore Website](#-key-features) • [Tech Stack](#-tech-stack) • [Getting Started](#-getting-started) • [Club Domains](#-technical-domains) • [Core Team](#-leadership--core-team)
+  [Explore Website](#-key-features) • [Tech Stack](#-tech-stack) • [Getting Started](#-getting-started) • [Club Domains](#-technical-domains)
 
 </div>
 
@@ -140,22 +140,6 @@ Ensure you have the following installed on your development machine:
 | **Format** | `pnpm format` | Formats all source files with Prettier |
 
 > ⚠️ **Developer Note:** Run `pnpm lint` and `pnpm format` before opening pull requests to ensure strict adherence to project standards.
-
----
-
-## 👥 Leadership & Core Team
-
-The YenTech initiative is led by dedicated student leaders and mentors at Yenepoya:
-
-- **President**: Radhesh Pai
-- **Vice President**: Muhammed Shameer
-- **Secretary**: Keerthana
-- **Media Head**: Safwan M
-- **Program Manager**: Rinu Manoj
-- **Web Development Leads**: Jagadish Naik, Ashwin Nethan
-- **AI / ML Leads**: Dhanush Shenoy, Ashwin R
-- **Cyber Security Lead**: Fadi Subair
-- **Design Leads**: Anand M, Sana Zainaba
 
 ---
 
