@@ -7,6 +7,7 @@ import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { NavProvider } from "@/components/layout/NavContext";
 import { NavOverlay } from "@/components/layout/NavOverlay";
+import { Analytics } from "@vercel/analytics/next";
 
 const outfitHeading = Outfit({
   subsets: ["latin"],
@@ -64,6 +65,7 @@ export default function RootLayout({
           </NavProvider>
           <Footer />
         </ThemeProvider>
+        <Analytics />
       </body>
     </html>
   );
